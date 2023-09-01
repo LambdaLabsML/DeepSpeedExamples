@@ -45,6 +45,9 @@ from utils.module.lora import convert_lora_to_linear_layer
 
 writer = None
 
+os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
+os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
+
 
 def parse_args():
     global writer

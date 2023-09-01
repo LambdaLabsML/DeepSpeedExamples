@@ -29,7 +29,6 @@ from utils.ds_utils import get_train_ds_config
 from utils.module.lora import convert_linear_layer_to_lora, convert_lora_to_linear_layer, only_optimize_lora_parameters
 
 os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
-os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
 os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
 
 def parse_args():

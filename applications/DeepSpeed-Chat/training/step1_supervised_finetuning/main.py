@@ -31,7 +31,6 @@ from utils.module.lora import convert_linear_layer_to_lora, convert_lora_to_line
 from utils.model.model_utils import create_hf_model
 
 os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
-os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
 os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
 
 
