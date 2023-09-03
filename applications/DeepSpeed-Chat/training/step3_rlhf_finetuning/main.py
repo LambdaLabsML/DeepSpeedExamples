@@ -18,6 +18,7 @@ for prompt_batch in prompt_train_dataloader:
 """
 import argparse
 import os
+import time
 
 os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
 os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
@@ -448,6 +449,7 @@ def main():
         # Train!
         print_rank_0("***** Running training *****", args.global_rank)
 
+        start_time = time.time()
         steps = 0
         for epoch in range(args.num_train_epochs):
 
@@ -584,6 +586,13 @@ def main():
                                       save_dir=os.path.join(
                                           args.output_dir, 'critic'),
                                       zero_stage=args.critic_zero_stage)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        if args.global_rank == 0:
+            throughput = args.per_device_train_batch_size * torch.distributed.get_world_size() * steps / execution_time
+            print_rank_0(f"======================================================================")
+            print_rank_0(f"Execution time: {execution_time:.4f} seconds for {steps} steps")
+            print_rank_0(f"Throughput: {throughput:.4f} samples/sec")
 
 
 if __name__ == "__main__":

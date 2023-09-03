@@ -7,6 +7,7 @@ import argparse
 import os
 import math
 import sys
+import time
 
 os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
 os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
@@ -329,6 +330,7 @@ def main():
             f"chosen_last_scores (higher is better) : {reward_score}, acc (higher is better) : {acc}",
             args.global_rank)
         
+        start_time = time.time()
         steps = 0
         for epoch in range(args.num_train_epochs):
 
@@ -377,6 +379,14 @@ def main():
                                       args.global_rank,
                                       args.output_dir,
                                       zero_stage=args.zero_stage)
+
+        end_time = time.time()
+        execution_time = end_time - start_time
+        if args.global_rank == 0:
+            throughput = args.per_device_train_batch_size * torch.distributed.get_world_size() * steps / execution_time
+            print_rank_0(f"======================================================================")
+            print_rank_0(f"Execution time: {execution_time:.4f} seconds for {steps} steps")
+            print_rank_0(f"Throughput: {throughput:.4f} samples/sec")
 
 
 if __name__ == "__main__":
