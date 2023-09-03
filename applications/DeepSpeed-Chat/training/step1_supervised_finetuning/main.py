@@ -8,6 +8,10 @@ import os
 import math
 import sys
 
+os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
+os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
+os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
+
 import torch
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
@@ -29,9 +33,6 @@ from utils.utils import print_rank_0, to_device, save_hf_format, set_random_seed
 from utils.ds_utils import get_train_ds_config
 from utils.module.lora import convert_linear_layer_to_lora, convert_lora_to_linear_layer, only_optimize_lora_parameters
 from utils.model.model_utils import create_hf_model
-
-os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
-os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
 
 
 def parse_args():
@@ -175,6 +176,13 @@ def parse_args():
     parser.add_argument('--print_loss',
                         action='store_true',
                         help='Prints loss at each step.')
+    parser.add_argument('--skip_train',
+                        action='store_true',
+                        help='Skip the training')
+    parser.add_argument("--max_steps",
+                        type=int,
+                        default=-1,
+                        help="If > 0, terminate the training after max_steps.")
     parser = deepspeed.add_config_arguments(parser)
     args = parser.parse_args()
 
@@ -282,81 +290,92 @@ def main():
             pass
         return perplexity
 
-    # Split weights in two groups, one with weight decay and the other not.
-    optimizer_grouped_parameters = get_optimizer_grouped_parameters(
-        model, args.weight_decay)
+    if not args.skip_train:
+        # Split weights in two groups, one with weight decay and the other not.
+        optimizer_grouped_parameters = get_optimizer_grouped_parameters(
+            model, args.weight_decay)
 
-    AdamOptimizer = DeepSpeedCPUAdam if args.offload else FusedAdam
-    optimizer = AdamOptimizer(optimizer_grouped_parameters,
-                              lr=args.learning_rate,
-                              betas=(0.9, 0.95))
+        AdamOptimizer = DeepSpeedCPUAdam if args.offload else FusedAdam
+        optimizer = AdamOptimizer(optimizer_grouped_parameters,
+                                  lr=args.learning_rate,
+                                  betas=(0.9, 0.95))
 
-    num_update_steps_per_epoch = math.ceil(
-        len(train_dataloader) / args.gradient_accumulation_steps)
-    lr_scheduler = get_scheduler(
-        name=args.lr_scheduler_type,
-        optimizer=optimizer,
-        num_warmup_steps=args.num_warmup_steps,
-        num_training_steps=args.num_train_epochs * num_update_steps_per_epoch,
-    )
+        num_update_steps_per_epoch = math.ceil(
+            len(train_dataloader) / args.gradient_accumulation_steps)
+        lr_scheduler = get_scheduler(
+            name=args.lr_scheduler_type,
+            optimizer=optimizer,
+            num_warmup_steps=args.num_warmup_steps,
+            num_training_steps=args.num_train_epochs * num_update_steps_per_epoch,
+        )
 
-    model, optimizer, _, lr_scheduler = deepspeed.initialize(
-        model=model,
-        optimizer=optimizer,
-        args=args,
-        config=ds_config,
-        lr_scheduler=lr_scheduler,
-        dist_init_required=True)
+        model, optimizer, _, lr_scheduler = deepspeed.initialize(
+            model=model,
+            optimizer=optimizer,
+            args=args,
+            config=ds_config,
+            lr_scheduler=lr_scheduler,
+            dist_init_required=True)
 
-    if args.gradient_checkpointing:
-        model.gradient_checkpointing_enable()
-
-    # Train!
-    print_rank_0("***** Running training *****", args.global_rank)
-    print_rank_0(
-        f"***** Evaluating perplexity, Epoch {0}/{args.num_train_epochs} *****",
-        args.global_rank)
-    perplexity = evaluation(model, eval_dataloader)
-    print_rank_0(f"ppl: {perplexity}", args.global_rank)
-
-    for epoch in range(args.num_train_epochs):
+        if args.gradient_checkpointing:
+            model.gradient_checkpointing_enable()
+        
+        # Train!
+        print_rank_0("***** Running training *****", args.global_rank)
         print_rank_0(
-            f"Beginning of Epoch {epoch+1}/{args.num_train_epochs}, Total Micro Batches {len(train_dataloader)}",
-            args.global_rank)
-        model.train()
-        for step, batch in enumerate(train_dataloader):
-            batch = to_device(batch, device)
-            outputs = model(**batch, use_cache=False)
-            loss = outputs.loss
-            if args.print_loss:
-                print(
-                    f"Epoch: {epoch}, Step: {step}, Rank: {torch.distributed.get_rank()}, loss = {loss}"
-                )
-            model.backward(loss)
-            model.step()
-
-        # Evaluate perplexity on the validation set.
-        print_rank_0(
-            f"***** Evaluating perplexity, Epoch {epoch+1}/{args.num_train_epochs} *****",
+            f"***** Evaluating perplexity, Epoch {0}/{args.num_train_epochs} *****",
             args.global_rank)
         perplexity = evaluation(model, eval_dataloader)
         print_rank_0(f"ppl: {perplexity}", args.global_rank)
-        model.tput_timer.update_epoch_count()
 
-    if args.output_dir is not None:
-        print_rank_0('saving the final model ...', args.global_rank)
-        model = convert_lora_to_linear_layer(model)
+        steps = 0
+        for epoch in range(args.num_train_epochs):
+            
+            if steps == args.max_steps:
+                break
 
-        if args.global_rank == 0:
-            save_hf_format(model, tokenizer, args)
+            print_rank_0(
+                f"Beginning of Epoch {epoch+1}/{args.num_train_epochs}, Total Micro Batches {len(train_dataloader)}",
+                args.global_rank)
+            model.train()
+            for step, batch in enumerate(train_dataloader):
+                batch = to_device(batch, device)
+                outputs = model(**batch, use_cache=False)
+                loss = outputs.loss
+                if args.print_loss:
+                    print(
+                        f"Epoch: {epoch}, Step: {step}, Rank: {torch.distributed.get_rank()}, loss = {loss}"
+                    )
+                model.backward(loss)
+                model.step()
+                
+                steps += 1
+                if steps == args.max_steps:
+                    break
 
-        if args.zero_stage == 3:
-            # For zero stage 3, each gpu only has a part of the model, so we need a special save function
-            save_zero_three_model(model,
-                                  args.global_rank,
-                                  args.output_dir,
-                                  zero_stage=args.zero_stage)
+            if args.max_steps < 0:
+                # Evaluate perplexity on the validation set.
+                print_rank_0(
+                    f"***** Evaluating perplexity, Epoch {epoch+1}/{args.num_train_epochs} *****",
+                    args.global_rank)
+                perplexity = evaluation(model, eval_dataloader)
+                print_rank_0(f"ppl: {perplexity}", args.global_rank)
+                model.tput_timer.update_epoch_count()
+
+        if args.output_dir is not None and args.max_steps < 0:
+            print_rank_0('saving the final model ...', args.global_rank)
+            model = convert_lora_to_linear_layer(model)
+
+            if args.global_rank == 0:
+                save_hf_format(model, tokenizer, args)
+
+            if args.zero_stage == 3:
+                # For zero stage 3, each gpu only has a part of the model, so we need a special save function
+                save_zero_three_model(model,
+                                      args.global_rank,
+                                      args.output_dir,
+                                      zero_stage=args.zero_stage)
 
 
 if __name__ == "__main__":
-    main()
+        main()

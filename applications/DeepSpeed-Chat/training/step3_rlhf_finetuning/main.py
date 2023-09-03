@@ -18,6 +18,11 @@ for prompt_batch in prompt_train_dataloader:
 """
 import argparse
 import os
+
+os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
+os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
+os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
+
 import random
 import torch
 from torch.utils.data import DataLoader, RandomSampler
@@ -45,8 +50,6 @@ from utils.module.lora import convert_lora_to_linear_layer
 
 writer = None
 
-os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
-os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
 
 
 def parse_args():
@@ -309,7 +312,13 @@ def parse_args():
     parser.add_argument('--print_answers',
                         action='store_true',
                         help='Print prompt and answers during training')
-
+    parser.add_argument('--skip_train',
+                        action='store_true',
+                        help='Skip the training')
+    parser.add_argument("--max_steps",
+                        type=int,
+                        default=-1,
+                        help="If > 0, terminate the training after max_steps.")
     parser = deepspeed.add_config_arguments(parser)
     args = parser.parse_args()
 
@@ -435,136 +444,146 @@ def main():
     unsup_mini_dataset = MiniDataset(args.generation_batch_numbers,
                                      args.per_device_mini_train_batch_size)
 
-    # Train!
-    print_rank_0("***** Running training *****", args.global_rank)
+    if not args.skip_train:
+        # Train!
+        print_rank_0("***** Running training *****", args.global_rank)
 
-    for epoch in range(args.num_train_epochs):
-        print_rank_0(
-            f"Beginning of Epoch {epoch+1}/{args.num_train_epochs}, Total Generation Batches {min(len(prompt_train_dataloader), len(unsupervised_train_dataloader))}",
-            args.global_rank)
-        for step, (batch_prompt, batch_unsupervised) in enumerate(
-                zip(prompt_train_dataloader, unsupervised_train_dataloader)):
-            batch_prompt = to_device(batch_prompt, device)
-            if batch_unsupervised is not None:
-                batch_unsupervised = to_device(batch_unsupervised, device)
-                unsup_dataset = unsup_mini_dataset.add(batch_unsupervised)
-            else:
-                unsup_dataset = unsup_mini_dataset.add(
-                    [[None] * args.per_device_train_batch_size])
-            # prompts = batch_prompt['prompt']
-            # length = prompts.size(-1)
-            # if length > args.max_prompt_seq_len:
-            #     prompts = prompts[:, length - args.max_prompt_seq_len:]
-            #     raise ValueError("Prompt length is too long")
+        steps = 0
+        for epoch in range(args.num_train_epochs):
 
-            out = trainer.generate_experience(batch_prompt['prompt'],
-                                              batch_prompt['prompt_att_mask'],
-                                              step)
-            exp_dataset = exp_mini_dataset.add(out)
+            if steps == args.max_steps:
+                break
 
-            if exp_dataset is not None:
-                inner_iter = 0
-                actor_loss_sum, critic_loss_sum, unsup_loss_sum = 0, 0, 0
-                average_reward = 0
+            print_rank_0(
+                f"Beginning of Epoch {epoch+1}/{args.num_train_epochs}, Total Generation Batches {min(len(prompt_train_dataloader), len(unsupervised_train_dataloader))}",
+                args.global_rank)
+            for step, (batch_prompt, batch_unsupervised) in enumerate(
+                    zip(prompt_train_dataloader, unsupervised_train_dataloader)):
+                batch_prompt = to_device(batch_prompt, device)
+                if batch_unsupervised is not None:
+                    batch_unsupervised = to_device(batch_unsupervised, device)
+                    unsup_dataset = unsup_mini_dataset.add(batch_unsupervised)
+                else:
+                    unsup_dataset = unsup_mini_dataset.add(
+                        [[None] * args.per_device_train_batch_size])
+                # prompts = batch_prompt['prompt']
+                # length = prompts.size(-1)
+                # if length > args.max_prompt_seq_len:
+                #     prompts = prompts[:, length - args.max_prompt_seq_len:]
+                #     raise ValueError("Prompt length is too long")
+
+                out = trainer.generate_experience(batch_prompt['prompt'],
+                                                  batch_prompt['prompt_att_mask'],
+                                                  step)
+                exp_dataset = exp_mini_dataset.add(out)
+
+                if exp_dataset is not None:
+                    inner_iter = 0
+                    actor_loss_sum, critic_loss_sum, unsup_loss_sum = 0, 0, 0
+                    average_reward = 0
+
+                    if args.actor_gradient_checkpointing:
+                        rlhf_engine.actor.gradient_checkpointing_enable()
+
+                    for ppo_ep in range(args.ppo_epochs):
+                        for i, (exp_data, unsup_data) in enumerate(
+                                zip(exp_dataset, unsup_dataset)):
+                            actor_loss, critic_loss = trainer.train_rlhf(exp_data)
+                            actor_loss_sum += actor_loss.item()
+                            critic_loss_sum += critic_loss.item()
+                            average_reward += exp_data["rewards"].mean()
+
+                            if unsupervised_training_enabled:
+                                unsup_loss = trainer.train_unsupervised(
+                                    unsup_data, args.unsup_coef)
+                                unsup_loss_sum += unsup_loss.item()
+
+                            inner_iter += 1
+                            if args.enable_ema:
+                                moving_average(rlhf_engine.actor,
+                                               rlhf_engine.actor_ema,
+                                               zero_stage=args.actor_zero_stage)
+
+                        random.shuffle(exp_dataset)
+                        random.shuffle(unsup_dataset)
+
+                    print_rank_0(
+                        f'epoch: {epoch}|step: {step}|ppo_ep: {ppo_ep+1}|act_loss: {actor_loss_sum/inner_iter}|cri_loss: {critic_loss_sum/inner_iter}|unsuper_loss: {unsup_loss_sum/inner_iter}',
+                        args.global_rank)
+                    average_reward = get_all_reduce_mean(average_reward).item()
+                    print_rank_0(
+                        f"average reward score: {average_reward/inner_iter}",
+                        args.global_rank)
+                    print_rank_0(
+                        "-------------------------------------------------------------------------------------",
+                        args.global_rank)
+                    if args.enable_tensorboard and torch.distributed.get_rank(
+                    ) == 0:
+                        writer.add_scalar('reward',
+                                          average_reward / inner_iter,
+                                          global_step=step)
+                        writer.add_scalar('actor_loss',
+                                          actor_loss,
+                                          global_step=step)
+                        writer.add_scalar('actor_loss_sum',
+                                          actor_loss_sum,
+                                          global_step=step)
+                        writer.add_scalar('critic_loss',
+                                          critic_loss,
+                                          global_step=step)
+                        writer.add_scalar('critic_loss_sum',
+                                          critic_loss_sum,
+                                          global_step=step)
+                        writer.flush()
 
                 if args.actor_gradient_checkpointing:
-                    rlhf_engine.actor.gradient_checkpointing_enable()
+                    rlhf_engine.actor.gradient_checkpointing_disable()
 
-                for ppo_ep in range(args.ppo_epochs):
-                    for i, (exp_data, unsup_data) in enumerate(
-                            zip(exp_dataset, unsup_dataset)):
-                        actor_loss, critic_loss = trainer.train_rlhf(exp_data)
-                        actor_loss_sum += actor_loss.item()
-                        critic_loss_sum += critic_loss.item()
-                        average_reward += exp_data["rewards"].mean()
+                steps += 1
+                if steps == args.max_steps:
+                    break
 
-                        if unsupervised_training_enabled:
-                            unsup_loss = trainer.train_unsupervised(
-                                unsup_data, args.unsup_coef)
-                            unsup_loss_sum += unsup_loss.item()
-
-                        inner_iter += 1
-                        if args.enable_ema:
-                            moving_average(rlhf_engine.actor,
-                                           rlhf_engine.actor_ema,
-                                           zero_stage=args.actor_zero_stage)
-
-                    random.shuffle(exp_dataset)
-                    random.shuffle(unsup_dataset)
-
-                print_rank_0(
-                    f'epoch: {epoch}|step: {step}|ppo_ep: {ppo_ep+1}|act_loss: {actor_loss_sum/inner_iter}|cri_loss: {critic_loss_sum/inner_iter}|unsuper_loss: {unsup_loss_sum/inner_iter}',
-                    args.global_rank)
-                average_reward = get_all_reduce_mean(average_reward).item()
-                print_rank_0(
-                    f"average reward score: {average_reward/inner_iter}",
-                    args.global_rank)
-                print_rank_0(
-                    "-------------------------------------------------------------------------------------",
-                    args.global_rank)
-                if args.enable_tensorboard and torch.distributed.get_rank(
-                ) == 0:
-                    writer.add_scalar('reward',
-                                      average_reward / inner_iter,
-                                      global_step=step)
-                    writer.add_scalar('actor_loss',
-                                      actor_loss,
-                                      global_step=step)
-                    writer.add_scalar('actor_loss_sum',
-                                      actor_loss_sum,
-                                      global_step=step)
-                    writer.add_scalar('critic_loss',
-                                      critic_loss,
-                                      global_step=step)
-                    writer.add_scalar('critic_loss_sum',
-                                      critic_loss_sum,
-                                      global_step=step)
-                    writer.flush()
-
-            if args.actor_gradient_checkpointing:
-                rlhf_engine.actor.gradient_checkpointing_disable()
-
-    if args.output_dir is not None:
-        print_rank_0('saving model ...')
-        rlhf_engine.actor = convert_lora_to_linear_layer(rlhf_engine.actor)
-        rlhf_engine.critic = convert_lora_to_linear_layer(rlhf_engine.critic)
-        if args.enable_ema:
-            rlhf_engine.actor_ema = convert_lora_to_linear_layer(
-                rlhf_engine.actor_ema)
-
-        if torch.distributed.get_rank() == 0:
-            save_hf_format(rlhf_engine.actor,
-                           tokenizer,
-                           args,
-                           sub_folder='actor')
-            save_hf_format(rlhf_engine.critic,
-                           tokenizer,
-                           args,
-                           sub_folder='critic')
+        if args.output_dir is not None:
+            print_rank_0('saving model ...')
+            rlhf_engine.actor = convert_lora_to_linear_layer(rlhf_engine.actor)
+            rlhf_engine.critic = convert_lora_to_linear_layer(rlhf_engine.critic)
             if args.enable_ema:
-                save_hf_format(rlhf_engine.actor_ema,
+                rlhf_engine.actor_ema = convert_lora_to_linear_layer(
+                    rlhf_engine.actor_ema)
+
+            if torch.distributed.get_rank() == 0:
+                save_hf_format(rlhf_engine.actor,
                                tokenizer,
                                args,
-                               sub_folder='actor_ema')
+                               sub_folder='actor')
+                save_hf_format(rlhf_engine.critic,
+                               tokenizer,
+                               args,
+                               sub_folder='critic')
+                if args.enable_ema:
+                    save_hf_format(rlhf_engine.actor_ema,
+                                   tokenizer,
+                                   args,
+                                   sub_folder='actor_ema')
 
-        if args.actor_zero_stage == 3:
-            save_zero_three_model(rlhf_engine.actor,
-                                  global_rank=args.global_rank,
-                                  save_dir=os.path.join(
-                                      args.output_dir, 'actor'),
-                                  zero_stage=args.actor_zero_stage)
-            if args.enable_ema:
-                save_zero_three_model(rlhf_engine.actor_ema,
+            if args.actor_zero_stage == 3:
+                save_zero_three_model(rlhf_engine.actor,
                                       global_rank=args.global_rank,
                                       save_dir=os.path.join(
-                                          args.output_dir, 'actor_ema'),
+                                          args.output_dir, 'actor'),
                                       zero_stage=args.actor_zero_stage)
-        if args.critic_zero_stage == 3:
-            save_zero_three_model(rlhf_engine.critic,
-                                  global_rank=args.global_rank,
-                                  save_dir=os.path.join(
-                                      args.output_dir, 'critic'),
-                                  zero_stage=args.critic_zero_stage)
+                if args.enable_ema:
+                    save_zero_three_model(rlhf_engine.actor_ema,
+                                          global_rank=args.global_rank,
+                                          save_dir=os.path.join(
+                                              args.output_dir, 'actor_ema'),
+                                          zero_stage=args.actor_zero_stage)
+            if args.critic_zero_stage == 3:
+                save_zero_three_model(rlhf_engine.critic,
+                                      global_rank=args.global_rank,
+                                      save_dir=os.path.join(
+                                          args.output_dir, 'critic'),
+                                      zero_stage=args.critic_zero_stage)
 
 
 if __name__ == "__main__":
