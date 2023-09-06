@@ -1,0 +1,1867 @@
+[2023-09-06 05:21:56,100] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:04,391] [INFO] [runner.py:452:main] Using IP address of 172.28.8.71 for node ATL-GPUNode-012
+[2023-09-06 05:22:04,391] [INFO] [runner.py:555:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJBVEwtR1BVTm9kZS0wMTIiOiBbMCwgMSwgMiwgMywgNCwgNSwgNiwgN119 --master_addr=172.28.8.71 --master_port=12346 --enable_each_rank_log=None /home/ubuntu/shared/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step3_rlhf_finetuning/main.py --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets --data_split 2,4,4 --data_output_path /home/ubuntu/shared/.cache/data_files/opt-13b_step3 --actor_model_name_or_path /home/ubuntu/shared/.cache/huggingface/transformers/models--facebook--opt-13b/snapshots/e515202d1e7750da62d245fbccb2723b9c1790f5 --critic_model_name_or_path /home/ubuntu/shared/.cache/huggingface/transformers/models--facebook--opt-350m/snapshots/cb32f77e905cccbca1d970436fb0f5e6b58ee3c5 --num_padding_at_beginning 1 --per_device_train_batch_size 16 --per_device_mini_train_batch_size 16 --generation_batch_numbers 1 --ppo_epochs 1 --max_answer_seq_len 256 --max_prompt_seq_len 256 --actor_learning_rate 5e-4 --critic_learning_rate 5e-6 --num_train_epochs 1 --lr_scheduler_type cosine --gradient_accumulation_steps 1 --num_warmup_steps 100 --deepspeed --seed 1234 --enable_hybrid_engine --inference_tp_size 1 --actor_zero_stage 3 --critic_zero_stage 3 --actor_gradient_checkpointing --disable_actor_dropout --actor_lora_dim 128 --actor_lora_module_name decoder.layers. --max_steps 10
+[2023-09-06 05:22:05,272] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:07,603] [INFO] [launch.py:138:main] 0 NCCL_DEBUG=INFO
+[2023-09-06 05:22:07,603] [INFO] [launch.py:145:main] WORLD INFO DICT: {'ATL-GPUNode-012': [0, 1, 2, 3, 4, 5, 6, 7]}
+[2023-09-06 05:22:07,603] [INFO] [launch.py:151:main] nnodes=1, num_local_procs=8, node_rank=0
+[2023-09-06 05:22:07,603] [INFO] [launch.py:162:main] global_rank_mapping=defaultdict(<class 'list'>, {'ATL-GPUNode-012': [0, 1, 2, 3, 4, 5, 6, 7]})
+[2023-09-06 05:22:07,603] [INFO] [launch.py:163:main] dist_world_size=8
+[2023-09-06 05:22:07,603] [INFO] [launch.py:165:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+[2023-09-06 05:22:10,420] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:10,840] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:11,182] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:11,267] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:11,299] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:11,400] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:11,553] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:11,833] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-06 05:22:14,888] [WARNING] [comm.py:152:init_deepspeed_backend] NCCL backend in DeepSpeed not yet implemented
+[2023-09-06 05:22:14,888] [INFO] [comm.py:616:init_distributed] cdb=None
+[2023-09-06 05:22:15,163] [WARNING] [comm.py:152:init_deepspeed_backend] NCCL backend in DeepSpeed not yet implemented
+[2023-09-06 05:22:15,163] [INFO] [comm.py:616:init_distributed] cdb=None
+[2023-09-06 05:22:16,357] [WARNING] [comm.py:152:init_deepspeed_backend] NCCL backend in DeepSpeed not yet implemented
+[2023-09-06 05:22:16,357] [INFO] [comm.py:616:init_distributed] cdb=None
+[2023-09-06 05:22:16,740] [WARNING] [comm.py:152:init_deepspeed_backend] NCCL backend in DeepSpeed not yet implemented
+[2023-09-06 05:22:16,740] [INFO] [comm.py:616:init_distributed] cdb=None
+[2023-09-06 05:22:16,784] [WARNING] [comm.py:152:init_deepspeed_backend] NCCL backend in DeepSpeed not yet implemented
+[2023-09-06 05:22:16,784] [INFO] [comm.py:616:init_distributed] cdb=None
+[2023-09-06 05:22:17,134] [WARNING] [comm.py:152:init_deepspeed_backend] NCCL backend in DeepSpeed not yet implemented
+[2023-09-06 05:22:17,135] [INFO] [comm.py:616:init_distributed] cdb=None
+[2023-09-06 05:22:17,135] [INFO] [comm.py:643:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2023-09-06 05:22:17,204] [WARNING] [comm.py:152:init_deepspeed_backend] NCCL backend in DeepSpeed not yet implemented
+[2023-09-06 05:22:17,204] [INFO] [comm.py:616:init_distributed] cdb=None
+[2023-09-06 05:22:17,229] [WARNING] [comm.py:152:init_deepspeed_backend] NCCL backend in DeepSpeed not yet implemented
+[2023-09-06 05:22:17,230] [INFO] [comm.py:616:init_distributed] cdb=None
+ATL-GPUNode-012:1043772:1043772 [0] NCCL INFO Bootstrap : Using bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043772:1043772 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+ATL-GPUNode-012:1043772:1043772 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+ATL-GPUNode-012:1043772:1043772 [0] NCCL INFO cudaDriverVersion 12020
+NCCL version 2.18.3+cuda12.2
+ATL-GPUNode-012:1043773:1043773 [1] NCCL INFO cudaDriverVersion 12020
+ATL-GPUNode-012:1043775:1043775 [3] NCCL INFO cudaDriverVersion 12020
+ATL-GPUNode-012:1043777:1043777 [5] NCCL INFO cudaDriverVersion 12020
+ATL-GPUNode-012:1043778:1043778 [6] NCCL INFO cudaDriverVersion 12020
+ATL-GPUNode-012:1043774:1043774 [2] NCCL INFO cudaDriverVersion 12020
+ATL-GPUNode-012:1043776:1043776 [4] NCCL INFO cudaDriverVersion 12020
+ATL-GPUNode-012:1043779:1043779 [7] NCCL INFO cudaDriverVersion 12020
+ATL-GPUNode-012:1043775:1043775 [3] NCCL INFO Bootstrap : Using bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043777:1043777 [5] NCCL INFO Bootstrap : Using bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043773:1043773 [1] NCCL INFO Bootstrap : Using bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043778:1043778 [6] NCCL INFO Bootstrap : Using bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043774:1043774 [2] NCCL INFO Bootstrap : Using bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043776:1043776 [4] NCCL INFO Bootstrap : Using bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043779:1043779 [7] NCCL INFO Bootstrap : Using bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043777:1043777 [5] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+ATL-GPUNode-012:1043775:1043775 [3] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+ATL-GPUNode-012:1043775:1043775 [3] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+ATL-GPUNode-012:1043778:1043778 [6] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+ATL-GPUNode-012:1043777:1043777 [5] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+ATL-GPUNode-012:1043773:1043773 [1] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+ATL-GPUNode-012:1043778:1043778 [6] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+ATL-GPUNode-012:1043773:1043773 [1] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+ATL-GPUNode-012:1043776:1043776 [4] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+ATL-GPUNode-012:1043776:1043776 [4] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+ATL-GPUNode-012:1043779:1043779 [7] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+ATL-GPUNode-012:1043779:1043779 [7] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+ATL-GPUNode-012:1043774:1043774 [2] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+ATL-GPUNode-012:1043774:1043774 [2] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_5:1/IB [4]mlx5_6:1/IB [5]mlx5_7:1/IB [6]mlx5_8:1/IB [7]mlx5_9:1/IB [8]mlx5_bond_0:1/RoCE [RO]; OOB bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Using network IB
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_5:1/IB [4]mlx5_6:1/IB [5]mlx5_7:1/IB [6]mlx5_8:1/IB [7]mlx5_9:1/IB [8]mlx5_bond_0:1/RoCE [RO]; OOB bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Using network IB
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_5:1/IB [4]mlx5_6:1/IB [5]mlx5_7:1/IB [6]mlx5_8:1/IB [7]mlx5_9:1/IB [8]mlx5_bond_0:1/RoCE [RO]; OOB bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Using network IB
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_5:1/IB [4]mlx5_6:1/IB [5]mlx5_7:1/IB [6]mlx5_8:1/IB [7]mlx5_9:1/IB [8]mlx5_bond_0:1/RoCE [RO]; OOB bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Using network IB
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_5:1/IB [4]mlx5_6:1/IB [5]mlx5_7:1/IB [6]mlx5_8:1/IB [7]mlx5_9:1/IB [8]mlx5_bond_0:1/RoCE [RO]; OOB bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Using network IB
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_5:1/IB [4]mlx5_6:1/IB [5]mlx5_7:1/IB [6]mlx5_8:1/IB [7]mlx5_9:1/IB [8]mlx5_bond_0:1/RoCE [RO]; OOB bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Using network IB
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_5:1/IB [4]mlx5_6:1/IB [5]mlx5_7:1/IB [6]mlx5_8:1/IB [7]mlx5_9:1/IB [8]mlx5_bond_0:1/RoCE [RO]; OOB bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Using network IB
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_5:1/IB [4]mlx5_6:1/IB [5]mlx5_7:1/IB [6]mlx5_8:1/IB [7]mlx5_9:1/IB [8]mlx5_bond_0:1/RoCE [RO]; OOB bond0:172.28.8.71<0>
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Using network IB
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO comm 0x5599ae8bb7e0 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 18000 commId 0x710aa7c8e005b224 - Init START
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO comm 0x55b660935000 rank 6 nranks 8 cudaDev 6 nvmlDev 6 busId ba000 commId 0x710aa7c8e005b224 - Init START
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO comm 0x5587aa0f1240 rank 7 nranks 8 cudaDev 7 nvmlDev 7 busId db000 commId 0x710aa7c8e005b224 - Init START
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO comm 0x55bbfd8afb00 rank 4 nranks 8 cudaDev 4 nvmlDev 4 busId 9a000 commId 0x710aa7c8e005b224 - Init START
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO comm 0x55da26421dd0 rank 5 nranks 8 cudaDev 5 nvmlDev 5 busId ab000 commId 0x710aa7c8e005b224 - Init START
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO comm 0x5608019c5c20 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId 3a000 commId 0x710aa7c8e005b224 - Init START
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO comm 0x563bd09ddd30 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId 5d000 commId 0x710aa7c8e005b224 - Init START
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO comm 0x55b4a076fad0 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 2a000 commId 0x710aa7c8e005b224 - Init START
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Setting affinity for GPU 1 to ff,ffffffff,ffff0000,00000000,00ffffff,ffffffff
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO NVLS multicast support is available on dev 1
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Setting affinity for GPU 3 to ff,ffffffff,ffff0000,00000000,00ffffff,ffffffff
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO NVLS multicast support is available on dev 3
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Setting affinity for GPU 5 to ffffffff,ffffff00,00000000,0000ffff,ffffffff,ff000000,00000000
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO NVLS multicast support is available on dev 5
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Setting affinity for GPU 0 to ff,ffffffff,ffff0000,00000000,00ffffff,ffffffff
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO NVLS multicast support is available on dev 0
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Setting affinity for GPU 4 to ffffffff,ffffff00,00000000,0000ffff,ffffffff,ff000000,00000000
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO NVLS multicast support is available on dev 4
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Setting affinity for GPU 6 to ffffffff,ffffff00,00000000,0000ffff,ffffffff,ff000000,00000000
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO NVLS multicast support is available on dev 6
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Setting affinity for GPU 2 to ff,ffffffff,ffff0000,00000000,00ffffff,ffffffff
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO NVLS multicast support is available on dev 2
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Setting affinity for GPU 7 to ffffffff,ffffff00,00000000,0000ffff,ffffffff,ff000000,00000000
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO NVLS multicast support is available on dev 7
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 7/-1/-1->6->5 [2] 7/-1/-1->6->5 [3] 7/-1/-1->6->5 [4] 7/-1/-1->6->5 [5] 7/-1/-1->6->5 [6] 7/-1/-1->6->5 [7] 7/-1/-1->6->5 [8] 7/-1/-1->6->5 [9] 7/-1/-1->6->5 [10] 7/-1/-1->6->5 [11] 7/-1/-1->6->5 [12] 7/-1/-1->6->5 [13] 7/-1/-1->6->5 [14] 7/-1/-1->6->5 [15] 7/-1/-1->6->5 [16] 7/-1/-1->6->5 [17] 7/-1/-1->6->5 [18] 7/-1/-1->6->5 [19] 7/-1/-1->6->5 [20] 7/-1/-1->6->5 [21] 7/-1/-1->6->5 [22] 7/-1/-1->6->5 [23] 7/-1/-1->6->5
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 6/-1/-1->5->4 [2] 6/-1/-1->5->4 [3] 6/-1/-1->5->4 [4] 6/-1/-1->5->4 [5] 6/-1/-1->5->4 [6] 6/-1/-1->5->4 [7] 6/-1/-1->5->4 [8] 6/-1/-1->5->4 [9] 6/-1/-1->5->4 [10] 6/-1/-1->5->4 [11] 6/-1/-1->5->4 [12] 6/-1/-1->5->4 [13] 6/-1/-1->5->4 [14] 6/-1/-1->5->4 [15] 6/-1/-1->5->4 [16] 6/-1/-1->5->4 [17] 6/-1/-1->5->4 [18] 6/-1/-1->5->4 [19] 6/-1/-1->5->4 [20] 6/-1/-1->5->4 [21] 6/-1/-1->5->4 [22] 6/-1/-1->5->4 [23] 6/-1/-1->5->4
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1 [4] 3/-1/-1->2->1 [5] 3/-1/-1->2->1 [6] 3/-1/-1->2->1 [7] 3/-1/-1->2->1 [8] 3/-1/-1->2->1 [9] 3/-1/-1->2->1 [10] 3/-1/-1->2->1 [11] 3/-1/-1->2->1 [12] 3/-1/-1->2->1 [13] 3/-1/-1->2->1 [14] 3/-1/-1->2->1 [15] 3/-1/-1->2->1 [16] 3/-1/-1->2->1 [17] 3/-1/-1->2->1 [18] 3/-1/-1->2->1 [19] 3/-1/-1->2->1 [20] 3/-1/-1->2->1 [21] 3/-1/-1->2->1 [22] 3/-1/-1->2->1 [23] 3/-1/-1->2->1
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Trees [0] 4/-1/-1->3->2 [1] 4/-1/-1->3->2 [2] 4/-1/-1->3->2 [3] 4/-1/-1->3->2 [4] 4/-1/-1->3->2 [5] 4/-1/-1->3->2 [6] 4/-1/-1->3->2 [7] 4/-1/-1->3->2 [8] 4/-1/-1->3->2 [9] 4/-1/-1->3->2 [10] 4/-1/-1->3->2 [11] 4/-1/-1->3->2 [12] 4/-1/-1->3->2 [13] 4/-1/-1->3->2 [14] 4/-1/-1->3->2 [15] 4/-1/-1->3->2 [16] 4/-1/-1->3->2 [17] 4/-1/-1->3->2 [18] 4/-1/-1->3->2 [19] 4/-1/-1->3->2 [20] 4/-1/-1->3->2 [21] 4/-1/-1->3->2 [22] 4/-1/-1->3->2 [23] 4/-1/-1->3->2
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Trees [0] 5/-1/-1->4->3 [1] 5/-1/-1->4->3 [2] 5/-1/-1->4->3 [3] 5/-1/-1->4->3 [4] 5/-1/-1->4->3 [5] 5/-1/-1->4->3 [6] 5/-1/-1->4->3 [7] 5/-1/-1->4->3 [8] 5/-1/-1->4->3 [9] 5/-1/-1->4->3 [10] 5/-1/-1->4->3 [11] 5/-1/-1->4->3 [12] 5/-1/-1->4->3 [13] 5/-1/-1->4->3 [14] 5/-1/-1->4->3 [15] 5/-1/-1->4->3 [16] 5/-1/-1->4->3 [17] 5/-1/-1->4->3 [18] 5/-1/-1->4->3 [19] 5/-1/-1->4->3 [20] 5/-1/-1->4->3 [21] 5/-1/-1->4->3 [22] 5/-1/-1->4->3 [23] 5/-1/-1->4->3
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0 [4] 2/-1/-1->1->0 [5] 2/-1/-1->1->0 [6] 2/-1/-1->1->0 [7] 2/-1/-1->1->0 [8] 2/-1/-1->1->0 [9] 2/-1/-1->1->0 [10] 2/-1/-1->1->0 [11] 2/-1/-1->1->0 [12] 2/-1/-1->1->0 [13] 2/-1/-1->1->0 [14] 2/-1/-1->1->0 [15] 2/-1/-1->1->0 [16] 2/-1/-1->1->0 [17] 2/-1/-1->1->0 [18] 2/-1/-1->1->0 [19] 2/-1/-1->1->0 [20] 2/-1/-1->1->0 [21] 2/-1/-1->1->0 [22] 2/-1/-1->1->0 [23] 2/-1/-1->1->0
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 00/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 01/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 02/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 03/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 04/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 05/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 06/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] -1/-1/-1->7->6 [2] -1/-1/-1->7->6 [3] -1/-1/-1->7->6 [4] -1/-1/-1->7->6 [5] -1/-1/-1->7->6 [6] -1/-1/-1->7->6 [7] -1/-1/-1->7->6 [8] -1/-1/-1->7->6 [9] -1/-1/-1->7->6 [10] -1/-1/-1->7->6 [11] -1/-1/-1->7->6 [12] -1/-1/-1->7->6 [13] -1/-1/-1->7->6 [14] -1/-1/-1->7->6 [15] -1/-1/-1->7->6 [16] -1/-1/-1->7->6 [17] -1/-1/-1->7->6 [18] -1/-1/-1->7->6 [19] -1/-1/-1->7->6 [20] -1/-1/-1->7->6 [21] -1/-1/-1->7->6 [22] -1/-1/-1->7->6 [23] -1/-1/-1->7->6
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 07/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 08/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 09/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 10/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 11/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 12/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 13/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 14/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 15/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 16/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 17/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 18/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 19/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 20/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 21/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 22/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 23/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] 1/-1/-1->0->-1 [7] 1/-1/-1->0->-1 [8] 1/-1/-1->0->-1 [9] 1/-1/-1->0->-1 [10] 1/-1/-1->0->-1 [11] 1/-1/-1->0->-1 [12] 1/-1/-1->0->-1 [13] 1/-1/-1->0->-1 [14] 1/-1/-1->0->-1 [15] 1/-1/-1->0->-1 [16] 1/-1/-1->0->-1 [17] 1/-1/-1->0->-1 [18] 1/-1/-1->0->-1 [19] 1/-1/-1->0->-1 [20] 1/-1/-1->0->-1 [21] 1/-1/-1->0->-1 [22] 1/-1/-1->0->-1 [23] 1/-1/-1->0->-1
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 00/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 01/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 02/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 00/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 00/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 01/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 01/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 02/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 02/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 03/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 03/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 03/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 04/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 05/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 06/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 00/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 07/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 01/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 08/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 02/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 09/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 03/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 10/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 04/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 04/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 11/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 05/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 05/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 12/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 06/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 13/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 07/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 04/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 14/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 08/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 05/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 15/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 09/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 06/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 16/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 04/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 10/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 07/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 08/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 17/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 05/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 11/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 18/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 08/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 09/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 06/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 12/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 19/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 09/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 10/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 07/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 13/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 20/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 10/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 11/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 08/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 14/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 21/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 11/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 12/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 09/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 15/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 22/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 13/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 12/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 10/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 16/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 14/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 23/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 13/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 11/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 00/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 15/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 17/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 14/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 12/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 01/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 16/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 18/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 15/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 13/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 17/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 19/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 16/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 14/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 18/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 20/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 17/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 15/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 02/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 19/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 21/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 18/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 16/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 03/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 20/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 22/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 19/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 17/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 04/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 21/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 23/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 20/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 18/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 05/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 22/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 21/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 19/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 06/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Channel 23/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 22/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 20/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 07/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 23/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 06/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 21/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 08/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 09/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 07/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 22/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 10/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 23/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 11/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 08/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 12/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 13/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 09/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 14/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 15/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 10/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 16/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 11/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 17/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 12/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 18/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 13/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 14/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 15/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 16/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 17/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 18/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 19/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 20/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 21/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 22/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 23/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 19/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 20/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 21/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 06/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 22/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 23/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 08/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 09/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 10/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 11/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 12/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 13/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 14/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 15/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 16/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 17/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 18/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 19/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 20/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 21/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 22/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 23/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 00/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 01/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 02/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 03/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 04/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 05/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 06/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 07/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 08/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 09/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 10/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 11/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 12/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 13/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 14/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 15/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 16/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 17/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 18/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 19/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 20/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 21/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 22/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Channel 23/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 00/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 01/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 02/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 03/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 04/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 05/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 06/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 07/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 08/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 09/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 10/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 11/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 12/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 13/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 14/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 00/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 15/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 01/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 16/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 02/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 03/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 04/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 05/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 06/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 00/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 07/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 01/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 08/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 02/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 09/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 03/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 10/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 11/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 17/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 12/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 18/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 13/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 14/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 04/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 19/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 15/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 05/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 20/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 16/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 06/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 21/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 17/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 07/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 22/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 18/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 08/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Channel 23/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 19/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 09/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 20/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 10/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 21/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 11/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 12/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 22/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 13/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Channel 23/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 14/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 15/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 16/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 17/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 18/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 19/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 04/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 20/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 05/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 21/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 06/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO NVLS comm 0x5587aa0f1240 headRank 7 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 22/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Channel 23/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 08/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 09/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 10/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 11/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 12/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 13/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 14/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 15/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 08/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 16/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 09/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 17/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 10/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 11/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 18/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 12/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 13/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 14/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 19/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 15/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 20/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 08/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 21/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 09/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 22/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 10/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Channel 23/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 11/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 16/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 17/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 12/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 18/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 19/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 20/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO NVLS comm 0x55b660935000 headRank 6 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 13/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 21/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 14/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 22/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Channel 23/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO NVLS comm 0x55da26421dd0 headRank 5 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 15/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 16/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 17/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 18/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 19/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 20/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 21/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 22/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Channel 23/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO NVLS comm 0x55bbfd8afb00 headRank 4 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO NVLS comm 0x5599ae8bb7e0 headRank 0 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO NVLS comm 0x563bd09ddd30 headRank 3 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO NVLS comm 0x5608019c5c20 headRank 2 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO NVLS comm 0x55b4a076fad0 headRank 1 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043775:1045301 [3] NCCL INFO comm 0x563bd09ddd30 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId 5d000 commId 0x710aa7c8e005b224 - Init COMPLETE
+ATL-GPUNode-012:1043779:1045300 [7] NCCL INFO comm 0x5587aa0f1240 rank 7 nranks 8 cudaDev 7 nvmlDev 7 busId db000 commId 0x710aa7c8e005b224 - Init COMPLETE
+ATL-GPUNode-012:1043773:1045299 [1] NCCL INFO comm 0x55b4a076fad0 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 2a000 commId 0x710aa7c8e005b224 - Init COMPLETE
+ATL-GPUNode-012:1043774:1045303 [2] NCCL INFO comm 0x5608019c5c20 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId 3a000 commId 0x710aa7c8e005b224 - Init COMPLETE
+ATL-GPUNode-012:1043778:1045304 [6] NCCL INFO comm 0x55b660935000 rank 6 nranks 8 cudaDev 6 nvmlDev 6 busId ba000 commId 0x710aa7c8e005b224 - Init COMPLETE
+ATL-GPUNode-012:1043777:1045302 [5] NCCL INFO comm 0x55da26421dd0 rank 5 nranks 8 cudaDev 5 nvmlDev 5 busId ab000 commId 0x710aa7c8e005b224 - Init COMPLETE
+ATL-GPUNode-012:1043772:1045295 [0] NCCL INFO comm 0x5599ae8bb7e0 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 18000 commId 0x710aa7c8e005b224 - Init COMPLETE
+ATL-GPUNode-012:1043776:1045305 [4] NCCL INFO comm 0x55bbfd8afb00 rank 4 nranks 8 cudaDev 4 nvmlDev 4 busId 9a000 commId 0x710aa7c8e005b224 - Init COMPLETE
+************************[start] Initializing Actor Model [start] *************************
+[2023-09-06 05:22:44,425] [INFO] [partition_parameters.py:326:__exit__] finished initializing model with 13.11B parameters
+ninja: no work to do.
+Time to load fused_adam op: 0.0928189754486084 seconds
+Time to load fused_adam op: 0.10296344757080078 seconds
+ninja: no work to do.
+Time to load fused_adam op: 0.07408332824707031 seconds
+[2023-09-06 05:23:35,458] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Time to load fused_adam op: 0.10214519500732422 seconds
+ninja: no work to do.
+Time to load fused_adam op: 0.09107756614685059 seconds
+Time to load fused_adam op: 0.1019294261932373 seconds
+Time to load fused_adam op: 0.1021428108215332 seconds
+Time to load fused_adam op: 0.10234189033508301 seconds
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Using network IB
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Using network IB
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Using network IB
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Using network IB
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Using network IB
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Using network IB
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Using network IB
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Using network IB
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO comm 0x55b66ee0d720 rank 6 nranks 8 cudaDev 6 nvmlDev 6 busId ba000 commId 0x301766fec2e91ca6 - Init START
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO comm 0x55da372f5e40 rank 5 nranks 8 cudaDev 5 nvmlDev 5 busId ab000 commId 0x301766fec2e91ca6 - Init START
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO comm 0x55b4b1642740 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 2a000 commId 0x301766fec2e91ca6 - Init START
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO comm 0x5587b85c8be0 rank 7 nranks 8 cudaDev 7 nvmlDev 7 busId db000 commId 0x301766fec2e91ca6 - Init START
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO comm 0x5599bcd933a0 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 18000 commId 0x301766fec2e91ca6 - Init START
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO comm 0x560812899400 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId 3a000 commId 0x301766fec2e91ca6 - Init START
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO comm 0x55bc0e784400 rank 4 nranks 8 cudaDev 4 nvmlDev 4 busId 9a000 commId 0x301766fec2e91ca6 - Init START
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO comm 0x563bdeeb4aa0 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId 5d000 commId 0x301766fec2e91ca6 - Init START
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Setting affinity for GPU 6 to ffffffff,ffffff00,00000000,0000ffff,ffffffff,ff000000,00000000
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO NVLS multicast support is available on dev 6
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Setting affinity for GPU 0 to ff,ffffffff,ffff0000,00000000,00ffffff,ffffffff
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO NVLS multicast support is available on dev 0
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Setting affinity for GPU 7 to ffffffff,ffffff00,00000000,0000ffff,ffffffff,ff000000,00000000
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO NVLS multicast support is available on dev 7
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Setting affinity for GPU 1 to ff,ffffffff,ffff0000,00000000,00ffffff,ffffffff
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO NVLS multicast support is available on dev 1
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Setting affinity for GPU 2 to ff,ffffffff,ffff0000,00000000,00ffffff,ffffffff
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO NVLS multicast support is available on dev 2
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Setting affinity for GPU 5 to ffffffff,ffffff00,00000000,0000ffff,ffffffff,ff000000,00000000
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO NVLS multicast support is available on dev 5
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Setting affinity for GPU 3 to ff,ffffffff,ffff0000,00000000,00ffffff,ffffffff
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO NVLS multicast support is available on dev 3
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Setting affinity for GPU 4 to ffffffff,ffffff00,00000000,0000ffff,ffffffff,ff000000,00000000
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO NVLS multicast support is available on dev 4
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 7/-1/-1->6->5 [2] 7/-1/-1->6->5 [3] 7/-1/-1->6->5 [4] 7/-1/-1->6->5 [5] 7/-1/-1->6->5 [6] 7/-1/-1->6->5 [7] 7/-1/-1->6->5 [8] 7/-1/-1->6->5 [9] 7/-1/-1->6->5 [10] 7/-1/-1->6->5 [11] 7/-1/-1->6->5 [12] 7/-1/-1->6->5 [13] 7/-1/-1->6->5 [14] 7/-1/-1->6->5 [15] 7/-1/-1->6->5 [16] 7/-1/-1->6->5 [17] 7/-1/-1->6->5 [18] 7/-1/-1->6->5 [19] 7/-1/-1->6->5 [20] 7/-1/-1->6->5 [21] 7/-1/-1->6->5 [22] 7/-1/-1->6->5 [23] 7/-1/-1->6->5
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 00/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1 [4] 3/-1/-1->2->1 [5] 3/-1/-1->2->1 [6] 3/-1/-1->2->1 [7] 3/-1/-1->2->1 [8] 3/-1/-1->2->1 [9] 3/-1/-1->2->1 [10] 3/-1/-1->2->1 [11] 3/-1/-1->2->1 [12] 3/-1/-1->2->1 [13] 3/-1/-1->2->1 [14] 3/-1/-1->2->1 [15] 3/-1/-1->2->1 [16] 3/-1/-1->2->1 [17] 3/-1/-1->2->1 [18] 3/-1/-1->2->1 [19] 3/-1/-1->2->1 [20] 3/-1/-1->2->1 [21] 3/-1/-1->2->1 [22] 3/-1/-1->2->1 [23] 3/-1/-1->2->1
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 01/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 02/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Trees [0] 4/-1/-1->3->2 [1] 4/-1/-1->3->2 [2] 4/-1/-1->3->2 [3] 4/-1/-1->3->2 [4] 4/-1/-1->3->2 [5] 4/-1/-1->3->2 [6] 4/-1/-1->3->2 [7] 4/-1/-1->3->2 [8] 4/-1/-1->3->2 [9] 4/-1/-1->3->2 [10] 4/-1/-1->3->2 [11] 4/-1/-1->3->2 [12] 4/-1/-1->3->2 [13] 4/-1/-1->3->2 [14] 4/-1/-1->3->2 [15] 4/-1/-1->3->2 [16] 4/-1/-1->3->2 [17] 4/-1/-1->3->2 [18] 4/-1/-1->3->2 [19] 4/-1/-1->3->2 [20] 4/-1/-1->3->2 [21] 4/-1/-1->3->2 [22] 4/-1/-1->3->2 [23] 4/-1/-1->3->2
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 03/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 04/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 05/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 06/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] -1/-1/-1->7->6 [2] -1/-1/-1->7->6 [3] -1/-1/-1->7->6 [4] -1/-1/-1->7->6 [5] -1/-1/-1->7->6 [6] -1/-1/-1->7->6 [7] -1/-1/-1->7->6 [8] -1/-1/-1->7->6 [9] -1/-1/-1->7->6 [10] -1/-1/-1->7->6 [11] -1/-1/-1->7->6 [12] -1/-1/-1->7->6 [13] -1/-1/-1->7->6 [14] -1/-1/-1->7->6 [15] -1/-1/-1->7->6 [16] -1/-1/-1->7->6 [17] -1/-1/-1->7->6 [18] -1/-1/-1->7->6 [19] -1/-1/-1->7->6 [20] -1/-1/-1->7->6 [21] -1/-1/-1->7->6 [22] -1/-1/-1->7->6 [23] -1/-1/-1->7->6
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 6/-1/-1->5->4 [2] 6/-1/-1->5->4 [3] 6/-1/-1->5->4 [4] 6/-1/-1->5->4 [5] 6/-1/-1->5->4 [6] 6/-1/-1->5->4 [7] 6/-1/-1->5->4 [8] 6/-1/-1->5->4 [9] 6/-1/-1->5->4 [10] 6/-1/-1->5->4 [11] 6/-1/-1->5->4 [12] 6/-1/-1->5->4 [13] 6/-1/-1->5->4 [14] 6/-1/-1->5->4 [15] 6/-1/-1->5->4 [16] 6/-1/-1->5->4 [17] 6/-1/-1->5->4 [18] 6/-1/-1->5->4 [19] 6/-1/-1->5->4 [20] 6/-1/-1->5->4 [21] 6/-1/-1->5->4 [22] 6/-1/-1->5->4 [23] 6/-1/-1->5->4
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Trees [0] 5/-1/-1->4->3 [1] 5/-1/-1->4->3 [2] 5/-1/-1->4->3 [3] 5/-1/-1->4->3 [4] 5/-1/-1->4->3 [5] 5/-1/-1->4->3 [6] 5/-1/-1->4->3 [7] 5/-1/-1->4->3 [8] 5/-1/-1->4->3 [9] 5/-1/-1->4->3 [10] 5/-1/-1->4->3 [11] 5/-1/-1->4->3 [12] 5/-1/-1->4->3 [13] 5/-1/-1->4->3 [14] 5/-1/-1->4->3 [15] 5/-1/-1->4->3 [16] 5/-1/-1->4->3 [17] 5/-1/-1->4->3 [18] 5/-1/-1->4->3 [19] 5/-1/-1->4->3 [20] 5/-1/-1->4->3 [21] 5/-1/-1->4->3 [22] 5/-1/-1->4->3 [23] 5/-1/-1->4->3
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 07/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 08/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 09/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 10/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 11/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 12/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 13/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 14/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 15/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 16/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 17/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 18/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0 [4] 2/-1/-1->1->0 [5] 2/-1/-1->1->0 [6] 2/-1/-1->1->0 [7] 2/-1/-1->1->0 [8] 2/-1/-1->1->0 [9] 2/-1/-1->1->0 [10] 2/-1/-1->1->0 [11] 2/-1/-1->1->0 [12] 2/-1/-1->1->0 [13] 2/-1/-1->1->0 [14] 2/-1/-1->1->0 [15] 2/-1/-1->1->0 [16] 2/-1/-1->1->0 [17] 2/-1/-1->1->0 [18] 2/-1/-1->1->0 [19] 2/-1/-1->1->0 [20] 2/-1/-1->1->0 [21] 2/-1/-1->1->0 [22] 2/-1/-1->1->0 [23] 2/-1/-1->1->0
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 19/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 20/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 21/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 22/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 23/24 :    0   1   2   3   4   5   6   7
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] 1/-1/-1->0->-1 [7] 1/-1/-1->0->-1 [8] 1/-1/-1->0->-1 [9] 1/-1/-1->0->-1 [10] 1/-1/-1->0->-1 [11] 1/-1/-1->0->-1 [12] 1/-1/-1->0->-1 [13] 1/-1/-1->0->-1 [14] 1/-1/-1->0->-1 [15] 1/-1/-1->0->-1 [16] 1/-1/-1->0->-1 [17] 1/-1/-1->0->-1 [18] 1/-1/-1->0->-1 [19] 1/-1/-1->0->-1 [20] 1/-1/-1->0->-1 [21] 1/-1/-1->0->-1 [22] 1/-1/-1->0->-1 [23] 1/-1/-1->0->-1
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO P2P Chunksize set to 524288
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 00/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 01/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 00/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 02/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 01/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 02/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 03/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 04/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 08/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 05/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 04/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 00/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 09/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 05/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 06/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 01/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 10/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 07/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 02/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 00/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 03/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 08/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 06/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 01/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 04/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 09/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 07/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 02/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 05/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 08/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 10/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 03/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 03/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 06/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 09/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 11/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 04/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 04/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 10/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 05/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 11/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 05/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 11/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 06/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 12/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 12/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 06/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 13/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 07/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 13/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 07/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 14/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 08/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 14/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 07/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 12/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 08/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 15/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 15/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 13/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 08/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 09/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 16/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 09/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 16/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 14/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 10/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 09/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 17/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 15/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 17/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 10/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 10/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 06/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 18/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 16/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 11/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 11/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 19/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 17/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 12/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 11/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 18/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 20/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 18/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 12/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 13/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 19/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 12/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 21/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 19/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 13/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 14/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 20/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 13/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 22/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 20/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 14/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 21/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 14/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 23/0 : 2[2] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 21/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 08/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 15/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 22/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 15/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 22/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 09/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 16/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Channel 23/0 : 0[0] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 16/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 15/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 23/0 : 5[5] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 10/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 17/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 00/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 17/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 01/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 16/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 18/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 02/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 17/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 19/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 18/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 03/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 18/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 20/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 19/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 19/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 11/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 04/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 21/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 12/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 20/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 05/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 22/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 21/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 06/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 13/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 22/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 23/0 : 7[7] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 20/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 07/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 21/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 23/0 : 6[6] -> 7[7] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 14/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 08/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 22/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 15/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 09/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 10/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 23/0 : 4[4] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 11/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 16/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 17/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 18/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 12/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 19/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 13/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 14/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 15/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 20/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 16/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 21/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 17/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 22/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 23/0 : 1[1] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 18/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 19/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 20/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 21/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 22/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 23/0 : 3[3] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 00/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 01/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 02/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 03/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 04/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 05/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 06/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 07/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 08/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 09/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 10/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 11/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 12/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 13/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 14/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 15/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 16/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 17/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 18/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 19/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 20/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 21/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 22/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Channel 23/0 : 7[7] -> 6[6] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Connected all rings
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 00/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 01/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 02/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 03/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 04/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 05/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 06/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 00/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 07/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 01/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 02/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 08/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 09/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 03/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 10/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 04/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 11/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 05/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 06/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 12/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 13/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 07/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 14/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 08/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 15/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 09/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 16/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 10/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 17/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 08/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 11/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 18/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 12/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 09/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 13/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 19/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 10/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 14/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 20/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 11/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 15/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 21/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 12/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 16/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 22/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 13/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 17/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Channel 23/0 : 6[6] -> 5[5] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 14/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 18/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 15/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 19/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 16/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 20/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 17/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 21/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 22/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Channel 23/0 : 5[5] -> 4[4] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 18/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 19/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 20/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 21/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 22/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 04/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 00/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Channel 23/0 : 1[1] -> 0[0] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 01/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO NVLS comm 0x5587b85c8be0 headRank 7 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 02/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 05/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 08/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 09/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 10/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 06/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 03/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 11/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 08/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 12/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 04/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 13/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 14/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 09/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO NVLS comm 0x5599bcd933a0 headRank 0 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 10/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 05/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 15/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 11/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 12/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 13/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 16/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 14/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 17/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 15/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 06/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 07/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 16/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 18/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 17/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 19/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 08/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 18/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 20/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 09/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 10/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO NVLS comm 0x55b66ee0d720 headRank 6 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 19/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 11/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 21/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 20/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 12/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 22/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 13/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Channel 23/0 : 2[2] -> 1[1] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 21/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 14/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 22/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 15/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Channel 23/0 : 3[3] -> 2[2] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 16/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 17/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 18/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 19/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 20/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 21/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 22/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Channel 23/0 : 4[4] -> 3[3] via P2P/IPC
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO NVLS comm 0x560812899400 headRank 2 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO NVLS comm 0x55b4b1642740 headRank 1 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO NVLS comm 0x55da372f5e40 headRank 5 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO NVLS comm 0x563bdeeb4aa0 headRank 3 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Connected all trees
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO NVLS comm 0x55bc0e784400 headRank 4 nHeads 8 buffSize 4194304 memSize 2097152 nvlsPerRankSize 201326592 nvlsTotalSize 1610612736
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO Connected NVLS tree
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO 24 coll channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+ATL-GPUNode-012:1043774:1047061 [2] NCCL INFO comm 0x560812899400 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId 3a000 commId 0x301766fec2e91ca6 - Init COMPLETE
+ATL-GPUNode-012:1043776:1047059 [4] NCCL INFO comm 0x55bc0e784400 rank 4 nranks 8 cudaDev 4 nvmlDev 4 busId 9a000 commId 0x301766fec2e91ca6 - Init COMPLETE
+ATL-GPUNode-012:1043775:1047058 [3] NCCL INFO comm 0x563bdeeb4aa0 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId 5d000 commId 0x301766fec2e91ca6 - Init COMPLETE
+ATL-GPUNode-012:1043773:1047060 [1] NCCL INFO comm 0x55b4b1642740 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 2a000 commId 0x301766fec2e91ca6 - Init COMPLETE
+ATL-GPUNode-012:1043779:1047062 [7] NCCL INFO comm 0x5587b85c8be0 rank 7 nranks 8 cudaDev 7 nvmlDev 7 busId db000 commId 0x301766fec2e91ca6 - Init COMPLETE
+ATL-GPUNode-012:1043778:1047055 [6] NCCL INFO comm 0x55b66ee0d720 rank 6 nranks 8 cudaDev 6 nvmlDev 6 busId ba000 commId 0x301766fec2e91ca6 - Init COMPLETE
+ATL-GPUNode-012:1043777:1047056 [5] NCCL INFO comm 0x55da372f5e40 rank 5 nranks 8 cudaDev 5 nvmlDev 5 busId ab000 commId 0x301766fec2e91ca6 - Init COMPLETE
+ATL-GPUNode-012:1043772:1047057 [0] NCCL INFO comm 0x5599bcd933a0 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 18000 commId 0x301766fec2e91ca6 - Init COMPLETE
+[2023-09-06 05:23:43,900] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-06 05:23:43,906] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the client Optimizer
+[2023-09-06 05:23:43,906] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2023-09-06 05:23:44,000] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
+[2023-09-06 05:23:44,000] [INFO] [utils.py:54:is_zero_supported_optimizer] Checking ZeRO support for optimizer=FusedAdam type=<class 'deepspeed.ops.adam.fused_adam.FusedAdam'>
+[2023-09-06 05:23:44,000] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2023-09-06 05:23:44,000] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 3 optimizer
+[2023-09-06 05:23:44,895] [INFO] [utils.py:785:see_memory_usage] Stage 3 initialize beginning
+[2023-09-06 05:23:44,896] [INFO] [utils.py:786:see_memory_usage] MA 3.93 GB         Max_MA 4.43 GB         CA 9.33 GB         Max_CA 9 GB 
+[2023-09-06 05:23:44,896] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.19 GB, percent = 3.1%
+[2023-09-06 05:23:44,898] [INFO] [stage3.py:117:__init__] Reduce bucket size 500,000,000
+[2023-09-06 05:23:44,898] [INFO] [stage3.py:118:__init__] Prefetch bucket size 30000000
+[2023-09-06 05:23:45,391] [INFO] [utils.py:785:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2023-09-06 05:23:45,392] [INFO] [utils.py:786:see_memory_usage] MA 3.93 GB         Max_MA 3.93 GB         CA 9.33 GB         Max_CA 9 GB 
+[2023-09-06 05:23:45,392] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.14 GB, percent = 3.1%
+Parameter Offload: Total persistent parameters: 1853440 in 362 params
+[2023-09-06 05:23:45,914] [INFO] [utils.py:785:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2023-09-06 05:23:45,915] [INFO] [utils.py:786:see_memory_usage] MA 3.16 GB         Max_MA 3.93 GB         CA 9.44 GB         Max_CA 9 GB 
+[2023-09-06 05:23:45,915] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.13 GB, percent = 3.1%
+[2023-09-06 05:23:46,370] [INFO] [utils.py:785:see_memory_usage] Before creating fp16 partitions
+[2023-09-06 05:23:46,370] [INFO] [utils.py:786:see_memory_usage] MA 3.16 GB         Max_MA 3.16 GB         CA 9.44 GB         Max_CA 9 GB 
+[2023-09-06 05:23:46,371] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.14 GB, percent = 3.1%
+[2023-09-06 05:23:47,579] [INFO] [utils.py:785:see_memory_usage] After creating fp16 partitions: 3
+[2023-09-06 05:23:47,580] [INFO] [utils.py:786:see_memory_usage] MA 3.16 GB         Max_MA 3.16 GB         CA 5.15 GB         Max_CA 9 GB 
+[2023-09-06 05:23:47,580] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.13 GB, percent = 3.1%
+[2023-09-06 05:23:48,074] [INFO] [utils.py:785:see_memory_usage] Before creating fp32 partitions
+[2023-09-06 05:23:48,074] [INFO] [utils.py:786:see_memory_usage] MA 3.16 GB         Max_MA 3.16 GB         CA 5.15 GB         Max_CA 5 GB 
+[2023-09-06 05:23:48,074] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.16 GB, percent = 3.1%
+[2023-09-06 05:23:48,556] [INFO] [utils.py:785:see_memory_usage] After creating fp32 partitions
+[2023-09-06 05:23:48,557] [INFO] [utils.py:786:see_memory_usage] MA 3.51 GB         Max_MA 3.62 GB         CA 5.15 GB         Max_CA 5 GB 
+[2023-09-06 05:23:48,557] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.14 GB, percent = 3.1%
+[2023-09-06 05:23:49,045] [INFO] [utils.py:785:see_memory_usage] Before initializing optimizer states
+[2023-09-06 05:23:49,046] [INFO] [utils.py:786:see_memory_usage] MA 3.51 GB         Max_MA 3.51 GB         CA 5.15 GB         Max_CA 5 GB 
+[2023-09-06 05:23:49,046] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.15 GB, percent = 3.1%
+[2023-09-06 05:23:49,550] [INFO] [utils.py:785:see_memory_usage] After initializing optimizer states
+[2023-09-06 05:23:49,550] [INFO] [utils.py:786:see_memory_usage] MA 4.2 GB         Max_MA 4.42 GB         CA 5.81 GB         Max_CA 6 GB 
+[2023-09-06 05:23:49,550] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.13 GB, percent = 3.1%
+[2023-09-06 05:23:49,551] [INFO] [stage3.py:424:_setup_for_real_optimizer] optimizer state initialized
+[2023-09-06 05:23:50,508] [INFO] [utils.py:785:see_memory_usage] After initializing ZeRO optimizer
+[2023-09-06 05:23:50,509] [INFO] [utils.py:786:see_memory_usage] MA 5.31 GB         Max_MA 6.26 GB         CA 8.19 GB         Max_CA 8 GB 
+[2023-09-06 05:23:50,509] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.14 GB, percent = 3.1%
+[2023-09-06 05:23:50,509] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = FusedAdam
+[2023-09-06 05:23:50,509] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2023-09-06 05:23:50,509] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.LambdaLR object at 0x7f4664ca2380>
+[2023-09-06 05:23:50,509] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0, 0.0, 0.0], mom=[(0.9, 0.95), (0.9, 0.95), (0.9, 0.95)]
+[2023-09-06 05:23:50,510] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-09-06 05:23:50,510] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-06 05:23:50,510] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-06 05:23:50,510] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-09-06 05:23:50,510] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f48d043eb00>
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 100, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   gradient_clipping ............ 1.0
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=True max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 65536
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='step3_tensorboard/ds_tensorboard_logs/', job_name='step3_actor_tensorboard') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   train_batch_size ............. 128
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  16
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   world_size ................... 8
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  False
+[2023-09-06 05:23:50,511] [INFO] [config.py:964:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='none', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=False) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='none', nvme_path=None, buffer_count=4, pin_memory=False, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=30000000 param_persistence_threshold=10000 model_persistence_threshold=sys.maxsize max_live_parameters=30000000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=False
+[2023-09-06 05:23:50,512] [INFO] [config.py:964:print]   zero_enabled ................. True
+[2023-09-06 05:23:50,512] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-06 05:23:50,512] [INFO] [config.py:964:print]   zero_optimization_stage ...... 3
+[2023-09-06 05:23:50,512] [INFO] [config.py:950:print_user_config]   json = {
+    "train_batch_size": 128, 
+    "train_micro_batch_size_per_gpu": 16, 
+    "steps_per_print": 10, 
+    "zero_optimization": {
+        "stage": 3, 
+        "offload_param": {
+            "device": "none"
+        }, 
+        "offload_optimizer": {
+            "device": "none"
+        }, 
+        "stage3_param_persistence_threshold": 1.000000e+04, 
+        "stage3_max_live_parameters": 3.000000e+07, 
+        "stage3_prefetch_bucket_size": 3.000000e+07, 
+        "memory_efficient_linear": false
+    }, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale_window": 100
+    }, 
+    "gradient_clipping": 1.0, 
+    "prescale_gradients": false, 
+    "wall_clock_breakdown": false, 
+    "hybrid_engine": {
+        "enabled": true, 
+        "max_out_tokens": 512, 
+        "inference_tp_size": 1, 
+        "release_inference_cache": false, 
+        "pin_parameters": true, 
+        "tp_gather_partition_size": 8
+    }, 
+    "tensorboard": {
+        "enabled": false, 
+        "output_path": "step3_tensorboard/ds_tensorboard_logs/", 
+        "job_name": "step3_actor_tensorboard"
+    }
+}
+ninja: no work to do.
+Time to load transformer_inference op: 0.10874366760253906 seconds
+[2023-09-06 05:23:50,652] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed-Inference config: {'layer_id': 0, 'hidden_size': 5120, 'intermediate_size': 20480, 'heads': 40, 'num_hidden_layers': -1, 'dtype': torch.float16, 'pre_layer_norm': True, 'norm_type': <NormType.LayerNorm: 1>, 'local_rank': -1, 'stochastic_mode': False, 'epsilon': 1e-05, 'mp_size': 1, 'scale_attention': True, 'triangular_masking': True, 'local_attention': False, 'window_size': 1, 'rotary_dim': -1, 'rotate_half': False, 'rotate_every_two': True, 'return_tuple': True, 'mlp_after_attn': True, 'mlp_act_func_type': <ActivationFuncType.ReLU: 2>, 'specialized_mode': False, 'training_mp_size': 1, 'bigscience_bloom': False, 'max_out_tokens': 512, 'min_out_tokens': 512, 'scale_attn_by_inverse_layer_idx': False, 'enable_qkv_quantization': False, 'use_mup': False, 'return_single_tuple': False, 'set_empty_params': True, 'transposed_mode': True, 'use_triton': False, 'triton_autotune': False}
+Time to load transformer_inference op: 0.10694241523742676 seconds
+Time to load transformer_inference op: 0.10737109184265137 seconds
+Time to load transformer_inference op: 0.10758638381958008 seconds
+Time to load transformer_inference op: 0.10727620124816895 seconds
+Time to load transformer_inference op: 0.004785060882568359 seconds
+Time to load transformer_inference op: 0.004050493240356445 seconds
+Time to load transformer_inference op: 0.0038671493530273438 seconds
+Time to load transformer_inference op: 0.1095588207244873 seconds
+Time to load transformer_inference op: 0.004362583160400391 seconds
+Time to load transformer_inference op: 0.10943269729614258 seconds
+Time to load transformer_inference op: 0.004923343658447266 seconds
+Time to load transformer_inference op: 0.0044634342193603516 seconds
+Time to load transformer_inference op: 0.004677295684814453 seconds
+Time to load transformer_inference op: 0.004695415496826172 seconds
+******************[end] Initialized Actor Model [end] (duration: 66.46s)******************
+*************************[start] Initializing Ref Model [start] **************************
+Time to load transformer_inference op: 0.0038862228393554688 seconds
+Time to load transformer_inference op: 0.00390625 seconds
+Time to load transformer_inference op: 0.004891633987426758 seconds
+Time to load transformer_inference op: 0.0046956539154052734 seconds
+Time to load transformer_inference op: 0.004415273666381836 seconds
+Time to load transformer_inference op: 0.005263566970825195 seconds
+Time to load transformer_inference op: 0.20922470092773438 seconds
+Time to load transformer_inference op: 0.006196737289428711 seconds
+Time to load transformer_inference op: 0.0056607723236083984 seconds
+[2023-09-06 05:23:51,039] [INFO] [partition_parameters.py:326:__exit__] finished initializing model with 26.22B parameters
+[2023-09-06 05:24:12,900] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-09-06 05:24:12,911] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-06 05:24:12,912] [INFO] [logging.py:96:log_dist] [Rank 0] Creating ZeRO Offload
+[2023-09-06 05:24:13,466] [INFO] [utils.py:785:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2023-09-06 05:24:13,466] [INFO] [utils.py:786:see_memory_usage] MA 8.7 GB         Max_MA 10.08 GB         CA 17.62 GB         Max_CA 18 GB 
+[2023-09-06 05:24:13,466] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.21 GB, percent = 3.1%
+Parameter Offload: Total persistent parameters: 1853440 in 362 params
+[2023-09-06 05:24:13,999] [INFO] [utils.py:785:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2023-09-06 05:24:13,999] [INFO] [utils.py:786:see_memory_usage] MA 8.7 GB         Max_MA 8.7 GB         CA 17.62 GB         Max_CA 18 GB 
+[2023-09-06 05:24:13,999] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.42 GB, percent = 3.1%
+[2023-09-06 05:24:14,000] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-09-06 05:24:14,000] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-06 05:24:14,000] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-06 05:24:14,000] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-09-06 05:24:14,000] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-09-06 05:24:14,000] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f48e03cb010>
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... None
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   gradient_clipping ............ 1.0
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 65536
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   train_batch_size ............. 128
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  16
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   world_size ................... 8
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='none', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=False) offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=10000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=False
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   zero_enabled ................. True
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-06 05:24:14,001] [INFO] [config.py:964:print]   zero_optimization_stage ...... 3
+[2023-09-06 05:24:14,001] [INFO] [config.py:950:print_user_config]   json = {
+    "train_batch_size": 128, 
+    "train_micro_batch_size_per_gpu": 16, 
+    "steps_per_print": 10, 
+    "zero_optimization": {
+        "stage": 3, 
+        "stage3_param_persistence_threshold": 1.000000e+04, 
+        "offload_param": {
+            "device": "none"
+        }, 
+        "memory_efficient_linear": false
+    }, 
+    "fp16": {
+        "enabled": true
+    }, 
+    "gradient_clipping": 1.0, 
+    "prescale_gradients": false, 
+    "wall_clock_breakdown": false
+}
+*******************[end] Initialized Ref Model [end] (duration: 23.30s)*******************
+************************[start] Initializing Critic Model [start] ************************
+Time to load fused_adam op: 0.0007164478302001953 seconds
+Time to load fused_adam op: 0.0007064342498779297 seconds
+Time to load fused_adam op: 0.0005984306335449219 seconds
+Time to load fused_adam op: 0.0007300376892089844 seconds
+Time to load fused_adam op: 0.0007374286651611328 seconds
+Time to load fused_adam op: 0.0007390975952148438 seconds
+Time to load fused_adam op: 0.0009136199951171875 seconds
+Time to load fused_adam op: 0.0004696846008300781 seconds
+[2023-09-06 05:24:16,855] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-09-06 05:24:17,036] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-06 05:24:17,037] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the client Optimizer
+[2023-09-06 05:24:17,037] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2023-09-06 05:24:17,048] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
+[2023-09-06 05:24:17,048] [INFO] [utils.py:54:is_zero_supported_optimizer] Checking ZeRO support for optimizer=FusedAdam type=<class 'deepspeed.ops.adam.fused_adam.FusedAdam'>
+[2023-09-06 05:24:17,048] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2023-09-06 05:24:17,048] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 3 optimizer
+[2023-09-06 05:24:17,717] [INFO] [utils.py:785:see_memory_usage] Stage 3 initialize beginning
+[2023-09-06 05:24:17,717] [INFO] [utils.py:786:see_memory_usage] MA 9.32 GB         Max_MA 9.32 GB         CA 17.62 GB         Max_CA 18 GB 
+[2023-09-06 05:24:17,717] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.37 GB, percent = 3.1%
+[2023-09-06 05:24:17,718] [INFO] [stage3.py:117:__init__] Reduce bucket size 500,000,000
+[2023-09-06 05:24:17,718] [INFO] [stage3.py:118:__init__] Prefetch bucket size 30000000
+[2023-09-06 05:24:18,194] [INFO] [utils.py:785:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2023-09-06 05:24:18,195] [INFO] [utils.py:786:see_memory_usage] MA 9.32 GB         Max_MA 9.32 GB         CA 17.62 GB         Max_CA 18 GB 
+[2023-09-06 05:24:18,195] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.38 GB, percent = 3.1%
+Parameter Offload: Total persistent parameters: 320000 in 241 params
+[2023-09-06 05:24:18,733] [INFO] [utils.py:785:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2023-09-06 05:24:18,733] [INFO] [utils.py:786:see_memory_usage] MA 8.78 GB         Max_MA 9.33 GB         CA 17.69 GB         Max_CA 18 GB 
+[2023-09-06 05:24:18,733] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.37 GB, percent = 3.1%
+[2023-09-06 05:24:19,240] [INFO] [utils.py:785:see_memory_usage] Before creating fp16 partitions
+[2023-09-06 05:24:19,241] [INFO] [utils.py:786:see_memory_usage] MA 8.78 GB         Max_MA 8.78 GB         CA 17.69 GB         Max_CA 18 GB 
+[2023-09-06 05:24:19,241] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.43 GB, percent = 3.1%
+[2023-09-06 05:24:20,470] [INFO] [utils.py:785:see_memory_usage] After creating fp16 partitions: 2
+[2023-09-06 05:24:20,471] [INFO] [utils.py:786:see_memory_usage] MA 8.78 GB         Max_MA 8.78 GB         CA 13.45 GB         Max_CA 18 GB 
+[2023-09-06 05:24:20,471] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.38 GB, percent = 3.1%
+[2023-09-06 05:24:20,987] [INFO] [utils.py:785:see_memory_usage] Before creating fp32 partitions
+[2023-09-06 05:24:20,987] [INFO] [utils.py:786:see_memory_usage] MA 8.78 GB         Max_MA 8.78 GB         CA 13.45 GB         Max_CA 13 GB 
+[2023-09-06 05:24:20,987] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.37 GB, percent = 3.1%
+[2023-09-06 05:24:21,482] [INFO] [utils.py:785:see_memory_usage] After creating fp32 partitions
+[2023-09-06 05:24:21,483] [INFO] [utils.py:786:see_memory_usage] MA 8.93 GB         Max_MA 9.01 GB         CA 13.45 GB         Max_CA 13 GB 
+[2023-09-06 05:24:21,483] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.38 GB, percent = 3.1%
+[2023-09-06 05:24:21,990] [INFO] [utils.py:785:see_memory_usage] Before initializing optimizer states
+[2023-09-06 05:24:21,991] [INFO] [utils.py:786:see_memory_usage] MA 8.93 GB         Max_MA 8.93 GB         CA 13.45 GB         Max_CA 13 GB 
+[2023-09-06 05:24:21,991] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.37 GB, percent = 3.1%
+[2023-09-06 05:24:22,499] [INFO] [utils.py:785:see_memory_usage] After initializing optimizer states
+[2023-09-06 05:24:22,499] [INFO] [utils.py:786:see_memory_usage] MA 9.24 GB         Max_MA 9.4 GB         CA 13.45 GB         Max_CA 13 GB 
+[2023-09-06 05:24:22,500] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.43 GB, percent = 3.1%
+[2023-09-06 05:24:22,500] [INFO] [stage3.py:424:_setup_for_real_optimizer] optimizer state initialized
+[2023-09-06 05:24:23,178] [INFO] [utils.py:785:see_memory_usage] After initializing ZeRO optimizer
+[2023-09-06 05:24:23,179] [INFO] [utils.py:786:see_memory_usage] MA 10.25 GB         Max_MA 10.35 GB         CA 14.38 GB         Max_CA 14 GB 
+[2023-09-06 05:24:23,179] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 64.01 GB, percent = 3.2%
+[2023-09-06 05:24:23,179] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = FusedAdam
+[2023-09-06 05:24:23,179] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2023-09-06 05:24:23,179] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.LambdaLR object at 0x7f48d043ccd0>
+[2023-09-06 05:24:23,179] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2023-09-06 05:24:23,180] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f48bc793130>
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 100, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-09-06 05:24:23,180] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   gradient_clipping ............ 1.0
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 65536
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='step3_tensorboard/ds_tensorboard_logs/', job_name='step3_critic_tensorboard') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   train_batch_size ............. 128
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  16
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   world_size ................... 8
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='none', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=False) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='none', nvme_path=None, buffer_count=4, pin_memory=False, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=30000000 param_persistence_threshold=10000 model_persistence_threshold=sys.maxsize max_live_parameters=30000000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=False
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   zero_enabled ................. True
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-06 05:24:23,181] [INFO] [config.py:964:print]   zero_optimization_stage ...... 3
+[2023-09-06 05:24:23,181] [INFO] [config.py:950:print_user_config]   json = {
+    "train_batch_size": 128, 
+    "train_micro_batch_size_per_gpu": 16, 
+    "steps_per_print": 10, 
+    "zero_optimization": {
+        "stage": 3, 
+        "offload_param": {
+            "device": "none"
+        }, 
+        "offload_optimizer": {
+            "device": "none"
+        }, 
+        "stage3_param_persistence_threshold": 1.000000e+04, 
+        "stage3_max_live_parameters": 3.000000e+07, 
+        "stage3_prefetch_bucket_size": 3.000000e+07, 
+        "memory_efficient_linear": false
+    }, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale_window": 100
+    }, 
+    "gradient_clipping": 1.0, 
+    "prescale_gradients": false, 
+    "wall_clock_breakdown": false, 
+    "hybrid_engine": {
+        "enabled": false, 
+        "max_out_tokens": 512, 
+        "inference_tp_size": 1, 
+        "release_inference_cache": false, 
+        "pin_parameters": true, 
+        "tp_gather_partition_size": 8
+    }, 
+    "tensorboard": {
+        "enabled": false, 
+        "output_path": "step3_tensorboard/ds_tensorboard_logs/", 
+        "job_name": "step3_critic_tensorboard"
+    }
+}
+******************[end] Initialized Critic Model [end] (duration: 9.18s)******************
+************************[start] Initializing Reward Model [start] ************************
+[2023-09-06 05:24:27,242] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-09-06 05:24:32,338] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-06 05:24:32,339] [INFO] [logging.py:96:log_dist] [Rank 0] Creating ZeRO Offload
+[2023-09-06 05:24:33,352] [INFO] [utils.py:785:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2023-09-06 05:24:33,352] [INFO] [utils.py:786:see_memory_usage] MA 10.87 GB         Max_MA 10.87 GB         CA 14.38 GB         Max_CA 14 GB 
+[2023-09-06 05:24:33,353] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.37 GB, percent = 3.1%
+Parameter Offload: Total persistent parameters: 320000 in 241 params
+[2023-09-06 05:24:34,050] [INFO] [utils.py:785:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2023-09-06 05:24:34,050] [INFO] [utils.py:786:see_memory_usage] MA 10.33 GB         Max_MA 10.88 GB         CA 14.45 GB         Max_CA 14 GB 
+[2023-09-06 05:24:34,051] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 62.37 GB, percent = 3.1%
+[2023-09-06 05:24:34,051] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f48bc2a2aa0>
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-09-06 05:24:34,051] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... None
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   gradient_clipping ............ 1.0
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 65536
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   train_batch_size ............. 128
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  16
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   world_size ................... 8
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='none', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=False) offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=10000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=False
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   zero_enabled ................. True
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-06 05:24:34,052] [INFO] [config.py:964:print]   zero_optimization_stage ...... 3
+[2023-09-06 05:24:34,052] [INFO] [config.py:950:print_user_config]   json = {
+    "train_batch_size": 128, 
+    "train_micro_batch_size_per_gpu": 16, 
+    "steps_per_print": 10, 
+    "zero_optimization": {
+        "stage": 3, 
+        "stage3_param_persistence_threshold": 1.000000e+04, 
+        "offload_param": {
+            "device": "none"
+        }, 
+        "memory_efficient_linear": false
+    }, 
+    "fp16": {
+        "enabled": true
+    }, 
+    "gradient_clipping": 1.0, 
+    "prescale_gradients": false, 
+    "wall_clock_breakdown": false
+}
+*****************[end] Initialized Reward Model [end] (duration: 10.87s)******************
+***** Running training *****
+Beginning of Epoch 1/1, Total Generation Batches 920
+------------------------------------------------------
+Free memory : 38.106140 (GigaBytes)  
+Total memory: 79.109436 (GigaBytes)  
+Requested memory: 14.687500 (GigaBytes) 
+Setting maximum total tokens (input + output) to 512 
+WorkSpace: 0x7f3280000000 
+------------------------------------------------------
+[2023-09-06 05:24:45,956] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, but hysteresis is 2. Reducing hysteresis to 1
+[2023-09-06 05:24:46,546] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, but hysteresis is 2. Reducing hysteresis to 1
+epoch: 0|step: 0|ppo_ep: 1|act_loss: 0.03057861328125|cri_loss: 0.0193023681640625|unsuper_loss: 0.0
+average reward score: -0.3515625
+-------------------------------------------------------------------------------------
+|E2E latency=11.94s |Gather latency=0.19s (1.58%) |Generate time=7.18s (60.18%) |Training time=3.94s (33.00%) |Others=0.81 (6.82%)|CurSamplesPerSec=10.72 |AvgSamplesPerSec=10.72
+[2023-09-06 05:25:00,265] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, reducing to 32768
+[2023-09-06 05:25:00,999] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, reducing to 32768
+epoch: 0|step: 1|ppo_ep: 1|act_loss: 0.03094482421875|cri_loss: 0.0199737548828125|unsuper_loss: 0.0
+average reward score: -0.3359375
+-------------------------------------------------------------------------------------
+|E2E latency=14.45s |Gather latency=1.05s (7.24%) |Generate time=6.11s (42.27%) |Training time=4.91s (33.94%) |Others=3.44 (23.79%)|CurSamplesPerSec=8.86 |AvgSamplesPerSec=9.70
+epoch: 0|step: 2|ppo_ep: 1|act_loss: 0.031280517578125|cri_loss: 0.020843505859375|unsuper_loss: 0.0
+average reward score: -0.337646484375
+-------------------------------------------------------------------------------------
+|E2E latency=13.74s |Gather latency=1.62s (11.78%) |Generate time=6.35s (46.24%) |Training time=3.84s (27.93%) |Others=3.55 (25.84%)|CurSamplesPerSec=9.32 |AvgSamplesPerSec=9.57
+epoch: 0|step: 3|ppo_ep: 1|act_loss: 0.02874755859375|cri_loss: 0.0192108154296875|unsuper_loss: 0.0
+average reward score: -0.336669921875
+-------------------------------------------------------------------------------------
+|E2E latency=13.04s |Gather latency=0.74s (5.69%) |Generate time=6.26s (48.00%) |Training time=3.60s (27.58%) |Others=3.18 (24.42%)|CurSamplesPerSec=9.82 |AvgSamplesPerSec=9.63
+epoch: 0|step: 4|ppo_ep: 1|act_loss: 0.029815673828125|cri_loss: 0.020477294921875|unsuper_loss: 0.0
+average reward score: -0.33203125
+-------------------------------------------------------------------------------------
+|E2E latency=12.74s |Gather latency=1.50s (11.80%) |Generate time=6.25s (49.01%) |Training time=3.52s (27.58%) |Others=2.98 (23.41%)|CurSamplesPerSec=10.04 |AvgSamplesPerSec=9.71
+epoch: 0|step: 5|ppo_ep: 1|act_loss: 0.037994384765625|cri_loss: 0.0208282470703125|unsuper_loss: 0.0
+average reward score: -0.34814453125
+-------------------------------------------------------------------------------------
+|E2E latency=12.61s |Gather latency=0.55s (4.39%) |Generate time=6.20s (49.19%) |Training time=3.42s (27.09%) |Others=2.99 (23.72%)|CurSamplesPerSec=10.15 |AvgSamplesPerSec=9.78
+epoch: 0|step: 6|ppo_ep: 1|act_loss: 0.02783203125|cri_loss: 0.0206451416015625|unsuper_loss: 0.0
+average reward score: -0.337158203125
+-------------------------------------------------------------------------------------
+|E2E latency=12.60s |Gather latency=0.77s (6.12%) |Generate time=6.19s (49.18%) |Training time=3.41s (27.08%) |Others=2.99 (23.75%)|CurSamplesPerSec=10.16 |AvgSamplesPerSec=9.83
+epoch: 0|step: 7|ppo_ep: 1|act_loss: 0.0254974365234375|cri_loss: 0.0205535888671875|unsuper_loss: 0.0
+average reward score: -0.32763671875
+-------------------------------------------------------------------------------------
+|E2E latency=12.76s |Gather latency=1.81s (14.19%) |Generate time=6.20s (48.61%) |Training time=3.56s (27.89%) |Others=3.00 (23.51%)|CurSamplesPerSec=10.03 |AvgSamplesPerSec=9.86
+epoch: 0|step: 8|ppo_ep: 1|act_loss: 0.0208587646484375|cri_loss: 0.0196380615234375|unsuper_loss: 0.0
+average reward score: -0.33935546875
+-------------------------------------------------------------------------------------
+|E2E latency=12.99s |Gather latency=0.63s (4.87%) |Generate time=6.13s (47.17%) |Training time=3.62s (27.84%) |Others=3.25 (24.99%)|CurSamplesPerSec=9.85 |AvgSamplesPerSec=9.86
+[2023-09-06 05:26:44,101] [INFO] [logging.py:96:log_dist] [Rank 0] step=10, skipped=2, lr=[4e-05, 4e-05, 4e-05], mom=[(0.9, 0.95), (0.9, 0.95), (0.9, 0.95)]
+[2023-09-06 05:26:44,102] [INFO] [timer.py:215:stop] epoch=0/micro_step=10/global_step=10, RunningAvgSamplesPerSec=63.512016735122394, CurrSamplesPerSec=64.16765913401835, MemAllocated=11.78GB, MaxMemAllocated=35.63GB
+[2023-09-06 05:26:44,428] [INFO] [logging.py:96:log_dist] [Rank 0] step=10, skipped=2, lr=[4.0000000000000003e-07, 4.0000000000000003e-07], mom=[(0.9, 0.95), (0.9, 0.95)]
+epoch: 0|step: 9|ppo_ep: 1|act_loss: 0.0168609619140625|cri_loss: 0.0191192626953125|unsuper_loss: 0.0
+average reward score: -0.335693359375
+-------------------------------------------------------------------------------------
+======================================================================
+Execution time: 130.3683 seconds for 10 steps
+Throughput: 9.8183 samples/sec
+ATL-GPUNode-012:1043772:1047086 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+ATL-GPUNode-012:1043772:1045419 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+ATL-GPUNode-012:1043772:1047086 [0] NCCL INFO [Service thread] Connection closed by localRank 7
+ATL-GPUNode-012:1043772:1045419 [0] NCCL INFO [Service thread] Connection closed by localRank 7
+[2023-09-06 05:26:48,930] [INFO] [launch.py:347:main] Process 1043774 exits successfully.
+[2023-09-06 05:26:48,931] [INFO] [launch.py:347:main] Process 1043779 exits successfully.
+[2023-09-06 05:26:48,931] [INFO] [launch.py:347:main] Process 1043773 exits successfully.
+[2023-09-06 05:26:49,932] [INFO] [launch.py:347:main] Process 1043778 exits successfully.
+[2023-09-06 05:26:49,932] [INFO] [launch.py:347:main] Process 1043772 exits successfully.
+[2023-09-06 05:26:50,934] [INFO] [launch.py:347:main] Process 1043777 exits successfully.
+[2023-09-06 05:26:50,934] [INFO] [launch.py:347:main] Process 1043776 exits successfully.
+[2023-09-06 05:26:50,934] [INFO] [launch.py:347:main] Process 1043775 exits successfully.

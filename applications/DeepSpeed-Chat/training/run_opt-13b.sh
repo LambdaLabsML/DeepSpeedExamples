@@ -5,7 +5,7 @@ HOSTFILE_NAME=${2:-""}
 
 # Step 1
 source ./setup_env.sh opt-13b 1 && \
-deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
+NCCL_DEBUG=INFO deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
@@ -31,7 +31,7 @@ deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
 # Step 2
 
 source ./setup_env.sh opt-350m 2 && \
-deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
+NCCL_DEBUG=INFO deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
@@ -56,7 +56,7 @@ deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
 
 # Step 3
 source ./setup_env.sh opt-13b 3 && \
-deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME --master_port 12346 $SCRIPT_PATH/main.py \
+NCCL_DEBUG=INFO deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME --master_port 12346 $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
