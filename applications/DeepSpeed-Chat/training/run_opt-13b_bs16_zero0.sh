@@ -17,7 +17,7 @@ NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCR
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
-   --model_name_or_path $MODEL_NAME \
+   --model_name_or_path $MODEL_PATH \
    --per_device_train_batch_size 16 \
    --per_device_eval_batch_size 4 \
    --max_seq_len 512 \
@@ -29,7 +29,7 @@ NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCR
    --num_warmup_steps 0 \
    --seed 1234 \
    --gradient_checkpointing \
-   --zero_stage $ZERO_STAGE \
+   --zero_stage 0 \
    --lora_dim 128 \
    --lora_module_name decoder.layers. \
    --deepspeed \
