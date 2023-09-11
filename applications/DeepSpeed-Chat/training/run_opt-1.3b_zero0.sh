@@ -5,8 +5,8 @@ HOSTFILE_NAME=${2:-""}
 OUTPUT_PATH=${3:-"output"}
 
 # Step 1
-MODEL_NAME=opt-66b
-STEP_NAME=1
+MODEL_NAME=opt-1.3b
+STEP_NAME=2
 
 NAME_LOG=${OUTPUT_PATH}/${MODEL_NAME}_${STEP_NAME}_${JOB_NAME}.log
 cat $HOSTFILE_NAME | tee $NAME_LOG
@@ -18,7 +18,7 @@ NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCR
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
    --model_name_or_path $MODEL_PATH \
-   --per_device_train_batch_size 4 \
+   --per_device_train_batch_size 16 \
    --per_device_eval_batch_size 4 \
    --max_seq_len 512 \
    --learning_rate 1e-10 \
@@ -29,7 +29,7 @@ NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCR
    --num_warmup_steps 0 \
    --seed 1234 \
    --gradient_checkpointing \
-   --zero_stage $ZERO_STAGE \
+   --zero_stage 0 \
    --lora_dim 128 \
    --lora_module_name decoder.layers. \
    --deepspeed \

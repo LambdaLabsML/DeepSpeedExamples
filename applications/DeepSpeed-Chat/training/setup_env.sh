@@ -29,6 +29,12 @@ elif [ "$model" = "opt-350m" ] && [ "$step" = "2" ]; then
     export MODEL_PATH=facebook/opt-350m
     export MODEL_CACHE=/home/ubuntu/shared/.cache/huggingface/transformers/models--facebook--opt-350m/snapshots/cb32f77e905cccbca1d970436fb0f5e6b58ee3c5
     export DATA_OUTPUT_PATH=/home/ubuntu/shared/.cache/data_files/opt-350m_step2
+elif [ "$model" = "opt-1.3b" ] && [ "$step" = "1" ]; then
+    export SCRIPT_PATH=/home/ubuntu/shared/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning
+    export ZERO_STAGE=0
+    export MODEL_PATH=facebook/opt-1.3b
+    export MODEL_CACHE=/home/ubuntu/shared/.cache/huggingface/transformers/models--facebook--opt-1.3b/snapshots/8c7b10754972749675d22364c25c428b29face51
+    export DATA_OUTPUT_PATH=/home/ubuntu/shared/.cache/data_files/opt-1.3b_step1
 else
     echo "Invalid model or step"
     exit 1

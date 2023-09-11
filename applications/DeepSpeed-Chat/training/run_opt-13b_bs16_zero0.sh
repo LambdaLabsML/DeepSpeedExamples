@@ -23,7 +23,7 @@ NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCR
    --max_seq_len 512 \
    --learning_rate 1e-10 \
    --weight_decay 0.1 \
-   --num_train_epochs 100  \
+   --num_train_epochs 1000  \
    --gradient_accumulation_steps 1 \
    --lr_scheduler_type cosine \
    --num_warmup_steps 0 \

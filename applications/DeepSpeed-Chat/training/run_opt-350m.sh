@@ -13,7 +13,7 @@ cat $HOSTFILE_NAME | tee $NAME_LOG
 echo >> $NAME_LOG
 
 source ./setup_env.sh $MODEL_NAME $STEP_NAME && \
-NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCRIPT_PATH/main.py \
+NCCL_DEBUG=WARN /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
@@ -24,7 +24,7 @@ NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCR
    --max_seq_len 512 \
    --learning_rate 1e-10 \
    --weight_decay 0.1 \
-   --num_train_epochs 100 \
+   --num_train_epochs 1000 \
    --disable_dropout \
    --gradient_accumulation_steps 1 \
    --lr_scheduler_type cosine \
@@ -35,7 +35,13 @@ NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCR
    --max_steps 100 2>&1 | tee -a $NAME_LOG
 
 
-# # Fake benchmark
+# Fake benchmark
 # source ./setup_env.sh $MODEL_NAME $STEP_NAME && \
-# echo $NAME_LOG
+# # echo $NAME_LOG
+# source ~/.bashrc 
+
+# ulimit -n
+# echo $LLLLL
+# hostname
+
 # cat $HOSTFILE_NAME | tee $NAME_LOG
