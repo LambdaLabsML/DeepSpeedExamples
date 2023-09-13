@@ -96,5 +96,9 @@ python3 eval_batch.py output/4nodes_2xN_opt-350m results/4nodes_2xN_run_opt-350m
 - OPT-66B Step 3 has some issues caused by recent deepspeed update. It eventually cause OOM if we follow the reference benchmark configuration. We will skip this step for this benchmark.
 
 - open files limit will impact the scale of the distributed training, and to exactly what degree depends on the model. e.g. we couldn’t launch distributed training job beyond 32x nodes for opt-350m with the default `ulimit 1024` setting. This can be addressed by adding the following to /etc/security/limits.conf of the launching node:
-* soft nofile 40960
-* hard nofile 81920
+
+```
+    * soft nofile 40960
+    * hard nofile 81920
+```
+
