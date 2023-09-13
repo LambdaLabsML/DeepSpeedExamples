@@ -34,6 +34,9 @@ mkdir -p /home/ubuntu/shared/.cache/huggingface/datasets
 ```
 cd DeepSpeedExamples/applications/DeepSpeed-Chat/training
 
+# prepare opt-350m
+./cache_opt-350m.sh
+
 # prepare opt-13b
 ./cache_opt-13b.sh
 
