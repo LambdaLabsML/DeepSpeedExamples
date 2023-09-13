@@ -58,19 +58,29 @@ ubuntu@myhost:~/shared/.cache$ tree -L 2
 
 #### Step 4: Run training
 
+Assume you have a txt file (`nodes/4nodes.txt`) that contains the list of nodes like this:
+
 ```
-# The address and ip in hostfiles/hostfile match your own use case
-# log file will be saved to the output folder
+hostname-001
+hostname-002
+hostname-003
+hostname-004
+```
 
+```
+# Make hostfiles for deepspeed, each of them has 2 nodes (batchsize=2)
+# The two output hostfiles are 
+# hostfiles/4nodes_2xN/hostfile_2xN_batch0001
+# hostfiles/4nodes_2xN/hostfile_2xN_batch0002
+python3 make_batch.py nodes/4nodes.txt hostfiles/4nodes_2xN --batchsize 2
 
-# Benchmark opt-13b training with a single node
-# See hostfiles/hostfile_1xN_batch1 for an example
-./run_opt-13b.sh 1xN_batch1 <name-hostfile-for-single-node>
+# Run run_opt-350m.sh with all the hostfiles in hostfiles/4nodes_2xN
+# results will be saved to output/4nodes_2xN_opt-350m
+# Jobs run in parallel and have a timeout limit (set to 300 seconds here)
+./run_batch.sh run_opt-350m hostfiles/4nodes_2xN output/4nodes_2xN_opt-350m 300
 
-
-# Benchmark opt-66b training with eight nodes
-# See hostfiles/hostfile_8xN_batch1 for an example
-./run_opt-66b.sh 8xN_batch1 <name-hostfile-for-eight-node>
+# Evaluate result (success if Throughput: is no smaller than e.g. 600 samples/sec)
+python3 eval_batch.py output/4nodes_2xN_opt-350m results/4nodes_2xN_run_opt-350m.csv 600
 ```
 
 # Notes
@@ -78,3 +88,7 @@ ubuntu@myhost:~/shared/.cache$ tree -L 2
 - We use epoch=2 for step1 training, despite it is was changed to epoch=16 in the current master branch. Our understanding is that epoch was set to 2 when the reference A100 results were released.
 
 - OPT-66B Step 3 has some issues caused by recent deepspeed update. It eventually cause OOM if we follow the reference benchmark configuration. We will skip this step for this benchmark.
+
+- open files limit will impact the scale of the distributed training, and to exactly what degree depends on the model. e.g. we couldn’t launch distributed training job beyond 32x nodes for opt-350m with the default `ulimit 1024` setting. This can be addressed by adding the following to /etc/security/limits.conf of the launching node:
+* soft nofile 40960
+* hard nofile 81920
