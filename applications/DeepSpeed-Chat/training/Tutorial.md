@@ -72,14 +72,17 @@ hostname-004
 # The two output hostfiles are 
 # hostfiles/4nodes_2xN/hostfile_2xN_batch0001
 # hostfiles/4nodes_2xN/hostfile_2xN_batch0002
+# Usage: python3 make_batch.py <nodes list> <output hostfile folder> <num of node per hostfile>
 python3 make_batch.py nodes/4nodes.txt hostfiles/4nodes_2xN --batchsize 2
 
 # Run run_opt-350m.sh with all the hostfiles in hostfiles/4nodes_2xN
 # results will be saved to output/4nodes_2xN_opt-350m
 # Jobs run in parallel and have a timeout limit (set to 300 seconds here)
+# Usage:  ./run_batch.sh <training shell script> <hostfile folder> <output log file folder> <time out seconds>
 ./run_batch.sh run_opt-350m hostfiles/4nodes_2xN output/4nodes_2xN_opt-350m 300
 
 # Evaluate result (success if Throughput: is no smaller than e.g. 600 samples/sec)
+# Usage:  python3 eval_batch.py <log file folder> <csv file for compiled results> <successful throughput threshold>
 python3 eval_batch.py output/4nodes_2xN_opt-350m results/4nodes_2xN_run_opt-350m.csv 600
 ```
 
