@@ -32,7 +32,7 @@ mkdir -p /home/ubuntu/shared/.cache/huggingface/datasets
 #### Step 3: Prepare model and data
 
 ```
-cd DeepSpeedExamples/applications/DeepSpeed-Chat/training
+cd /home/ubuntu/shared/DeepSpeedExamples/applications/DeepSpeed-Chat/training
 
 # prepare data for 3-steps finetuning for opt-13b and opt-350m
 ./cache_opt-13b.sh
