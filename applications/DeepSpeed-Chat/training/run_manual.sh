@@ -1,30 +1,27 @@
 #!/bin/bash
 
-SCRIPT_NAME=opt-13b
+python3 make_batch.py nodes/29nodes.txt hostfiles/29nodes_2xN --batchsize 2
+python3 make_batch.py nodes/29nodes.txt hostfiles/29nodes_4xN --batchsize 4
+python3 make_batch.py nodes/29nodes.txt hostfiles/29nodes_8xN --batchsize 8
+python3 make_batch.py nodes/29nodes.txt hostfiles/29nodes_16xN --batchsize 16
 
-mkdir -p output/188nodes_1xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_1xN hostfiles/188nodes_1xN/hostfile_1xN_batch0001 output/188nodes_1xN_$SCRIPT_NAME
+./run_batch.sh run_opt-350m hostfiles/29nodes_2xN output/29nodes_2xN_opt-350m 1500
+./run_batch.sh run_opt-350m hostfiles/29nodes_4xN output/29nodes_4xN_opt-350m 1500
+./run_batch.sh run_opt-350m hostfiles/29nodes_8xN output/29nodes_8xN_opt-350m 1500
+./run_batch.sh run_opt-350m hostfiles/29nodes_16xN output/29nodes_16xN_opt-350m 1500
 
-mkdir -p output/188nodes_2xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_2xN hostfiles/188nodes_2xN/hostfile_2xN_batch0001 output/188nodes_2xN_$SCRIPT_NAME
+./run_batch.sh run_opt-13b_bs16_zero0 hostfiles/29nodes_2xN output/29nodes_2xN_opt-13b_bs16_zero0 3000
+./run_batch.sh run_opt-13b_bs16_zero0 hostfiles/29nodes_4xN output/29nodes_4xN_opt-13b_bs16_zero0 3000
+./run_batch.sh run_opt-13b_bs16_zero0 hostfiles/29nodes_8xN output/29nodes_8xN_opt-13b_bs16_zero0 3000
+./run_batch.sh run_opt-13b_bs16_zero0 hostfiles/29nodes_16xN output/29nodes_16xN_opt-13b_bs16_zero0 3000
 
-mkdir -p output/188nodes_4xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_4xN hostfiles/188nodes_4xN/hostfile_4xN_batch0001 output/188nodes_4xN_$SCRIPT_NAME
 
-mkdir -p output/188nodes_8xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_8xN hostfiles/188nodes_8xN/hostfile_8xN_batch0001 output/188nodes_8xN_$SCRIPT_NAME
+python3 eval_batch.py output/29nodes_2xN_opt-350m results/29nodes_2xN_opt-350m.csv 600
+python3 eval_batch.py output/29nodes_4xN_opt-350m results/29nodes_4xN_opt-350m.csv 1200
+python3 eval_batch.py output/29nodes_8xN_opt-350m results/29nodes_8xN_opt-350m.csv 2300
+python3 eval_batch.py output/29nodes_16xN_opt-350m results/29nodes_16xN_opt-350m.csv 4200
 
-mkdir -p output/188nodes_16xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_16xN hostfiles/188nodes_16xN/hostfile_16xN_batch0001 output/188nodes_16xN_$SCRIPT_NAME
-
-mkdir -p output/188nodes_32xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_32xN hostfiles/188nodes_32xN/hostfile_32xN_batch0001 output/188nodes_32xN_$SCRIPT_NAME
-
-mkdir -p output/188nodes_64xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_64xN hostfiles/188nodes_64xN/hostfile_64xN_batch0001 output/188nodes_64xN_$SCRIPT_NAME
-
-mkdir -p output/188nodes_128xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_128xN hostfiles/188nodes_128xN/hostfile_128xN_batch0001 output/188nodes_128xN_$SCRIPT_NAME
-
-mkdir -p output/188nodes_188xN_$SCRIPT_NAME
-./run_${SCRIPT_NAME}.sh 188nodes_188xN hostfiles/188nodes_188xN/hostfile_188xN_batch0001 output/188nodes_188xN_$SCRIPT_NAME
+python3 eval_batch.py output/29nodes_2xN_opt-13b_bs16_zero0 results/29nodes_2xN_opt-13b_bs16_zero0.csv 130
+python3 eval_batch.py output/29nodes_4xN_opt-13b_bs16_zero0 results/29nodes_4xN_opt-13b_bs16_zero0.csv 260
+python3 eval_batch.py output/29nodes_8xN_opt-13b_bs16_zero0 results/29nodes_8xN_opt-13b_bs16_zero0.csv 520
+python3 eval_batch.py output/29nodes_16xN_opt-13b_bs16_zero0 results/29nodes_16xN_opt-13b_bs16_zero0.csv 1000
