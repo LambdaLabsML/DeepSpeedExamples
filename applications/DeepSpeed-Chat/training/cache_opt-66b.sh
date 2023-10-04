@@ -32,7 +32,7 @@ deepspeed $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
-   --model_name_or_path $MODEL_NAME \
+   --model_name_or_path $MODEL_PATH \
    --num_padding_at_beginning 1 \
    --per_device_train_batch_size 4 \
    --per_device_eval_batch_size 4 \
@@ -56,8 +56,8 @@ deepspeed --master_port 12346 $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
-   --actor_model_name_or_path $ACTOR_MODEL_PATH \
-   --critic_model_name_or_path $CRITIC_MODEL_PATH \
+   --actor_model_name_or_path $ACTOR_MODEL_CACHE \
+   --critic_model_name_or_path $CRITIC_MODEL_CACHE \
    --num_padding_at_beginning 1 \
    --per_device_train_batch_size 4 \
    --per_device_mini_train_batch_size 4 \

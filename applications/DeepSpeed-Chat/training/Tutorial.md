@@ -34,15 +34,14 @@ mkdir -p /home/ubuntu/shared/.cache/huggingface/datasets
 ```
 cd DeepSpeedExamples/applications/DeepSpeed-Chat/training
 
-# prepare opt-350m
-./cache_opt-350m.sh
-
-# prepare opt-13b
+# prepare data for 3-steps finetuning for opt-13b and opt-350m
 ./cache_opt-13b.sh
 
 # prepare opt-66b
 ./cache_opt-66b.sh
 ```
+
+NOTICE: you might need to change the cache path in `setup_env.sh`, if you see an error msg saying `Can't load the configuration of '/home/ubuntu/shared/.cache/huggingface/transformers'`.
 
 The output will be saved in `/home/ubuntu/shared/.cache`
 
