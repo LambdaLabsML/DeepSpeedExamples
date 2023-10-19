@@ -9,9 +9,9 @@ import math
 import sys
 import time
 
-os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
-os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
-os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
+os.environ["TRANSFORMERS_CACHE"] = "/home/nvidia/ml/.cache/huggingface/transformers"
+os.environ["HF_DATASETS_CACHE"] = "/home/nvidia/ml/.cache/huggingface/datasets"
+os.environ["PATH"] += ":/home/nvidia/.local/bin/"
 
 import torch
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
