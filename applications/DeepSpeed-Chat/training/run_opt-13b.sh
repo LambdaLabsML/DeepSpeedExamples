@@ -105,4 +105,4 @@ NCCL_DEBUG=INFO /home/ubuntu/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME --ma
    --disable_actor_dropout \
    --actor_lora_dim 128 \
    --actor_lora_module_name decoder.layers. \
-   --max_steps 10 2>&1 | tee -a $NAME_LOG
+   --max_steps 100 2>&1 | tee -a $NAME_LOG
