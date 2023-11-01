@@ -9,8 +9,8 @@ import math
 import sys
 import time
 
-os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
-os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
+os.environ["TRANSFORMERS_CACHE"] = "/cm/shared/.cache/huggingface/transformers"
+os.environ["HF_DATASETS_CACHE"] = "/cm/shared/.cache/huggingface/datasets"
 os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
 
 import torch

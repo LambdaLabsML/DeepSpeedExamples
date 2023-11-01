@@ -29,7 +29,7 @@ for hostfile in "$hostfiles_folder_path"/hostfile_*; do
     # Extract the login node and slots from the hostfile
     read -r login_node slots < "$hostfile"
 
-    cmd_job="cd ~/shared/DeepSpeedExamples/applications/DeepSpeed-Chat/training && timeout ${timeout_seconds}s ./${script_name}.sh $job_name $hostfiles_folder_path/$filename $output_folder_path"
+    cmd_job="cd /cm/shared/ml/DeepSpeedExamples/applications/DeepSpeed-Chat/training && timeout ${timeout_seconds}s ./${script_name}.sh $job_name $hostfiles_folder_path/$filename $output_folder_path"
     
     # Submit the job to the login node in parallel
     echo $cmd_job
