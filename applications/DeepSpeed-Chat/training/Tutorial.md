@@ -14,25 +14,29 @@ pip install --upgrade -r requirements_freeze.txt && \
 rm requirements_freeze.txt
 ```
 
+```
+# setup the project directory
+# e.g. /home/ubuntu/shared
+
+export PROJECT_PATH=<you-path-to-project> 
+```
+
+The `$PROJECT_PATH` folder can be a mounted NFS (better) or on your local storage (which case you have to do step 2 and 3 on each compute node).
+
 #### Step 2: Prepare the Code
 
 ```
-cd shared && \
-git clone https://github.com/LambdaLabsML/DeepSpeedExamples.git
-```
-
-We have modified the training scripts ([1](https://github.com/LambdaLabsML/DeepSpeedExamples/blob/master/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py), [2](https://github.com/LambdaLabsML/DeepSpeedExamples/blob/master/applications/DeepSpeed-Chat/training/step2_reward_model_finetuning/main.py), [3](https://github.com/LambdaLabsML/DeepSpeedExamples/blob/master/applications/DeepSpeed-Chat/training/step3_rlhf_finetuning/main.py)) to cache the model and data into `/home/ubuntu/shared` folder, where the `shared` folder can be a mounted NFS or on your local storage.
-
-```
-# Make sure the cache folder exists
-mkdir -p /home/ubuntu/shared/.cache/huggingface/transformers
-mkdir -p /home/ubuntu/shared/.cache/huggingface/datasets
+cd ${PROJECT_PATH} && \
+git clone https://github.com/LambdaLabsML/DeepSpeedExamples.git && \
+cd DeepSpeedExamples/applications/DeepSpeed-Chat/training
 ```
 
 #### Step 3: Prepare model and data
 
 ```
-cd /home/ubuntu/shared/DeepSpeedExamples/applications/DeepSpeed-Chat/training
+# Create cache directories
+mkdir -p ${PROJECT_PATH}/.cache/huggingface/transformers
+mkdir -p ${PROJECT_PATH}/.cache/huggingface/datasets
 
 # prepare data for 3-steps finetuning for opt-13b and opt-350m
 ./cache_opt-13b.sh
@@ -41,9 +45,7 @@ cd /home/ubuntu/shared/DeepSpeedExamples/applications/DeepSpeed-Chat/training
 ./cache_opt-66b.sh
 ```
 
-NOTICE: you might need to change the cache path in `setup_env.sh`, if you see an error msg saying `Can't load the configuration of '/home/ubuntu/shared/.cache/huggingface/transformers'`.
-
-The output will be saved in `/home/ubuntu/shared/.cache`
+The output will be saved in `${PROJECT_PATH}/.cache`
 
 ```
 ubuntu@myhost:~/shared/.cache$ tree -L 2

@@ -20,9 +20,9 @@ import argparse
 import os
 import time
 
-os.environ["TRANSFORMERS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/transformers"
-os.environ["HF_DATASETS_CACHE"] = "/home/ubuntu/shared/.cache/huggingface/datasets"
-os.environ["PATH"] += ":/home/ubuntu/.local/bin/"
+os.environ["TRANSFORMERS_CACHE"] = os.getenv("PROJECT_PATH") + "/.cache/huggingface/transformers"
+os.environ["HF_DATASETS_CACHE"] = os.getenv("PROJECT_PATH") + "/.cache/huggingface/datasets"
+os.environ["PATH"] += ":/home/${USER}/.local/bin/"
 
 import random
 import torch

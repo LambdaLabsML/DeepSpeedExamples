@@ -1,12 +1,13 @@
 #!/bin/bash
 
-NODES=all-nodes-v2
+NODES=test
+NSLOTS=1
 
-for MODEL in "opt-350m" "opt-13b_bs16_zero0"
+for MODEL in "opt-350m"
 do
-        for BATCH in 1 2 4 8 16 32
+        for BATCH in 1
         do
-            python3 make_batch.py nodes/${NODES}.txt hostfiles/${NODES}_${BATCH}xN --batchsize ${BATCH}
+            python3 make_batch.py nodes/${NODES}.txt hostfiles/${NODES}_${BATCH}xN --batchsize ${BATCH} --append slots=${NSLOTS}
             ./run_batch.sh run_${MODEL} hostfiles/${NODES}_${BATCH}xN output/${NODES}_${BATCH}xN_${MODEL} 1500
             python3 eval_batch.py output/${NODES}_${BATCH}xN_${MODEL} results/${NODES}_${BATCH}xN_${MODEL}.csv 6000
         done
