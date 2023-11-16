@@ -43,6 +43,10 @@ mkdir -p ${PROJECT_PATH}/.cache/huggingface/datasets
 
 # prepare opt-66b
 ./cache_opt-66b.sh
+
+# need to edit the following config file (bug of huggingface model hub)
+# ${PROJECT_PATH}/.cache/huggingface/transformers/models--facebook--opt-66b/snapshots/7259969061237fe940036d22bea0fd349e4485e9/config.json
+"_name_or_path": "facebook/opt-66b"
 ```
 
 The output will be saved in `${PROJECT_PATH}/.cache`
