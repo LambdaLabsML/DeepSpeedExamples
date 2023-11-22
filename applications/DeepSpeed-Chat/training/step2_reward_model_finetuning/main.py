@@ -11,7 +11,7 @@ import time
 
 os.environ["TRANSFORMERS_CACHE"] = os.getenv("PROJECT_PATH") + "/.cache/huggingface/transformers"
 os.environ["HF_DATASETS_CACHE"] = os.getenv("PROJECT_PATH") + "/.cache/huggingface/datasets"
-os.environ["PATH"] += ":/home/${USER}/.local/bin/"
+os.environ["PATH"] += ":/home/" + os.getenv("USER") + "/.local/bin/"
 
 import torch
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
