@@ -77,7 +77,7 @@ cat $HOSTFILE_NAME | tee $NAME_LOG
 echo >> $NAME_LOG
 
 source ./setup_env.sh $MODEL_NAME $STEP_NAME && \
-NCCL_DEBUG=INFO /home/${USER}/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME --master_port 12346 $SCRIPT_PATH/main.py \
+NCCL_DEBUG=INFO PROJECT_PATH=${PROJECT_PATH} /home/${USER}/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME --master_port 12346 $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \

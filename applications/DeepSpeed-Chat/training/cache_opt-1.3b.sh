@@ -2,7 +2,7 @@
 
 # Step 1
 source ./setup_env.sh opt-1.3b 1 && \
-deepspeed $SCRIPT_PATH/main.py \
+/home/${USER}/.local/bin/deepspeed $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
