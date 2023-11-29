@@ -9,6 +9,16 @@ import argparse
 import gc
 import multiprocessing as mp
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+os.environ["TRANSFORMERS_CACHE"] = (
+    os.getenv("PROJECT_PATH") + "/.cache/huggingface/transformers"
+)
+os.environ["HF_DATASETS_CACHE"] = (
+    os.getenv("PROJECT_PATH") + "/.cache/huggingface/datasets"
+)
 
 import torch
 import deepspeed

@@ -3,3 +3,4 @@ torch
 transformers @ git+https://github.com/tjruwase/transformers@kvcache-offload-cpu
 packaging
 accelerate 
+python-dotenv
