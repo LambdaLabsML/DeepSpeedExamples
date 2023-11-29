@@ -6,7 +6,7 @@ FULL_MODEL_NAME="facebook/${MODEL_NAME}"
 QB=4
 
 . .env
-. $ENV_PATH
+. ${ENV_PATH}/bin/activate
 
 # zero-inference
 BSZ=1

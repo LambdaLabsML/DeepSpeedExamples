@@ -6,7 +6,7 @@ FULL_MODEL_NAME="bigscience/${MODEL_NAME}"
 QB=16
 
 . .env
-. $ENV_PATH
+. ${ENV_PATH}/bin/activate
 
 
 # zero-inference
