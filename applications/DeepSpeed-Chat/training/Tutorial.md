@@ -69,7 +69,8 @@ ubuntu@myhost:~/shared/.cache$ tree -L 2
 
 #### Step 4: Run training
 
-Assume you have a txt file (`nodes/4nodes.txt`) that contains the list of nodes like this:
+Create a new folder `nodes` inside `DeepSpeedExamples/applications/DeepSpeed-Chat/training` and add a txt file of nodes to it. 
+e.g. Assume you have a txt file (`nodes/4nodes.txt`) that contains the list of nodes like this:
 
 ```
 hostname-001
