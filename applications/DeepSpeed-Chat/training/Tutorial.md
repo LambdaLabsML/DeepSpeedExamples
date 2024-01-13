@@ -17,8 +17,11 @@ rm requirements_freeze.txt
 ```
 # add PROJECT_PATH=<you-path-to-project> to .deepspeed_env
 # e.g. PROJECT_PATH=/home/ubuntu/shared
+# this is for deepspeed to access the environment variable: https://www.deepspeed.ai/getting-started/#multi-node-environment-variables
+source .deepspeed_env
 
-source .deepspeed.env
+# also run this so the environment variable is accessible by all the child processes or scripts started from this session
+export PROJECT_PATH=<you-path-to-project>
 ```
 
 The `$PROJECT_PATH` folder can be a mounted NFS (better) or on your local storage (which case you have to do step 2 and 3 on each compute node).
@@ -66,7 +69,8 @@ ubuntu@myhost:~/shared/.cache$ tree -L 2
 
 #### Step 4: Run training
 
-Assume you have a txt file (`nodes/4nodes.txt`) that contains the list of nodes like this:
+Create a new folder `nodes` inside `DeepSpeedExamples/applications/DeepSpeed-Chat/training` and add a txt file of nodes to it. 
+e.g. Assume you have a txt file (`nodes/4nodes.txt`) that contains the list of nodes like this:
 
 ```
 hostname-001
