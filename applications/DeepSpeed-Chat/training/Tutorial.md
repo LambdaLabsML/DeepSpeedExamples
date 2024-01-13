@@ -18,7 +18,7 @@ rm requirements_freeze.txt
 # add PROJECT_PATH=<you-path-to-project> to .deepspeed_env
 # e.g. PROJECT_PATH=/home/ubuntu/shared
 
-source .deepspeed.env
+source .deepspeed_env
 ```
 
 The `$PROJECT_PATH` folder can be a mounted NFS (better) or on your local storage (which case you have to do step 2 and 3 on each compute node).
