@@ -1,1 +1,5 @@
-PROJECT_PATH=/sharedfs/ml
+PROJECT_PATH=/cm/shared/ml
+NCCL_IB_HCA='=mlx5_0,mlx5_1,mlx5_10,mlx5_11,mlx5_2,mlx5_7,mlx5_8,mlx5_9'
+NCCL_SOCKET_IFNAME=bond0
+NCCL_NET_GDR_LEVEL=PIX
+NCCL_IB_PCI_RELAXED_ORDERING=1
