@@ -107,7 +107,14 @@ python3 eval_batch.py output/4nodes_2xN_opt-350m results/4nodes_2xN_run_opt-350m
 - open files limit will impact the scale of the distributed training, and to exactly what degree depends on the model. e.g. we couldn’t launch distributed training job beyond 32x nodes for opt-350m with the default `ulimit 1024` setting. This can be addressed by adding the following to /etc/security/limits.conf of the launching node:
 
 ```
-    * soft nofile 40960
-    * hard nofile 81920
+* soft memlock 1000000
+* hard memlock 1000000
+* soft nofile 1000000
+* hard nofile 1000000
+# if you are root
+root soft nproc 1000000
+root hard nproc 1000000
+root soft nofile 1000000
+root hard nofile 1000000
 ```
 
