@@ -14,6 +14,11 @@ pip install --upgrade -r requirements_freeze.txt && \
 rm requirements_freeze.txt
 ```
 
+Note: you can blast this installtion across a cluster with the `install_dependencies.sh` script.
+```
+./install_dependencies.sh <path-to-list-of-nodes.txt>
+```
+
 ```
 # add PROJECT_PATH=<you-path-to-project> to .deepspeed_env
 # e.g. PROJECT_PATH=/home/ubuntu/shared
@@ -79,6 +84,15 @@ hostname-003
 hostname-004
 ```
 
+Now you can customize `run_manual.sh` so the 
+* `NODES` points to the correct txt filename (e.g. `4nodes` in the above example)
+* `NSLOTS` is set to the correct number of GPU per node (8 or 1) 
+* `for BATCH in 1` is set to the desired job size (number of nodes per job). e.g. 1 means a single node job, 2 means a distributed job with two nodes.
+
+Then you can submit the benchmark with `./run_manual.sh`
+
+Note: `run_manual.sh` mainly contains three steps, which can be executed step by step, as the explain below:
+
 ```
 # Make hostfiles for deepspeed, each of them has 2 nodes (batchsize=2)
 # The two output hostfiles are 
@@ -97,6 +111,7 @@ python3 make_batch.py nodes/4nodes.txt hostfiles/4nodes_2xN --batchsize 2
 # Usage:  python3 eval_batch.py <log file folder> <csv file for compiled results> <successful throughput threshold>
 python3 eval_batch.py output/4nodes_2xN_opt-350m results/4nodes_2xN_run_opt-350m.csv 600
 ```
+
 
 # Notes
 
@@ -117,4 +132,5 @@ root hard nproc 1000000
 root soft nofile 1000000
 root hard nofile 1000000
 ```
+- you may see a job is hanging with the first GPU at 0% utlization, and the rest at 100%. This sometimes happens if you kick off multiple jobs simultaneously on s _freshly new_ cluster. Possibly related to all the jobs are creating optimized kernel optimization and trying to write to the same optimized kernel to the same cached location (shared storage). To resolve this, always do a single job first on a new cluster, so the kernel can be cached for all later jobs to use.
 
