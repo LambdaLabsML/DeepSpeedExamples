@@ -12,9 +12,13 @@ NAME_LOG=${OUTPUT_PATH}/${MODEL_NAME}_${STEP_NAME}_${JOB_NAME}.log
 cat $HOSTFILE_NAME | tee $NAME_LOG
 echo >> $NAME_LOG
 
-source ./setup_env.sh $MODEL_NAME $STEP_NAME
+first_line=$(head -n 1 "$HOSTFILE_NAME")
+master_addr=$(echo "$first_line" | awk '{print $1}')
 
-NCCL_DEBUG=WARN PROJECT_PATH=${PROJECT_PATH} /home/${USER}/.local/bin/deepspeed --hostfile=$HOSTFILE_NAME $SCRIPT_PATH/main.py \
+deepspeed_path=$(which deepspeed)
+
+source ./setup_env.sh $MODEL_NAME $STEP_NAME && \
+NCCL_DEBUG=INFO PROJECT_PATH=${PROJECT_PATH} $deepspeed_path --hostfile=$HOSTFILE_NAME --master_addr $master_addr $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \

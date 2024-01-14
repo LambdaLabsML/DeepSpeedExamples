@@ -1,8 +1,10 @@
 #!/bin/bash
 
+deepspeed_path=$(which deepspeed)
+
 # Step 1
 source ./setup_env.sh opt-13b 1 && \
-/home/${USER}/.local/bin/deepspeed $SCRIPT_PATH/main.py \
+$deepspeed_path $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
@@ -28,7 +30,7 @@ source ./setup_env.sh opt-13b 1 && \
 # Step 2
 
 source ./setup_env.sh opt-350m 2 && \
-/home/${USER}/.local/bin/deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
+$deepspeed_path --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
    --data_path --data_path Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
@@ -52,7 +54,7 @@ source ./setup_env.sh opt-350m 2 && \
 
 # # Step 3
 # source ./setup_env.sh opt-13b 3 && \
-# /home/${USER}/.local/bin/deepspeed --hostfile=./hostfiles/$HOSTFILE_NAME --master_port 12346 $SCRIPT_PATH/main.py \
+# $deepspeed_path --hostfile=./hostfiles/$HOSTFILE_NAME --master_port 12346 $SCRIPT_PATH/main.py \
 #    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
 #    --data_split 2,4,4 \
 #    --data_output_path $DATA_OUTPUT_PATH \
