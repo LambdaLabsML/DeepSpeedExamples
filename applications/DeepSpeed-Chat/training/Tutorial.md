@@ -132,5 +132,8 @@ root hard nproc 1000000
 root soft nofile 1000000
 root hard nofile 1000000
 ```
+
+You need to run `sudo sysctl -p` and log in again to reload the kernel setting so to apply the above changes.
+
 - you may see a job is hanging with the first GPU at 0% utlization, and the rest at 100%. This sometimes happens if you kick off multiple jobs simultaneously on s _freshly new_ cluster. Possibly related to all the jobs are creating optimized kernel optimization and trying to write to the same optimized kernel to the same cached location (shared storage). To resolve this, always do a single job first on a new cluster, so the kernel can be cached for all later jobs to use.
 
