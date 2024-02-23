@@ -1,5 +1,5 @@
 #!/bin/bash
-NODES=allnodes
+NODES=${1:-"allnodes"}
 NSLOTS=8
 TIMEOUT=900
 
