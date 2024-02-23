@@ -1,5 +1,6 @@
 #!/bin/bash
 NODES=${1:-"allnodes"}
+CLUSTER_SIZE=${2:-8}
 NSLOTS=8
 TIMEOUT=900
 
@@ -14,7 +15,7 @@ do
     # Access the throughput directly from the array using the model as the key
     THROUGHPUT=${THROUGHPUTS[$MODEL]}
 
-    for BATCH in 1 2 8
+    for BATCH in 1 2 ${CLUSTER_SIZE}
     do
         # Create hostfiles for this run
         python3 make_batch.py nodes/${NODES}.txt hostfiles/${NODES}_${BATCH}xN --batchsize ${BATCH} --append slots=${NSLOTS}
