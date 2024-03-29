@@ -30,7 +30,7 @@ $deepspeed_path $SCRIPT_PATH/main.py \
 # Step 2
 
 source ./setup_env.sh opt-350m 2 && \
-$deepspeed_path --hostfile=./hostfiles/$HOSTFILE_NAME $SCRIPT_PATH/main.py \
+$deepspeed_path $SCRIPT_PATH/main.py \
    --data_path --data_path Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
