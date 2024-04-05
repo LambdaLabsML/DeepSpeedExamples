@@ -1,6 +1,10 @@
 #!/bin/bash
 
 deepspeed_path=$(which deepspeed)
+if [ -z "$deepspeed_path" ]; then
+    # deepspeed was not found in the system path, so hardcode the path
+    deepspeed_path="/home/ubuntu/.local/bin/deepspeed"
+fi
 
 # Step 1
 source ./setup_env.sh opt-66b 1 && \
