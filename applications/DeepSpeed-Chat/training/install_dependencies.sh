@@ -18,6 +18,6 @@ fi
 while IFS= read -r hostname || [ -n "$hostname" ]; do
   if [ -n "$hostname" ]; then
     echo "Processing $hostname"
-    ssh "$hostname" "pip install deepspeed==0.10.0 && sudo apt-get update && sudo apt-get install -y python3-pybind11 && sudo ln -s /usr/bin/python3 /usr/bin/python && wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/master/applications/DeepSpeed-Chat/requirements_freeze.txt && pip install --upgrade -r requirements_freeze.txt && rm requirements_freeze.txt" &
+    ssh "$hostname" "pip install deepspeed==0.10.0 && sudo apt-get update && sudo apt-get install -y python3-pybind11 && sudo apt-get install -y pdsh && [ ! -f /usr/bin/python ] && sudo ln -s /usr/bin/python3 /usr/bin/python; wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/master/applications/DeepSpeed-Chat/requirements_freeze.txt && pip install --upgrade -r requirements_freeze.txt && rm requirements_freeze.txt" &
   fi
 done < "$input_file"
