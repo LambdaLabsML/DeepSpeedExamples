@@ -1,5 +1,7 @@
-PROJECT_PATH=/cm/shared/ml
-NCCL_IB_HCA='=mlx5_0,mlx5_1,mlx5_10,mlx5_11,mlx5_2,mlx5_7,mlx5_8,mlx5_9'
-NCCL_SOCKET_IFNAME=bond0
+PROJECT_PATH=/home/ubuntu/ml-1cc/benchmark
+OMPI_MCA_btl_tcp_if_include=enp8s0
+UCX_TLS=self,shm,tcp
+NCCL_P2P_LEVEL=NVL
 NCCL_NET_GDR_LEVEL=PIX
+NCCL_IB_HCA='=mlx5_1,mlx5_2,mlx5_3,mlx5_4,mlx5_5,mlx5_6,mlx5_7,mlx5_8'
 NCCL_IB_PCI_RELAXED_ORDERING=1

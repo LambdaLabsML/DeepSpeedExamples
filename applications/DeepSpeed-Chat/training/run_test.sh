@@ -9,14 +9,16 @@ declare -A THROUGHPUTS
 THROUGHPUTS[opt-350m_bs24]=500
 THROUGHPUTS[opt-13b_bs16_zero0]=65
 
+BATCHES="1 2 ${CLUSTER_SIZE}"
+[[ "$CLUSTER_SIZE" -eq 1 ]] && BATCHES="1"
+
 # Add more models here as needed
 for MODEL in "opt-350m_bs24" "opt-13b_bs16_zero0" # Add more models to this list as needed
 do
     # Access the throughput directly from the array using the model as the key
     THROUGHPUT=${THROUGHPUTS[$MODEL]}
 
-    for BATCH in 1 2 ${CLUSTER_SIZE}
-    do
+    for BATCH in $BATCHES; do
         # Create hostfiles for this run
         python3 make_batch.py nodes/${NODES}.txt hostfiles/${NODES}_${BATCH}xN --batchsize ${BATCH} --append slots=${NSLOTS}
              
