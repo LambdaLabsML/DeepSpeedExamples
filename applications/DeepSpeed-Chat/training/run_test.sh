@@ -31,6 +31,6 @@ do
         
         # Kill potential hanging jobs
         ./kill_process.sh nodes/${NODES}.txt python
-        sleep 60
+        sleep 30
     done
 done
