@@ -28,6 +28,10 @@ cd ${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
 # 2    : sub-cluster size (in this case each cluster has two nodes)
 cd ${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
 ./run_benchmark.sh hosts 2 opt-350m_bs24_zero0
+
+# Benchmark opt-13b_bs16_zero0 first with node-001, then with the entire cluster with 64x nodes
+./run_benchmark.sh node1 1 opt-13b_bs16_zero0
+./run_benchmark.sh hosts 64 opt-13b_bs16_zero0
 ```
 
 The throughputs will be saved to the csv files inside `./results`. Full console output will be saved in the log files in the `./output` folder.
