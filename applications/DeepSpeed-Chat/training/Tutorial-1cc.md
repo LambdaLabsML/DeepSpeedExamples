@@ -33,16 +33,16 @@ chmod +x setup_deepchat.sh && \
 
 # Run benchmark
 ```
-# Benchmark opt-350m_bs24_zero0 on node-001
-# node1: name of the hostfile
-# 1    : cluster size (in this case only one node)
+# Benchmark opt-350m_bs24_zero0 on a single node 
+# node1: name of the hostfile that only has node-001 in it
+# 1    : sub-cluster size
 # opt-350m_bs24_zero0: name of the benchmark script (see opt-350m_bs24_zero0.sh for details)
 cd ${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
 ./run_benchmark.sh node1 1 opt-350m_bs24_zero0
 
 # Sub-divide ./nodes/hosts.txt into smaller clusters of size 2, and benchmark opt-350m_bs24_zero0 on these clusters in parallel.
 # hosts: name of the hostfile
-# 2    : sub-cluster size (in this case each cluster has two nodes)
+# 2    : sub-cluster size
 cd ${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
 ./run_benchmark.sh hosts 2 opt-350m_bs24_zero0
 
