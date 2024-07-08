@@ -1,13 +1,30 @@
 # Benchmark DeepSpeed-Chat Training on Lambda 1-Click Clusters
 
-## Set up
+## Introduction
+
+This tutorial provides a step-by-step guide to benchmark the [Lambda 1-Click Cluster](https://lambdalabs.com/service/gpu-cloud/1-click-clusters) (1CC) using [DeepSpeed-Chat](https://github.com/microsoft/DeepSpeedExamples/tree/master/applications/DeepSpeed-Chat). Our goal is to simplify the process of setting up and measuring the training throughput of large-scale, distributed workloads on thousands of NVIDIA GPUs.
+
+Key features of the 1CC for benchmarking:
+- **High inter-node bandwidth**: Equipped with eight NVIDIA Quantum-2 InfiniBand connectors, delivering a total of 3200 Gb/s inter-node bandwidth.
+- **Shared storage**: Accessible across the entire cluster, included by default.
+- **Passwordless SSH access**: Easily set up following [these instructions](https://docs.lambdalabs.com/1-click-clusters/getting-started#accessing-your-1-click-cluster).
+
+This tutorial covers setting up the DeepSpeed-Chat environment, caching [models](https://huggingface.co/facebook/opt-13b) and [data](https://huggingface.co/datasets/Dahoas/rm-static) from Huggingface to 1CC's shared storage -- all in a single setup script. It also provides reference performance of a 64-node (512x NVIDIA H100s) 1CC, and demonstrates nearly perfect linear scaling (over 98% efficiency) for training [OPT models](https://arxiv.org/abs/2205.01068) with data parallelization.
+
+## Setup
+
+Simply provide the name of the shared stroage (where the code will be cloned and data will be cachced), and run the `setup_deepchat.sh` script.
+
 ```
 # Tell me where is your shared storage
-export SHARED_STORAGE=<NAME-OF-SHARED-STORAGE> && \
-export PROJECT_PATH=/home/ubuntu/${SHARED_STORAGE}/benchmark
+export SHARED_STORAGE=<NAME-OF-SHARED-STORAGE>
 
-# Setup the repo
+# Setup the benchmark
 # This will take ~30 mins including caching model and datasets
+# It will also create a couple of hostfiles
+# ./nodes/node1.txt for the first node: node-001
+# ./nodes/hosts.txt for all the nodes
+export PROJECT_PATH=/home/ubuntu/${SHARED_STORAGE}/benchmark && \
 wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/master/applications/DeepSpeed-Chat/./setup_deepchat.sh && \
 chmod +x setup_deepchat.sh && \
 ./setup_deepchat.sh
@@ -16,28 +33,31 @@ chmod +x setup_deepchat.sh && \
 
 # Run benchmark
 ```
-# Benchmark node-001
+# Benchmark opt-350m_bs24_zero0 on node-001
 # node1: name of the hostfile
 # 1    : cluster size (in this case only one node)
 # opt-350m_bs24_zero0: name of the benchmark script (see opt-350m_bs24_zero0.sh for details)
 cd ${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
 ./run_benchmark.sh node1 1 opt-350m_bs24_zero0
 
-# Sub-divide ./nodes/hosts.txt into smaller clusters, and benchmark them in parallel.
+# Sub-divide ./nodes/hosts.txt into smaller clusters of size 2, and benchmark opt-350m_bs24_zero0 on these clusters in parallel.
 # hosts: name of the hostfile
 # 2    : sub-cluster size (in this case each cluster has two nodes)
 cd ${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
 ./run_benchmark.sh hosts 2 opt-350m_bs24_zero0
 
-# Benchmark opt-13b_bs16_zero0 first with node-001, then with the entire cluster with 64x nodes
+# Benchmark opt-13b_bs16_zero0 first with node-001
+# then with four 16x nodes sub-divided clusters in parallel (assuming there are 64 nodes in ./nodes/hosts.txt)
+# and finally with the entire cluster with 64x nodes
 ./run_benchmark.sh node1 1 opt-13b_bs16_zero0
+./run_benchmark.sh hosts 16 opt-13b_bs16_zero0
 ./run_benchmark.sh hosts 64 opt-13b_bs16_zero0
 ```
 
 The throughputs will be saved to the csv files inside `./results`. Full console output will be saved in the log files in the `./output` folder.
 
 # Results
-Here are the reference throughputs (`samples/sec`) of a 64xNodes (512x NVIDIA H100s) 1-Click Cluster.
+Here are the reference throughputs (`samples/sec`) of a 64x nodes (512x NVIDIA H100s) 1-Click Cluster.
 
 | NUM_GPUs | opt-350m_bs24_zero0 | opt-13b_bs16_zero0 |
 |----------|---------------------|--------------------|
