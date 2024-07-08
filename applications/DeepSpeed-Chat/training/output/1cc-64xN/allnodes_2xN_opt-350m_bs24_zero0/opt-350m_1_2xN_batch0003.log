@@ -1,0 +1,996 @@
+ml-512-node-005 slots=8
+ml-512-node-006 slots=8
+[2024-07-08 05:53:14,700] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2024-07-08 05:53:16.103752: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-07-08 05:53:16.142433: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[2024-07-08 05:53:17,664] [INFO] [runner.py:557:main] deepspeed_env file = ./.deepspeed_env
+[2024-07-08 05:53:17,664] [INFO] [multinode_runner.py:81:get_cmd] Running on the following workers: ml-512-node-005,ml-512-node-006
+[2024-07-08 05:53:17,664] [INFO] [runner.py:568:main] cmd = pdsh -S -f 1024 -w ml-512-node-005,ml-512-node-006 export PYTHONPATH=/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training; export PROJECT_PATH=/home/ubuntu/ml-1cc/benchmark; export OMPI_MCA_btl_tcp_if_include=eno1; export UCX_TLS=self,shm,tcp; export NCCL_P2P_LEVEL=NVL; export NCCL_NET_GDR_LEVEL=PIX; export NCCL_IB_HCA='=mlx5_1,mlx5_2,mlx5_3,mlx5_4,mlx5_5,mlx5_6,mlx5_7,mlx5_8'; export NCCL_IB_PCI_RELAXED_ORDERING=1; export NCCL_SOCKET_IFNAME=eno1; export NCCL_DEBUG=WARN;  cd /home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training; /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJtbC01MTItbm9kZS0wMDUiOiBbMCwgMSwgMiwgMywgNCwgNSwgNiwgN10sICJtbC01MTItbm9kZS0wMDYiOiBbMCwgMSwgMiwgMywgNCwgNSwgNiwgN119 --node_rank=%n --master_addr=ml-512-node-005 --master_port=29500 /home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py --data_path Dahoas/full-hh-rlhf --data_split 2,4,4 --data_output_path /home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1 --model_name_or_path facebook/opt-350m --per_device_train_batch_size 24 --per_device_eval_batch_size 4 --max_seq_len 512 --learning_rate 1e-10 --weight_decay 0.1 --disable_dropout --gradient_accumulation_steps 1 --lr_scheduler_type cosine --seed 1234 --zero_stage 0 --deepspeed --num_warmup_steps 10 --num_train_epochs 100 --max_steps 100
+ml-512-node-005: [2024-07-08 05:53:19,117] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: 2024-07-08 05:53:20.529511: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+ml-512-node-005: 2024-07-08 05:53:20.568963: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+ml-512-node-005: To enable the following instructions: AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+ml-512-node-005: [2024-07-08 05:53:21,970] [INFO] [launch.py:139:main] 0 NCCL_IB_PCI_RELAXED_ORDERING=1
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:139:main] 0 NCCL_SOCKET_IFNAME=eno1
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:139:main] 0 NCCL_NET_GDR_LEVEL=PIX
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:139:main] 0 NCCL_P2P_LEVEL=NVL
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:139:main] 0 NCCL_DEBUG=WARN
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:139:main] 0 NCCL_IB_HCA==mlx5_1,mlx5_2,mlx5_3,mlx5_4,mlx5_5,mlx5_6,mlx5_7,mlx5_8
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:146:main] WORLD INFO DICT: {'ml-512-node-005': [0, 1, 2, 3, 4, 5, 6, 7], 'ml-512-node-006': [0, 1, 2, 3, 4, 5, 6, 7]}
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:152:main] nnodes=2, num_local_procs=8, node_rank=0
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'ml-512-node-005': [0, 1, 2, 3, 4, 5, 6, 7], 'ml-512-node-006': [8, 9, 10, 11, 12, 13, 14, 15]})
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:164:main] dist_world_size=16
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+ml-512-node-005: [2024-07-08 05:53:21,971] [INFO] [launch.py:256:main] process 1074049 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=0', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-005: [2024-07-08 05:53:21,972] [INFO] [launch.py:256:main] process 1074050 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=1', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-005: [2024-07-08 05:53:21,973] [INFO] [launch.py:256:main] process 1074051 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=2', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-005: [2024-07-08 05:53:21,974] [INFO] [launch.py:256:main] process 1074052 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=3', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-005: [2024-07-08 05:53:21,974] [INFO] [launch.py:256:main] process 1074053 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=4', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-005: [2024-07-08 05:53:21,975] [INFO] [launch.py:256:main] process 1074054 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=5', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-005: [2024-07-08 05:53:21,976] [INFO] [launch.py:256:main] process 1074055 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=6', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-005: [2024-07-08 05:53:21,976] [INFO] [launch.py:256:main] process 1074056 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=7', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-006: [2024-07-08 05:53:22,107] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: 2024-07-08 05:53:23.497288: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+ml-512-node-006: 2024-07-08 05:53:23.536995: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+ml-512-node-006: To enable the following instructions: AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:139:main] 1 NCCL_IB_PCI_RELAXED_ORDERING=1
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:139:main] 1 NCCL_SOCKET_IFNAME=eno1
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:139:main] 1 NCCL_NET_GDR_LEVEL=PIX
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:139:main] 1 NCCL_P2P_LEVEL=NVL
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:139:main] 1 NCCL_DEBUG=WARN
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:139:main] 1 NCCL_IB_HCA==mlx5_1,mlx5_2,mlx5_3,mlx5_4,mlx5_5,mlx5_6,mlx5_7,mlx5_8
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:146:main] WORLD INFO DICT: {'ml-512-node-005': [0, 1, 2, 3, 4, 5, 6, 7], 'ml-512-node-006': [0, 1, 2, 3, 4, 5, 6, 7]}
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:152:main] nnodes=2, num_local_procs=8, node_rank=1
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'ml-512-node-005': [0, 1, 2, 3, 4, 5, 6, 7], 'ml-512-node-006': [8, 9, 10, 11, 12, 13, 14, 15]})
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:164:main] dist_world_size=16
+ml-512-node-006: [2024-07-08 05:53:24,795] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+ml-512-node-006: [2024-07-08 05:53:24,796] [INFO] [launch.py:256:main] process 1056035 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=0', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-006: [2024-07-08 05:53:24,797] [INFO] [launch.py:256:main] process 1056036 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=1', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-006: [2024-07-08 05:53:24,797] [INFO] [launch.py:256:main] process 1056037 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=2', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-006: [2024-07-08 05:53:24,798] [INFO] [launch.py:256:main] process 1056038 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=3', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-006: [2024-07-08 05:53:24,799] [INFO] [launch.py:256:main] process 1056039 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=4', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-006: [2024-07-08 05:53:24,799] [INFO] [launch.py:256:main] process 1056040 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=5', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-006: [2024-07-08 05:53:24,800] [INFO] [launch.py:256:main] process 1056041 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=6', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-006: [2024-07-08 05:53:24,801] [INFO] [launch.py:256:main] process 1056042 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=7', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+ml-512-node-005: [2024-07-08 05:53:25,949] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: [2024-07-08 05:53:27,275] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [2024-07-08 05:53:27,446] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [2024-07-08 05:53:27,589] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [2024-07-08 05:53:27,690] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [2024-07-08 05:53:27,790] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [2024-07-08 05:53:27,835] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [2024-07-08 05:53:27,922] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [2024-07-08 05:53:28,108] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-005: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-005: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: [2024-07-08 05:53:28,904] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-005: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-005: [2024-07-08 05:53:29,185] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-005: [2024-07-08 05:53:29,375] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-005: [2024-07-08 05:53:29,388] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-005: [2024-07-08 05:53:29,521] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-005: [2024-07-08 05:53:29,535] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-005: [2024-07-08 05:53:29,535] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+ml-512-node-005: [2024-07-08 05:53:29,610] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-006: [2024-07-08 05:53:29,943] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [2024-07-08 05:53:30,077] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [2024-07-08 05:53:30,244] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [2024-07-08 05:53:30,411] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [2024-07-08 05:53:30,539] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [2024-07-08 05:53:30,605] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [2024-07-08 05:53:30,635] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [2024-07-08 05:53:30,712] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+ml-512-node-006: [93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+ml-512-node-006: [93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+ml-512-node-006: [93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: [2024-07-08 05:53:31,745] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: [93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+ml-512-node-006: [93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+ml-512-node-006: [2024-07-08 05:53:31,999] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-006: [2024-07-08 05:53:32,112] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-006: [2024-07-08 05:53:32,128] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-006: [2024-07-08 05:53:32,204] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-006: [2024-07-08 05:53:32,384] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-006: [2024-07-08 05:53:32,610] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-006: [2024-07-08 05:53:32,628] [INFO] [comm.py:637:init_distributed] cdb=None
+ml-512-node-005: NCCL version 2.19.4+cuda12.2
+ml-512-node-005: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-005:   warnings.warn(
+ml-512-node-005: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-005:   warnings.warn(
+ml-512-node-005: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-005:   warnings.warn(
+ml-512-node-005: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-005:   warnings.warn(
+ml-512-node-005: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-005:   warnings.warn(
+ml-512-node-006: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-006:   warnings.warn(
+ml-512-node-006: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-006:   warnings.warn(
+ml-512-node-006: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-006:   warnings.warn(
+ml-512-node-006: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-006:   warnings.warn(
+ml-512-node-006: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-006:   warnings.warn(
+ml-512-node-006: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-006:   warnings.warn(
+ml-512-node-006: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-006:   warnings.warn(
+ml-512-node-006: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-006:   warnings.warn(
+ml-512-node-005: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-005:   warnings.warn(
+ml-512-node-005: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-005:   warnings.warn(
+ml-512-node-005: /home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+ml-512-node-005:   warnings.warn(
+ml-512-node-005: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: Detected CUDA files, patching ldflags
+ml-512-node-005: Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+ml-512-node-005: Building extension module fused_adam...
+ml-512-node-005: Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ml-512-node-005: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: ninja: no work to do.
+ml-512-node-005: Loading extension module fused_adam...
+ml-512-node-005: Time to load fused_adam op: 0.0631108283996582 seconds
+ml-512-node-005: [2024-07-08 05:54:02,965] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.14.4, git-hash=unknown, git-branch=unknown
+ml-512-node-005: [2024-07-08 05:54:02,965] [INFO] [comm.py:662:init_distributed] Distributed backend already initialized
+ml-512-node-005: Loading extension module fused_adam...
+ml-512-node-005: Time to load fused_adam op: 0.10148787498474121 seconds
+ml-512-node-005: Loading extension module fused_adam...
+ml-512-node-005: Time to load fused_adam op: 0.10151195526123047 seconds
+ml-512-node-005: Loading extension module fused_adam...
+ml-512-node-005: Time to load fused_adam op: 0.10147404670715332 seconds
+ml-512-node-006: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-006: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: Loading extension module fused_adam...
+ml-512-node-005: Time to load fused_adam op: 0.1013190746307373 seconds
+ml-512-node-006: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-006: Detected CUDA files, patching ldflags
+ml-512-node-006: Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+ml-512-node-006: Building extension module fused_adam...
+ml-512-node-006: Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ml-512-node-006: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-006: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-006: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-006: ninja: no work to do.
+ml-512-node-006: Loading extension module fused_adam...
+ml-512-node-006: Time to load fused_adam op: 0.06339836120605469 seconds
+ml-512-node-006: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-006: Detected CUDA files, patching ldflags
+ml-512-node-006: Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+ml-512-node-006: Building extension module fused_adam...
+ml-512-node-006: Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ml-512-node-006: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-006: ninja: no work to do.
+ml-512-node-006: Time to load fused_adam op: 0.11509847640991211 seconds
+ml-512-node-006: Loading extension module fused_adam...
+ml-512-node-006: Loading extension module fused_adam...
+ml-512-node-006: Time to load fused_adam op: 0.20186471939086914 seconds
+ml-512-node-005: Detected CUDA files, patching ldflags
+ml-512-node-005: Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+ml-512-node-005: Building extension module fused_adam...
+ml-512-node-005: Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ml-512-node-006: Loading extension module fused_adam...
+ml-512-node-006: Time to load fused_adam op: 0.21113038063049316 seconds
+ml-512-node-006: Loading extension module fused_adam...
+ml-512-node-006: Time to load fused_adam op: 0.20154690742492676 seconds
+ml-512-node-006: Loading extension module fused_adam...
+ml-512-node-006: Time to load fused_adam op: 0.20212626457214355 seconds
+ml-512-node-006: Loading extension module fused_adam...
+ml-512-node-006: Time to load fused_adam op: 0.10237765312194824 seconds
+ml-512-node-006: Loading extension module fused_adam...
+ml-512-node-006: Time to load fused_adam op: 0.30347204208374023 seconds
+ml-512-node-005: ninja: no work to do.
+ml-512-node-005: Time to load fused_adam op: 0.3776581287384033 seconds
+ml-512-node-005: Loading extension module fused_adam...
+ml-512-node-005: Time to load fused_adam op: 0.3017725944519043 seconds
+ml-512-node-005: Loading extension module fused_adam...
+ml-512-node-005: Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+ml-512-node-005: Detected CUDA files, patching ldflags
+ml-512-node-005: Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+ml-512-node-005: Building extension module fused_adam...
+ml-512-node-005: Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ml-512-node-005: ninja: no work to do.
+ml-512-node-005: Loading extension module fused_adam...
+ml-512-node-005: Time to load fused_adam op: 0.21310734748840332 seconds
+ml-512-node-005: [2024-07-08 05:54:22,556] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+ml-512-node-005: [2024-07-08 05:54:22,558] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+ml-512-node-005: [2024-07-08 05:54:22,558] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+ml-512-node-005: [2024-07-08 05:54:22,568] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
+ml-512-node-005: [2024-07-08 05:54:22,568] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 optimizer with dynamic loss scale
+ml-512-node-005: [2024-07-08 05:54:22,616] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = FP16_Optimizer
+ml-512-node-005: [2024-07-08 05:54:22,616] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+ml-512-node-005: [2024-07-08 05:54:22,616] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.LambdaLR object at 0x7cc3f8117580>
+ml-512-node-005: [2024-07-08 05:54:22,616] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:22,617] [INFO] [config.py:997:print] DeepSpeedEngine configuration:
+ml-512-node-005: [2024-07-08 05:54:22,617] [INFO] [config.py:1001:print]   activation_checkpointing_config  {
+ml-512-node-005:     "partition_activations": false, 
+ml-512-node-005:     "contiguous_memory_optimization": false, 
+ml-512-node-005:     "cpu_checkpointing": false, 
+ml-512-node-005:     "number_checkpoints": null, 
+ml-512-node-005:     "synchronize_checkpoint_boundary": false, 
+ml-512-node-005:     "profile": false
+ml-512-node-005: }
+ml-512-node-005: [2024-07-08 05:54:22,617] [INFO] [config.py:1001:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+ml-512-node-005: [2024-07-08 05:54:22,617] [INFO] [config.py:1001:print]   amp_enabled .................. False
+ml-512-node-005: [2024-07-08 05:54:22,617] [INFO] [config.py:1001:print]   amp_params ................... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   autotuning_config ............ {
+ml-512-node-005:     "enabled": false, 
+ml-512-node-005:     "start_step": null, 
+ml-512-node-005:     "end_step": null, 
+ml-512-node-005:     "metric_path": null, 
+ml-512-node-005:     "arg_mappings": null, 
+ml-512-node-005:     "metric": "throughput", 
+ml-512-node-005:     "model_info": null, 
+ml-512-node-005:     "results_dir": "autotuning_results", 
+ml-512-node-005:     "exps_dir": "autotuning_exps", 
+ml-512-node-005:     "overwrite": true, 
+ml-512-node-005:     "fast": true, 
+ml-512-node-005:     "start_profile_step": 3, 
+ml-512-node-005:     "end_profile_step": 5, 
+ml-512-node-005:     "tuner_type": "gridsearch", 
+ml-512-node-005:     "tuner_early_stopping": 5, 
+ml-512-node-005:     "tuner_num_trials": 50, 
+ml-512-node-005:     "model_info_path": null, 
+ml-512-node-005:     "mp_size": 1, 
+ml-512-node-005:     "max_train_batch_size": null, 
+ml-512-node-005:     "min_train_batch_size": 1, 
+ml-512-node-005:     "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+ml-512-node-005:     "min_train_micro_batch_size_per_gpu": 1, 
+ml-512-node-005:     "num_tuning_micro_batch_sizes": 3
+ml-512-node-005: }
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   bfloat16_enabled ............. False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   bfloat16_immediate_grad_update  False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   checkpoint_parallel_write_pipeline  False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   checkpoint_tag_validation_enabled  True
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   checkpoint_tag_validation_fail  False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7cc3f8114430>
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   communication_data_type ...... None
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   curriculum_enabled_legacy .... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   curriculum_params_legacy ..... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   data_efficiency_enabled ...... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   dataloader_drop_last ......... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   disable_allgather ............ False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   dump_state ................... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 100, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   eigenvalue_enabled ........... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   eigenvalue_gas_boundary_resolution  1
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   eigenvalue_layer_name ........ bert.encoder.layer
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   eigenvalue_layer_num ......... 0
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   eigenvalue_max_iter .......... 100
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   eigenvalue_stability ......... 1e-06
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   eigenvalue_tol ............... 0.01
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   eigenvalue_verbose ........... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   elasticity_enabled ........... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   flops_profiler_config ........ {
+ml-512-node-005:     "enabled": false, 
+ml-512-node-005:     "recompute_fwd_factor": 0.0, 
+ml-512-node-005:     "profile_step": 1, 
+ml-512-node-005:     "module_depth": -1, 
+ml-512-node-005:     "top_modules": 1, 
+ml-512-node-005:     "detailed": true, 
+ml-512-node-005:     "output_file": null
+ml-512-node-005: }
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   fp16_auto_cast ............... False
+ml-512-node-005: [2024-07-08 05:54:22,618] [INFO] [config.py:1001:print]   fp16_enabled ................. True
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   fp16_master_weights_and_gradients  False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   global_rank .................. 0
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   grad_accum_dtype ............. None
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   gradient_accumulation_steps .. 1
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   gradient_clipping ............ 1.0
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   gradient_predivide_factor .... 1.0
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   graph_harvesting ............. False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   initial_dynamic_scale ........ 65536
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   load_universal_checkpoint .... False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   loss_scale ................... 0
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   memory_breakdown ............. False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   mics_hierarchial_params_gather  False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   mics_shard_size .............. -1
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='step1_tensorboard/ds_tensorboard_logs/', job_name='step1_model_tensorboard') comet=CometConfig(enabled=False, samples_log_interval=100, project=None, workspace=None, api_key=None, experiment_name=None, experiment_key=None, online=None, mode=None) wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   nebula_config ................ {
+ml-512-node-005:     "enabled": false, 
+ml-512-node-005:     "persistent_storage_path": null, 
+ml-512-node-005:     "persistent_time_interval": 100, 
+ml-512-node-005:     "num_of_version_in_retention": 2, 
+ml-512-node-005:     "enable_nebula_load": true, 
+ml-512-node-005:     "load_path": null
+ml-512-node-005: }
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   optimizer_legacy_fusion ...... False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   optimizer_name ............... None
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   optimizer_params ............. None
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   pld_enabled .................. False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   pld_params ................... False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   prescale_gradients ........... False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   scheduler_name ............... None
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   scheduler_params ............. None
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   seq_parallel_communication_data_type  torch.float32
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   sparse_attention ............. None
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   sparse_gradients_enabled ..... False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   steps_per_print .............. 10
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   timers_config ................ enabled=True synchronized=True
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   train_batch_size ............. 384
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   train_micro_batch_size_per_gpu  24
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   use_data_before_expert_parallel_  False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   use_node_local_storage ....... False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   wall_clock_breakdown ......... False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   weight_quantization_config ... None
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   world_size ................... 16
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   zero_allow_untested_optimizer  False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='none', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=False) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='none', nvme_path=None, buffer_count=4, pin_memory=False, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=30000000 param_persistence_threshold=10000 model_persistence_threshold=sys.maxsize max_live_parameters=30000000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False use_all_reduce_for_fetch_params=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=False pipeline_loading_checkpoint=False override_module_apply=True
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   zero_enabled ................. False
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   zero_force_ds_cpu_optimizer .. True
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:1001:print]   zero_optimization_stage ...... 0
+ml-512-node-005: [2024-07-08 05:54:22,619] [INFO] [config.py:987:print_user_config]   json = {
+ml-512-node-005:     "train_batch_size": 384, 
+ml-512-node-005:     "train_micro_batch_size_per_gpu": 24, 
+ml-512-node-005:     "steps_per_print": 10, 
+ml-512-node-005:     "zero_optimization": {
+ml-512-node-005:         "stage": 0, 
+ml-512-node-005:         "offload_param": {
+ml-512-node-005:             "device": "none"
+ml-512-node-005:         }, 
+ml-512-node-005:         "offload_optimizer": {
+ml-512-node-005:             "device": "none"
+ml-512-node-005:         }, 
+ml-512-node-005:         "stage3_param_persistence_threshold": 1.000000e+04, 
+ml-512-node-005:         "stage3_max_live_parameters": 3.000000e+07, 
+ml-512-node-005:         "stage3_prefetch_bucket_size": 3.000000e+07, 
+ml-512-node-005:         "memory_efficient_linear": false
+ml-512-node-005:     }, 
+ml-512-node-005:     "fp16": {
+ml-512-node-005:         "enabled": true, 
+ml-512-node-005:         "loss_scale_window": 100
+ml-512-node-005:     }, 
+ml-512-node-005:     "gradient_clipping": 1.0, 
+ml-512-node-005:     "prescale_gradients": false, 
+ml-512-node-005:     "wall_clock_breakdown": false, 
+ml-512-node-005:     "hybrid_engine": {
+ml-512-node-005:         "enabled": false, 
+ml-512-node-005:         "max_out_tokens": 512, 
+ml-512-node-005:         "inference_tp_size": 1, 
+ml-512-node-005:         "release_inference_cache": false, 
+ml-512-node-005:         "pin_parameters": true, 
+ml-512-node-005:         "tp_gather_partition_size": 8
+ml-512-node-005:     }, 
+ml-512-node-005:     "tensorboard": {
+ml-512-node-005:         "enabled": false, 
+ml-512-node-005:         "output_path": "step1_tensorboard/ds_tensorboard_logs/", 
+ml-512-node-005:         "job_name": "step1_model_tensorboard"
+ml-512-node-005:     }
+ml-512-node-005: }
+ml-512-node-005: ***** Running training *****
+ml-512-node-005: Beginning of Epoch 1/100, Total Micro Batches 58
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 65536, reducing to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 0
+ml-512-node-005: [2024-07-08 05:54:23,608] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 0
+ml-512-node-006: [2024-07-08 05:54:23,606] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 1
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 1
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 1
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 1
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 1
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 1
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 1
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 1
+ml-512-node-006: [2024-07-08 05:54:23,789] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,791] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 32768.0, reducing to 16384.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 2
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 2
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 2
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 2
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 2
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 2
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 2
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 16384.0, reducing to 8192.0
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 2
+ml-512-node-005: [2024-07-08 05:54:23,974] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 2
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 2
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 2
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 2
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 2
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 2
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 2
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 2
+ml-512-node-006: [2024-07-08 05:54:23,972] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 3
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 3
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 3
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 3
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 3
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 3
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 3
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 3
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 8192.0, reducing to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,156] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 3
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 3
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 3
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 3
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 3
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 3
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 3
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 3
+ml-512-node-006: [2024-07-08 05:54:24,154] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 4
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 4
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 4
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 4
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 4
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 4
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 4
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 4
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,337] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 4096.0, reducing to 2048.0
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 4
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 4
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 4
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 4
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 4
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 4
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 4
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 4
+ml-512-node-006: [2024-07-08 05:54:24,335] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 5
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 5
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 5
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 5
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 5
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 5
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 5
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 5
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,518] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 2048.0, reducing to 1024.0
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 5
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 5
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 5
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 5
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 5
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 5
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 5
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 5
+ml-512-node-006: [2024-07-08 05:54:24,516] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 6
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 6
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 6
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 6
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 6
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 6
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 6
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 6
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,699] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 1024.0, reducing to 512.0
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 6
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 6
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 6
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 6
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 6
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 6
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 6
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 6
+ml-512-node-006: [2024-07-08 05:54:24,697] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+ml-512-node-005: [2024-07-08 05:54:24,881] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 7
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:24,881] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 7
+ml-512-node-005: [2024-07-08 05:54:24,881] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 7
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 7
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 7
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 7
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 7
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 7
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 512.0, reducing to 256.0
+ml-512-node-005: [2024-07-08 05:54:24,882] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 7
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 7
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 7
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 7
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 7
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 7
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 7
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 7
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:24,880] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 8
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 8
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 8
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 8
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 8
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 8
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,064] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 8
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 8
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 8
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: Grad overflow on iteration 8
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 8
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 8
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 8
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-006: Grad overflow on iteration 8
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-006: [2024-07-08 05:54:25,063] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 8
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:392:_update_scale] 
+ml-512-node-005: Grad overflow on iteration 8
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 256.0 to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,065] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 256.0, reducing to 128.0
+ml-512-node-005: [2024-07-08 05:54:25,287] [INFO] [logging.py:96:log_dist] [Rank 0] step=10, skipped=9, lr=[1.0000000000000001e-11, 1.0000000000000001e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:25,291] [INFO] [timer.py:258:stop] epoch=0/micro_step=10/global_step=10, RunningAvgSamplesPerSec=2054.5586975226474, CurrSamplesPerSec=1703.7895805829187, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: [2024-07-08 05:54:27,336] [INFO] [logging.py:96:log_dist] [Rank 0] step=20, skipped=9, lr=[9.999999263991863e-11, 9.999999263991863e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:27,340] [INFO] [timer.py:258:stop] epoch=0/micro_step=20/global_step=20, RunningAvgSamplesPerSec=1953.2238197799638, CurrSamplesPerSec=1882.5289880989951, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: [2024-07-08 05:54:29,385] [INFO] [logging.py:96:log_dist] [Rank 0] step=30, skipped=9, lr=[9.999910943277567e-11, 9.999910943277567e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:29,389] [INFO] [timer.py:258:stop] epoch=0/micro_step=30/global_step=30, RunningAvgSamplesPerSec=1926.204322341872, CurrSamplesPerSec=1883.8501259711004, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: [2024-07-08 05:54:31,432] [INFO] [logging.py:96:log_dist] [Rank 0] step=40, skipped=9, lr=[9.99967542391518e-11, 9.99967542391518e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:31,436] [INFO] [timer.py:258:stop] epoch=0/micro_step=40/global_step=40, RunningAvgSamplesPerSec=1914.0715542884443, CurrSamplesPerSec=1878.4802647999422, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: [2024-07-08 05:54:33,478] [INFO] [logging.py:96:log_dist] [Rank 0] step=50, skipped=9, lr=[9.999292712838453e-11, 9.999292712838453e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:33,483] [INFO] [timer.py:258:stop] epoch=0/micro_step=50/global_step=50, RunningAvgSamplesPerSec=1907.1641220102922, CurrSamplesPerSec=1886.6106708741993, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: Beginning of Epoch 2/100, Total Micro Batches 58
+ml-512-node-005: [2024-07-08 05:54:35,526] [INFO] [logging.py:96:log_dist] [Rank 0] step=60, skipped=9, lr=[9.998762821314495e-11, 9.998762821314495e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:35,530] [INFO] [timer.py:258:stop] epoch=0/micro_step=60/global_step=60, RunningAvgSamplesPerSec=1902.741141091816, CurrSamplesPerSec=1880.623213941676, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: [2024-07-08 05:54:37,572] [INFO] [logging.py:96:log_dist] [Rank 0] step=70, skipped=9, lr=[9.99808576494345e-11, 9.99808576494345e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:37,577] [INFO] [timer.py:258:stop] epoch=0/micro_step=70/global_step=70, RunningAvgSamplesPerSec=1899.5377326711878, CurrSamplesPerSec=1882.8811103135617, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: [2024-07-08 05:54:39,619] [INFO] [logging.py:96:log_dist] [Rank 0] step=80, skipped=9, lr=[9.997261563658027e-11, 9.997261563658027e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:39,623] [INFO] [timer.py:258:stop] epoch=0/micro_step=80/global_step=80, RunningAvgSamplesPerSec=1897.1807728956953, CurrSamplesPerSec=1879.32633229718, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: [2024-07-08 05:54:41,666] [INFO] [logging.py:96:log_dist] [Rank 0] step=90, skipped=9, lr=[9.996290241722922e-11, 9.996290241722922e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:41,670] [INFO] [timer.py:258:stop] epoch=0/micro_step=90/global_step=90, RunningAvgSamplesPerSec=1895.3491929897796, CurrSamplesPerSec=1882.3639761439777, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: [2024-07-08 05:54:43,711] [INFO] [logging.py:96:log_dist] [Rank 0] step=100, skipped=9, lr=[9.9951718277341e-11, 9.9951718277341e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:43,716] [INFO] [timer.py:258:stop] epoch=0/micro_step=100/global_step=100, RunningAvgSamplesPerSec=1893.9652426285847, CurrSamplesPerSec=1881.8339334995571, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,752] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-006: [2024-07-08 05:54:45,750] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+ml-512-node-006: [2024-07-08 05:54:45,751] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 128.0 to 256.0
+ml-512-node-005: [2024-07-08 05:54:45,759] [INFO] [logging.py:96:log_dist] [Rank 0] step=110, skipped=9, lr=[9.993906354617953e-11, 9.993906354617953e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+ml-512-node-005: [2024-07-08 05:54:45,763] [INFO] [timer.py:258:stop] epoch=0/micro_step=110/global_step=110, RunningAvgSamplesPerSec=1892.7077940493657, CurrSamplesPerSec=1881.341547346215, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+ml-512-node-005: ======================================================================
+ml-512-node-005: Execution time: 20.4717 seconds for 100 steps
+ml-512-node-005: Throughput: 1875.7598 samples/sec
+ml-512-node-005: [2024-07-08 05:54:49,076] [INFO] [launch.py:351:main] Process 1074049 exits successfully.
+ml-512-node-006: [2024-07-08 05:54:49,918] [INFO] [launch.py:351:main] Process 1056041 exits successfully.
+ml-512-node-006: [2024-07-08 05:54:49,918] [INFO] [launch.py:351:main] Process 1056040 exits successfully.
+ml-512-node-006: [2024-07-08 05:54:49,918] [INFO] [launch.py:351:main] Process 1056038 exits successfully.
+ml-512-node-006: [2024-07-08 05:54:49,918] [INFO] [launch.py:351:main] Process 1056036 exits successfully.
+ml-512-node-006: [2024-07-08 05:54:49,918] [INFO] [launch.py:351:main] Process 1056042 exits successfully.
+ml-512-node-006: [2024-07-08 05:54:49,918] [INFO] [launch.py:351:main] Process 1056037 exits successfully.
+ml-512-node-006: [2024-07-08 05:54:49,918] [INFO] [launch.py:351:main] Process 1056035 exits successfully.
+ml-512-node-006: [2024-07-08 05:54:49,918] [INFO] [launch.py:351:main] Process 1056039 exits successfully.
+ml-512-node-005: [2024-07-08 05:54:50,077] [INFO] [launch.py:351:main] Process 1074054 exits successfully.
+ml-512-node-005: [2024-07-08 05:54:50,077] [INFO] [launch.py:351:main] Process 1074052 exits successfully.
+ml-512-node-005: [2024-07-08 05:54:50,077] [INFO] [launch.py:351:main] Process 1074050 exits successfully.
+ml-512-node-005: [2024-07-08 05:54:50,077] [INFO] [launch.py:351:main] Process 1074056 exits successfully.
+ml-512-node-005: [2024-07-08 05:54:50,077] [INFO] [launch.py:351:main] Process 1074051 exits successfully.
+ml-512-node-005: [2024-07-08 05:54:50,077] [INFO] [launch.py:351:main] Process 1074053 exits successfully.
+ml-512-node-005: [2024-07-08 05:54:50,077] [INFO] [launch.py:351:main] Process 1074055 exits successfully.

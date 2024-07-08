@@ -1,0 +1,17 @@
+Hostnames,Throughput (samples/sec),Status
+"ml-512-node-001, ml-512-node-002, ml-512-node-003, ml-512-node-004",3729.2939,Success
+"ml-512-node-005, ml-512-node-006, ml-512-node-007, ml-512-node-008",3721.155,Success
+"ml-512-node-009, ml-512-node-010, ml-512-node-011, ml-512-node-012",3721.3661,Success
+"ml-512-node-013, ml-512-node-014, ml-512-node-015, ml-512-node-016",3727.6518,Success
+"ml-512-node-017, ml-512-node-018, ml-512-node-019, ml-512-node-020",3719.5931,Success
+"ml-512-node-021, ml-512-node-022, ml-512-node-023, ml-512-node-024",3717.0475,Success
+"ml-512-node-025, ml-512-node-026, ml-512-node-027, ml-512-node-028",3716.0817,Success
+"ml-512-node-029, ml-512-node-030, ml-512-node-031, ml-512-node-032",3731.1396,Success
+"ml-512-node-033, ml-512-node-034, ml-512-node-035, ml-512-node-036",3721.0882,Success
+"ml-512-node-037, ml-512-node-038, ml-512-node-039, ml-512-node-040",3717.2819,Success
+"ml-512-node-041, ml-512-node-042, ml-512-node-043, ml-512-node-044",3725.9304,Success
+"ml-512-node-045, ml-512-node-046, ml-512-node-047, ml-512-node-048",3721.242,Success
+"ml-512-node-049, ml-512-node-050, ml-512-node-051, ml-512-node-052",3725.8743,Success
+"ml-512-node-053, ml-512-node-054, ml-512-node-055, ml-512-node-056",3732.4529,Success
+"ml-512-node-057, ml-512-node-058, ml-512-node-059, ml-512-node-060",3718.3788,Success
+"ml-512-node-061, ml-512-node-062, ml-512-node-063, ml-512-node-064",3728.2677,Success

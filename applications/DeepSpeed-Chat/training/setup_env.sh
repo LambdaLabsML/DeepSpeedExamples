@@ -29,6 +29,12 @@ elif [ "$model" = "opt-350m" ] && [ "$step" = "2" ]; then
     export MODEL_PATH=facebook/opt-350m
     export MODEL_CACHE=${PROJECT_PATH}/.cache/huggingface/transformers/models--facebook--opt-350m/snapshots/08ab08cc4b72ff5593870b5d527cf4230323703c
     export DATA_OUTPUT_PATH=${PROJECT_PATH}/.cache/data_files/opt-350m_step2
+elif [ "$model" = "opt-350m" ] && [ "$step" = "1" ]; then
+    export SCRIPT_PATH=${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning
+    export ZERO_STAGE=0
+    export MODEL_PATH=facebook/opt-350m
+    export MODEL_CACHE=${PROJECT_PATH}/.cache/huggingface/transformers/models--facebook--opt-350m/snapshots/08ab08cc4b72ff5593870b5d527cf4230323703c
+    export DATA_OUTPUT_PATH=${PROJECT_PATH}/.cache/data_files/opt-350m_step1
 elif [ "$model" = "opt-1.3b" ] && [ "$step" = "1" ]; then
     export SCRIPT_PATH=${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning
     export ZERO_STAGE=0

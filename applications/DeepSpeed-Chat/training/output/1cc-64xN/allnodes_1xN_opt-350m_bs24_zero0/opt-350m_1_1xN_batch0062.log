@@ -1,0 +1,604 @@
+ml-512-node-062 slots=8
+[2024-07-08 05:50:45,453] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2024-07-08 05:50:46.828327: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-07-08 05:50:46.867428: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[2024-07-08 05:50:48,380] [INFO] [runner.py:568:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJtbC01MTItbm9kZS0wNjIiOiBbMCwgMSwgMiwgMywgNCwgNSwgNiwgN119 --master_addr=ml-512-node-062 --master_port=29500 --enable_each_rank_log=None /home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py --data_path Dahoas/full-hh-rlhf --data_split 2,4,4 --data_output_path /home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1 --model_name_or_path facebook/opt-350m --per_device_train_batch_size 24 --per_device_eval_batch_size 4 --max_seq_len 512 --learning_rate 1e-10 --weight_decay 0.1 --disable_dropout --gradient_accumulation_steps 1 --lr_scheduler_type cosine --seed 1234 --zero_stage 0 --deepspeed --num_warmup_steps 10 --num_train_epochs 100 --max_steps 100
+[2024-07-08 05:50:49,535] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[2024-07-08 05:50:52,349] [INFO] [launch.py:146:main] WORLD INFO DICT: {'ml-512-node-062': [0, 1, 2, 3, 4, 5, 6, 7]}
+[2024-07-08 05:50:52,349] [INFO] [launch.py:152:main] nnodes=1, num_local_procs=8, node_rank=0
+[2024-07-08 05:50:52,349] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'ml-512-node-062': [0, 1, 2, 3, 4, 5, 6, 7]})
+[2024-07-08 05:50:52,349] [INFO] [launch.py:164:main] dist_world_size=8
+[2024-07-08 05:50:52,349] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+[2024-07-08 05:50:52,350] [INFO] [launch.py:256:main] process 1037227 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=0', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+[2024-07-08 05:50:52,350] [INFO] [launch.py:256:main] process 1037228 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=1', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+[2024-07-08 05:50:52,351] [INFO] [launch.py:256:main] process 1037229 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=2', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+[2024-07-08 05:50:52,352] [INFO] [launch.py:256:main] process 1037230 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=3', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+[2024-07-08 05:50:52,353] [INFO] [launch.py:256:main] process 1037231 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=4', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+[2024-07-08 05:50:52,353] [INFO] [launch.py:256:main] process 1037232 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=5', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+[2024-07-08 05:50:52,354] [INFO] [launch.py:256:main] process 1037233 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=6', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+[2024-07-08 05:50:52,355] [INFO] [launch.py:256:main] process 1037234 spawned with command: ['/usr/bin/python3', '-u', '/home/ubuntu/ml-1cc/benchmark/DeepSpeedExamples/applications/DeepSpeed-Chat/training/step1_supervised_finetuning/main.py', '--local_rank=7', '--data_path', 'Dahoas/full-hh-rlhf', '--data_split', '2,4,4', '--data_output_path', '/home/ubuntu/ml-1cc/benchmark/.cache/data_files/opt-350m_step1', '--model_name_or_path', 'facebook/opt-350m', '--per_device_train_batch_size', '24', '--per_device_eval_batch_size', '4', '--max_seq_len', '512', '--learning_rate', '1e-10', '--weight_decay', '0.1', '--disable_dropout', '--gradient_accumulation_steps', '1', '--lr_scheduler_type', 'cosine', '--seed', '1234', '--zero_stage', '0', '--deepspeed', '--num_warmup_steps', '10', '--num_train_epochs', '100', '--max_steps', '100']
+[2024-07-08 05:50:57,448] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-07-08 05:50:57,553] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-07-08 05:50:57,729] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-07-08 05:50:57,869] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2024-07-08 05:50:58,030] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2024-07-08 05:50:58,122] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-07-08 05:50:58,173] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2024-07-08 05:50:58,239] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[2024-07-08 05:50:59,160] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-07-08 05:50:59,160] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[2024-07-08 05:50:59,318] [INFO] [comm.py:637:init_distributed] cdb=None
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m please install triton==1.0.0 if you want to use sparse attention
+[2024-07-08 05:50:59,390] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-07-08 05:50:59,431] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-07-08 05:50:59,623] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-07-08 05:50:59,995] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-07-08 05:51:00,110] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-07-08 05:51:00,117] [INFO] [comm.py:637:init_distributed] cdb=None
+/home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+Building extension module fused_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.06088876724243164 seconds
+Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+Building extension module fused_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.09306001663208008 seconds
+Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+Building extension module fused_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.20403361320495605 seconds
+[2024-07-08 05:51:30,210] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.14.4, git-hash=unknown, git-branch=unknown
+[2024-07-08 05:51:30,210] [INFO] [comm.py:662:init_distributed] Distributed backend already initialized
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.10862493515014648 seconds
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.2046644687652588 seconds
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.22553229331970215 seconds
+Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+Using /home/ubuntu/.cache/torch_extensions/py310_cu122 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu122/fused_adam/build.ninja...
+Building extension module fused_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.3938312530517578 seconds
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.40769290924072266 seconds
+[2024-07-08 05:51:49,422] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-07-08 05:51:49,424] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-07-08 05:51:49,424] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-07-08 05:51:49,434] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdam
+[2024-07-08 05:51:49,434] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 optimizer with dynamic loss scale
+[2024-07-08 05:51:49,478] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = FP16_Optimizer
+[2024-07-08 05:51:49,478] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2024-07-08 05:51:49,478] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.LambdaLR object at 0x7f2fb4267370>
+[2024-07-08 05:51:49,478] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:51:49,478] [INFO] [config.py:997:print] DeepSpeedEngine configuration:
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   amp_enabled .................. False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   amp_params ................... False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   bfloat16_enabled ............. False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   bfloat16_immediate_grad_update  False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   checkpoint_parallel_write_pipeline  False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   checkpoint_tag_validation_enabled  True
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   checkpoint_tag_validation_fail  False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f2fb42646d0>
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   communication_data_type ...... None
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   curriculum_enabled_legacy .... False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   curriculum_params_legacy ..... False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   data_efficiency_enabled ...... False
+[2024-07-08 05:51:49,479] [INFO] [config.py:1001:print]   dataloader_drop_last ......... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   disable_allgather ............ False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   dump_state ................... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 100, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   eigenvalue_enabled ........... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   eigenvalue_gas_boundary_resolution  1
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   eigenvalue_layer_num ......... 0
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   eigenvalue_max_iter .......... 100
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   eigenvalue_stability ......... 1e-06
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   eigenvalue_tol ............... 0.01
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   eigenvalue_verbose ........... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   elasticity_enabled ........... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   fp16_auto_cast ............... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   fp16_enabled ................. True
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   fp16_master_weights_and_gradients  False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   global_rank .................. 0
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   grad_accum_dtype ............. None
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   gradient_accumulation_steps .. 1
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   gradient_clipping ............ 1.0
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   gradient_predivide_factor .... 1.0
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   graph_harvesting ............. False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   initial_dynamic_scale ........ 65536
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   load_universal_checkpoint .... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   loss_scale ................... 0
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   memory_breakdown ............. False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   mics_hierarchial_params_gather  False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   mics_shard_size .............. -1
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='step1_tensorboard/ds_tensorboard_logs/', job_name='step1_model_tensorboard') comet=CometConfig(enabled=False, samples_log_interval=100, project=None, workspace=None, api_key=None, experiment_name=None, experiment_key=None, online=None, mode=None) wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   optimizer_legacy_fusion ...... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   optimizer_name ............... None
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   optimizer_params ............. None
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   pld_enabled .................. False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   pld_params ................... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   prescale_gradients ........... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   scheduler_name ............... None
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   scheduler_params ............. None
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   seq_parallel_communication_data_type  torch.float32
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   sparse_attention ............. None
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   sparse_gradients_enabled ..... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   steps_per_print .............. 10
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   timers_config ................ enabled=True synchronized=True
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   train_batch_size ............. 192
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   train_micro_batch_size_per_gpu  24
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   use_data_before_expert_parallel_  False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   use_node_local_storage ....... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   wall_clock_breakdown ......... False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   weight_quantization_config ... None
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   world_size ................... 8
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   zero_allow_untested_optimizer  False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='none', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=False) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='none', nvme_path=None, buffer_count=4, pin_memory=False, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=30000000 param_persistence_threshold=10000 model_persistence_threshold=sys.maxsize max_live_parameters=30000000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False use_all_reduce_for_fetch_params=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=False pipeline_loading_checkpoint=False override_module_apply=True
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   zero_enabled ................. False
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   zero_force_ds_cpu_optimizer .. True
+[2024-07-08 05:51:49,480] [INFO] [config.py:1001:print]   zero_optimization_stage ...... 0
+[2024-07-08 05:51:49,480] [INFO] [config.py:987:print_user_config]   json = {
+    "train_batch_size": 192, 
+    "train_micro_batch_size_per_gpu": 24, 
+    "steps_per_print": 10, 
+    "zero_optimization": {
+        "stage": 0, 
+        "offload_param": {
+            "device": "none"
+        }, 
+        "offload_optimizer": {
+            "device": "none"
+        }, 
+        "stage3_param_persistence_threshold": 1.000000e+04, 
+        "stage3_max_live_parameters": 3.000000e+07, 
+        "stage3_prefetch_bucket_size": 3.000000e+07, 
+        "memory_efficient_linear": false
+    }, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale_window": 100
+    }, 
+    "gradient_clipping": 1.0, 
+    "prescale_gradients": false, 
+    "wall_clock_breakdown": false, 
+    "hybrid_engine": {
+        "enabled": false, 
+        "max_out_tokens": 512, 
+        "inference_tp_size": 1, 
+        "release_inference_cache": false, 
+        "pin_parameters": true, 
+        "tp_gather_partition_size": 8
+    }, 
+    "tensorboard": {
+        "enabled": false, 
+        "output_path": "step1_tensorboard/ds_tensorboard_logs/", 
+        "job_name": "step1_model_tensorboard"
+    }
+}
+***** Running training *****
+Beginning of Epoch 1/100, Total Micro Batches 116
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+[2024-07-08 05:51:50,478] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 65536, reducing to 32768.0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 0
+[2024-07-08 05:51:50,478] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 65536 to 32768.0
+[2024-07-08 05:51:50,658] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 1
+[2024-07-08 05:51:50,658] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 1
+[2024-07-08 05:51:50,658] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 1
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 1
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 1
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 1
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 1
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 1
+[2024-07-08 05:51:50,659] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 32768.0, reducing to 16384.0
+[2024-07-08 05:51:50,659] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 32768.0 to 16384.0
+[2024-07-08 05:51:50,839] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 2
+[2024-07-08 05:51:50,839] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 2
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 2
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 2
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 2
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 2
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 2
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 2
+[2024-07-08 05:51:50,840] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 16384.0, reducing to 8192.0
+[2024-07-08 05:51:50,840] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 16384.0 to 8192.0
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 3
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 3
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 3
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 3
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 3
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 3
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 3
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 3
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+[2024-07-08 05:51:51,021] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 8192.0 to 4096.0
+[2024-07-08 05:51:51,021] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 8192.0, reducing to 4096.0
+[2024-07-08 05:51:51,201] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 4
+[2024-07-08 05:51:51,201] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 4
+[2024-07-08 05:51:51,201] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 4
+[2024-07-08 05:51:51,201] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+[2024-07-08 05:51:51,201] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 4
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+[2024-07-08 05:51:51,201] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 4
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 4
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 4
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 4
+[2024-07-08 05:51:51,202] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 4096.0, reducing to 2048.0
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+[2024-07-08 05:51:51,202] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 4096.0 to 2048.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 5
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 5
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 5
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 5
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 5
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 5
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 5
+[2024-07-08 05:51:51,382] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 2048.0, reducing to 1024.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 5
+[2024-07-08 05:51:51,382] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 2048.0 to 1024.0
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 6
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 6
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 6
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 6
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 6
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 6
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 6
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+[2024-07-08 05:51:51,562] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 1024.0, reducing to 512.0
+[2024-07-08 05:51:51,562] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 6
+[2024-07-08 05:51:51,563] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 1024.0 to 512.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 7
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 7
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 7
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 7
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 7
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 7
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 7
+[2024-07-08 05:51:51,743] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 512.0, reducing to 256.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 7
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:51:51,743] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:51:52,178] [INFO] [logging.py:96:log_dist] [Rank 0] step=10, skipped=8, lr=[2.0000000000000002e-11, 2.0000000000000002e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:51:52,182] [INFO] [timer.py:258:stop] epoch=0/micro_step=10/global_step=10, RunningAvgSamplesPerSec=1011.2385194319378, CurrSamplesPerSec=915.6556988968557, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:51:54,225] [INFO] [logging.py:96:log_dist] [Rank 0] step=20, skipped=8, lr=[9.999999265261389e-11, 9.999999265261389e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:51:54,229] [INFO] [timer.py:258:stop] epoch=0/micro_step=20/global_step=20, RunningAvgSamplesPerSec=970.8164402982146, CurrSamplesPerSec=944.597687613118, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:51:56,273] [INFO] [logging.py:96:log_dist] [Rank 0] step=30, skipped=8, lr=[9.999973549432683e-11, 9.999973549432683e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:51:56,277] [INFO] [timer.py:258:stop] epoch=0/micro_step=30/global_step=30, RunningAvgSamplesPerSec=959.6662918837756, CurrSamplesPerSec=936.3570244243886, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:51:58,318] [INFO] [logging.py:96:log_dist] [Rank 0] step=40, skipped=8, lr=[9.999911096889369e-11, 9.999911096889369e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:51:58,322] [INFO] [timer.py:258:stop] epoch=0/micro_step=40/global_step=40, RunningAvgSamplesPerSec=954.7633970218908, CurrSamplesPerSec=944.1602374861361, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:52:00,362] [INFO] [logging.py:96:log_dist] [Rank 0] step=50, skipped=8, lr=[9.999811908090311e-11, 9.999811908090311e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:52:00,366] [INFO] [timer.py:258:stop] epoch=0/micro_step=50/global_step=50, RunningAvgSamplesPerSec=952.0281460625979, CurrSamplesPerSec=942.934217597943, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:52:02,408] [INFO] [logging.py:96:log_dist] [Rank 0] step=60, skipped=8, lr=[9.999675983764286e-11, 9.999675983764286e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:52:02,412] [INFO] [timer.py:258:stop] epoch=0/micro_step=60/global_step=60, RunningAvgSamplesPerSec=950.0848322056021, CurrSamplesPerSec=945.4105371410861, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:52:04,453] [INFO] [logging.py:96:log_dist] [Rank 0] step=70, skipped=8, lr=[9.999503324909982e-11, 9.999503324909982e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:52:04,457] [INFO] [timer.py:258:stop] epoch=0/micro_step=70/global_step=70, RunningAvgSamplesPerSec=948.8550974931183, CurrSamplesPerSec=943.237938175242, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:52:06,498] [INFO] [logging.py:96:log_dist] [Rank 0] step=80, skipped=8, lr=[9.999293932795992e-11, 9.999293932795992e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:52:06,502] [INFO] [timer.py:258:stop] epoch=0/micro_step=80/global_step=80, RunningAvgSamplesPerSec=947.8797859376263, CurrSamplesPerSec=944.1248162294863, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:52:08,542] [INFO] [logging.py:96:log_dist] [Rank 0] step=90, skipped=8, lr=[9.999047808960796e-11, 9.999047808960796e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:52:08,546] [INFO] [timer.py:258:stop] epoch=0/micro_step=90/global_step=90, RunningAvgSamplesPerSec=947.1939433444661, CurrSamplesPerSec=942.8039538213521, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:52:10,585] [INFO] [logging.py:96:log_dist] [Rank 0] step=100, skipped=8, lr=[9.998764955212763e-11, 9.998764955212763e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:52:10,589] [INFO] [timer.py:258:stop] epoch=0/micro_step=100/global_step=100, RunningAvgSamplesPerSec=946.664765788707, CurrSamplesPerSec=945.1442386913383, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 256.0 to 512.0
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 256.0 to 512.0
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 256.0 to 512.0
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 256.0 to 512.0
+[2024-07-08 05:52:12,419] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+[2024-07-08 05:52:12,420] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 256.0 to 512.0
+[2024-07-08 05:52:12,420] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+[2024-07-08 05:52:12,420] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 256.0 to 512.0
+[2024-07-08 05:52:12,420] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+[2024-07-08 05:52:12,420] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 256.0 to 512.0
+[2024-07-08 05:52:12,420] [INFO] [fused_optimizer.py:400:_update_scale] No Grad overflow for 100 iterations
+[2024-07-08 05:52:12,420] [INFO] [fused_optimizer.py:401:_update_scale] Increasing dynamic loss scale from 256.0 to 512.0
+[2024-07-08 05:52:12,611] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 109
+[2024-07-08 05:52:12,611] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 109
+[2024-07-08 05:52:12,611] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 109
+[2024-07-08 05:52:12,611] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 109
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 109
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 109
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 109
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:392:_update_scale] 
+Grad overflow on iteration 109
+[2024-07-08 05:52:12,612] [INFO] [logging.py:96:log_dist] [Rank 0] Overflow detected. Skipping step. Attempted loss scale: 512.0, reducing to 256.0
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:52:12,612] [INFO] [fused_optimizer.py:393:_update_scale] Reducing dynamic loss scale from 512.0 to 256.0
+[2024-07-08 05:52:12,612] [INFO] [logging.py:96:log_dist] [Rank 0] step=110, skipped=9, lr=[9.998478984476141e-11, 9.998478984476141e-11], mom=[(0.9, 0.95), (0.9, 0.95)]
+[2024-07-08 05:52:12,612] [INFO] [timer.py:258:stop] epoch=0/micro_step=110/global_step=110, RunningAvgSamplesPerSec=947.1301754206415, CurrSamplesPerSec=1063.9478295794447, MemAllocated=5.53GB, MaxMemAllocated=33.78GB
+======================================================================
+Execution time: 20.4296 seconds for 100 steps
+Throughput: 939.8130 samples/sec
+[2024-07-08 05:52:16,466] [INFO] [launch.py:351:main] Process 1037234 exits successfully.
+[2024-07-08 05:52:16,466] [INFO] [launch.py:351:main] Process 1037229 exits successfully.
+[2024-07-08 05:52:16,466] [INFO] [launch.py:351:main] Process 1037227 exits successfully.
+[2024-07-08 05:52:16,466] [INFO] [launch.py:351:main] Process 1037231 exits successfully.
+[2024-07-08 05:52:16,467] [INFO] [launch.py:351:main] Process 1037232 exits successfully.
+[2024-07-08 05:52:16,467] [INFO] [launch.py:351:main] Process 1037230 exits successfully.
+[2024-07-08 05:52:16,467] [INFO] [launch.py:351:main] Process 1037233 exits successfully.
+[2024-07-08 05:52:16,467] [INFO] [launch.py:351:main] Process 1037228 exits successfully.
