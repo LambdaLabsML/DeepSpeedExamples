@@ -23,7 +23,7 @@ fi
 
 source ./setup_env.sh $MODEL_NAME $STEP_NAME && \
 PROJECT_PATH=${PROJECT_PATH} $deepspeed_path --hostfile=$HOSTFILE_NAME --master_addr $master_addr $SCRIPT_PATH/main.py \
-   --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
+   --data_path Dahoas/rm-static Dahoas/full-hh-rlhf \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
    --model_name_or_path $MODEL_PATH \
