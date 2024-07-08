@@ -9,6 +9,7 @@ export PROJECT_PATH=/home/ubuntu/${SHARED_STORAGE}/benchmark
 # Setup the repo
 # This will take ~30 mins including caching model and datasets
 wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/master/applications/DeepSpeed-Chat/./setup_deepchat.sh && \
+chmod +x setup_deepchat.sh && \
 ./setup_deepchat.sh
 ```
 
