@@ -3,14 +3,11 @@
 ## Set up
 ```
 # Tell me where is your shared storage
-export SHARED_STORAGE=/home/ubuntu/<NAME-OF-SHARED-STORAGE>
+export SHARED_STORAGE=<NAME-OF-SHARED-STORAGE> && \
+export PROJECT_PATH=/home/ubuntu/${SHARED_STORAGE}/benchmark
 
 # Setup the repo
-export PROJECT_PATH=/home/ubuntu/${SHARED_STORAGE}/benchmark && \
-mkdir -p $PROJECT_PATH && \
-cd ${PROJECT_PATH} && \
-git clone https://github.com/LambdaLabsML/DeepSpeedExamples.git && \
-cd DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
+wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/master/applications/DeepSpeed-Chat/./setup_deepchat.sh && \
 ./setup_deepchat.sh
 ```
 
