@@ -255,12 +255,14 @@ def main():
     train_dataloader = DataLoader(train_dataset,
                                   collate_fn=data_collator,
                                   sampler=train_sampler,
-                                  batch_size=args.per_device_train_batch_size)
+                                  batch_size=args.per_device_train_batch_size,
+                                  drop_last=True)
     eval_sampler = SequentialSampler(eval_dataset)
     eval_dataloader = DataLoader(eval_dataset,
                                  collate_fn=data_collator,
                                  sampler=eval_sampler,
-                                 batch_size=args.per_device_eval_batch_size)
+                                 batch_size=args.per_device_eval_batch_size,
+                                 drop_last=True)
 
     def evaluation_reward(model, eval_dataloader):
         model.eval()
@@ -330,11 +332,10 @@ def main():
             f"chosen_last_scores (higher is better) : {reward_score}, acc (higher is better) : {acc}",
             args.global_rank)
         
-        start_time = time.time()
         steps = 0
         for epoch in range(args.num_train_epochs):
 
-            if steps == args.max_steps:
+            if steps == args.max_steps + args.num_warmup_steps:
                 break
 
             print_rank_0(
@@ -343,6 +344,10 @@ def main():
             rm_model.train()
             mean_loss = 0
             for step, batch in enumerate(train_dataloader):
+
+                if steps == args.num_warmup_steps:
+                    start_time = time.time()
+
                 batch = to_device(batch, device)
                 outputs = rm_model(**batch, use_cache=False)
                 loss = outputs["loss"]
@@ -350,7 +355,7 @@ def main():
                 rm_model.step()
                 mean_loss += loss.item()
                 steps += 1
-                if steps == args.max_steps:
+                if steps == args.max_steps + args.num_warmup_steps:
                     break
             
             if args.max_steps < 0:
@@ -383,9 +388,9 @@ def main():
         end_time = time.time()
         execution_time = end_time - start_time
         if args.global_rank == 0:
-            throughput = args.per_device_train_batch_size * torch.distributed.get_world_size() * steps / execution_time
+            throughput = args.per_device_train_batch_size * torch.distributed.get_world_size() * (steps - args.num_warmup_steps) / execution_time
             print_rank_0(f"======================================================================")
-            print_rank_0(f"Execution time: {execution_time:.4f} seconds for {steps} steps")
+            print_rank_0(f"Execution time: {execution_time:.4f} seconds for {steps - args.num_warmup_steps} steps")
             print_rank_0(f"Throughput: {throughput:.4f} samples/sec")
 
 
