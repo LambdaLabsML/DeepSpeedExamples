@@ -25,7 +25,7 @@ export SHARED_STORAGE=<NAME-OF-SHARED-STORAGE>
 # ./nodes/node1.txt for the first node: node-001
 # ./nodes/hosts.txt for all the nodes
 export PROJECT_PATH=/home/ubuntu/${SHARED_STORAGE}/benchmark && \
-wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/master/applications/DeepSpeed-Chat/./setup_deepchat.sh && \
+wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/master/applications/DeepSpeed-Chat/training/setup_deepchat.sh && \
 chmod +x setup_deepchat.sh && \
 ./setup_deepchat.sh
 ```
