@@ -6,7 +6,7 @@ Simply provide the name of the shared stroage (where the code will be cloned and
 
 ```
 # Tell me where is your shared storage
-export SHARED_STORAGE=<NAME-OF-SHARED-STORAGE>
+export SHARED_STORAGE=$HOME
 
 # Setup the benchmark
 # This will take ~30 mins including caching model and datasets
