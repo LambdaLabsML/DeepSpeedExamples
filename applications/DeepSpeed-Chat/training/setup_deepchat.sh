@@ -5,16 +5,10 @@ mkdir -p $PROJECT_PATH && \
 cd ${PROJECT_PATH} && \
 git clone https://github.com/LambdaLabsML/DeepSpeedExamples.git && \
 cd DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
+checkout gcp-a3
 
 # Add PROJECT_PATH to deepspeed config file
 sed -i "1s|^PROJECT_PATH=.*|PROJECT_PATH=$PROJECT_PATH|" .deepspeed_env
-
-# Create hostfiles
-# ./nodes/node1.txt has node-001
-# ./nodes/hosts.txt has all nodes
-mkdir -p ./nodes && grep '\-node\-' /etc/hosts | awk '{print $2}' > ./nodes/hosts.txt && \
-NODE1=$(head -1 ./nodes/hosts.txt) && \
-echo $NODE1 > nodes/node1.txt
 
 # Install dependencis on all worker nodes
 ./install_dependencies.sh ./nodes/hosts.txt
