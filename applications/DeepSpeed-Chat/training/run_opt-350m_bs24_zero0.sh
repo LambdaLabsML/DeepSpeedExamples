@@ -18,7 +18,7 @@ master_addr=$(echo "$first_line" | awk '{print $1}')
 deepspeed_path=$(which deepspeed)
 if [ -z "$deepspeed_path" ]; then
     # deepspeed was not found in the system path, so hardcode the path
-    deepspeed_path="/home/ubuntu/.local/bin/deepspeed"
+    deepspeed_path="${HOME}/.local/bin/deepspeed"
 fi
 
 source ./setup_env.sh $MODEL_NAME $STEP_NAME && \
