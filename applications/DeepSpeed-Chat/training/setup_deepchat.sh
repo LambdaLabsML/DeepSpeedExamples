@@ -5,7 +5,7 @@ mkdir -p $PROJECT_PATH && \
 cd ${PROJECT_PATH} && \
 git clone https://github.com/LambdaLabsML/DeepSpeedExamples.git && \
 cd DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
-checkout gcp-a3
+git checkout gcp-a3
 
 # Add PROJECT_PATH to deepspeed config file
 sed -i "1s|^PROJECT_PATH=.*|PROJECT_PATH=$PROJECT_PATH|" .deepspeed_env
