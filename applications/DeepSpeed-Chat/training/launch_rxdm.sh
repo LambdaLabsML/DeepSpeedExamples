@@ -1,0 +1,82 @@
+#!/bin/bash
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+set -e
+
+
+NCCL_PLUGIN_IMAGE=us-docker.pkg.dev/gce-ai-infra/gpudirect-tcpxo/nccl-plugin-gpudirecttcpx-dev:v1.0.2
+RXDM_IMAGE=us-docker.pkg.dev/gce-ai-infra/gpudirect-tcpxo/tcpgpudmarxd-dev:v1.0.8
+RXDM_CONTAINER=receive-datapath-manager-"${SLURM_JOB_ID}"
+if true; then
+	docker container list --filter "name=receive-datapath-manager-*" --quiet | xargs --no-run-if-empty docker container stop
+
+        export PATH=${PATH}:/usr/local/lib/google-cloud-sdk/bin/
+        gcloud auth configure-docker --quiet us-docker.pkg.dev 2>&1 &>/dev/null
+
+	# Install the nccl, nccl-net lib into /var/lib/tcpxo/lib64/.
+	docker run --rm --gpus all --name nccl-installer --network=host --cap-add=NET_ADMIN \
+		--pull=always \
+		--volume /var/lib:/var/lib \
+		--device /dev/nvidia0:/dev/nvidia0 \
+		--device /dev/nvidia1:/dev/nvidia1 \
+		--device /dev/nvidia2:/dev/nvidia2 \
+		--device /dev/nvidia3:/dev/nvidia3 \
+		--device /dev/nvidia4:/dev/nvidia4 \
+		--device /dev/nvidia5:/dev/nvidia5 \
+		--device /dev/nvidia6:/dev/nvidia6 \
+		--device /dev/nvidia7:/dev/nvidia7 \
+		--device /dev/nvidia-uvm:/dev/nvidia-uvm \
+		--device /dev/nvidiactl:/dev/nvidiactl \
+		--device /dev/dmabuf_import_helper:/dev/dmabuf_import_helper \
+		--env LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/usr/local/nvidia/lib64:/var/lib/tcpxo/lib64 \
+		${NCCL_PLUGIN_IMAGE} \
+		install
+
+	# Start FasTrak receive-datapath-manager
+	docker run \
+		--detach \
+		--pull=always \
+		--rm \
+		--name ${RXDM_CONTAINER} \
+		--cap-add=NET_ADMIN \
+		--network=host \
+		--privileged \
+		--gpus all \
+		--volume /var/lib/nvidia/lib64:/usr/local/nvidia/lib64 \
+		--volume /dev/dmabuf_import_helper:/dev/dmabuf_import_helper \
+		--env LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu \
+		${RXDM_IMAGE} \
+		--num_hops=2 --num_nics=8 --uid= --alsologtostderr
+
+	# Wait for RxDM
+	counter=0
+	while true; do
+		rxdm_init_log=$(docker container logs ${RXDM_CONTAINER} 2>&1 | grep "Buffer manager initialization complete") || true
+		if [[ -z $rxdm_init_log ]]; then
+			echo "RxDM hasn't finished init yet."
+			docker logs --tail 10 ${RXDM_CONTAINER} || true
+			sleep 2
+			counter=$((counter + 1))
+			if [[ "$counter" -gt 10 ]]; then
+				echo "FAILED to restart rxdm on $(hostname)"
+				exit 1
+				break
+			fi
+		else
+			echo "RxDM initialization complete"
+			break
+		fi
+	done
+fi
