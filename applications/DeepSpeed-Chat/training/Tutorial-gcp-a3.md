@@ -12,6 +12,7 @@ export SHARED_STORAGE=$HOME
 
 # Setup the benchmark
 # This will take ~30 mins including caching model and datasets
+# It will also launch the RXDM container on all worker nodes
 export PROJECT_PATH=${SHARED_STORAGE}/benchmark && \
 wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/gcp-a3/applications/DeepSpeed-Chat/training/setup_deepchat.sh && \
 chmod +x setup_deepchat.sh && \

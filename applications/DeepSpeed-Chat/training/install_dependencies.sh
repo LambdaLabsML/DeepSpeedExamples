@@ -18,6 +18,6 @@ fi
 while IFS= read -r hostname || [ -n "$hostname" ]; do
   if [ -n "$hostname" ]; then
     echo "Processing $hostname"
-    ssh "$hostname" "sudo apt-get install -y ninja-build" &
+    ssh "$hostname" "sudo apt-get install -y ninja-build && bash $(pwd)/launch_rxdm.sh" &
   fi
 done < "$input_file"
