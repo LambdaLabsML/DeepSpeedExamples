@@ -1,18 +1,14 @@
 # Benchmark DeepSpeed-Chat Training on GCP-A3
 
 ## Setup
+Prerequisites
 * Add all worker nodes to nodes/hosts.txt
 * Add the first worker node to nodes/1node.txt
 
-Simply provide the name of the shared stroage (where the code will be cloned and data will be cachced), and run the `setup_deepchat.sh` script.
+Next, run the `setup_deepchat.sh` script. This will take ~30 mins including caching model and datasets. It will also launch the RXDM container on all worker nodes.
 
 ```
-# Tell me where is your shared storage
-export SHARED_STORAGE=$HOME
-
-# Setup the benchmark
-# This will take ~30 mins including caching model and datasets
-# It will also launch the RXDM container on all worker nodes
+export SHARED_STORAGE=$HOME & \
 export PROJECT_PATH=${SHARED_STORAGE}/benchmark && \
 wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/gcp-a3/applications/DeepSpeed-Chat/training/setup_deepchat.sh && \
 chmod +x setup_deepchat.sh && \
