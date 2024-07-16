@@ -15,6 +15,8 @@ echo >> $NAME_LOG
 first_line=$(head -n 1 "$HOSTFILE_NAME")
 master_addr=$(echo "$first_line" | awk '{print $1}')
 
+source $HOME/venv-gcp/bin/activate
+
 deepspeed_path=$(which deepspeed)
 if [ -z "$deepspeed_path" ]; then
     # deepspeed was not found in the system path, so hardcode the path

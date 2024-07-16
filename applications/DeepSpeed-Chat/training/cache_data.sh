@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $HOME/venv-gcp/bin/activate
+
 deepspeed_path=$(which deepspeed)
 if [ -z "$deepspeed_path" ]; then
     # deepspeed was not found in the system path, so hardcode the path

@@ -1,10 +1,7 @@
-PROJECT_PATH=/home/ubuntu/ml-1cc/benchmark
-
-# These parameters should not be modified
+PROJECT_PATH=/home/
 NCCL_LIB_DIR="/var/lib/tcpxo/lib64"
 NCCL_DIR="/home/c_lambdal_com/nccl/build/lib"
 LD_LIBRARY_PATH=${NCCL_DIR}:${NCCL_LIB_DIR}:/usr/lib/x86_64-linux-gnu:\$LD_LIBRARY_PATH
-
 OMPI_MCA_btl_tcp_if_include=enp0s12
 UCX_TLS=self,shm,tcp
 UCX_TLS=self,shm,tcp
