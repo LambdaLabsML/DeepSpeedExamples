@@ -1,6 +1,8 @@
 # Benchmark DeepSpeed-Chat Training on GCP-A3
 
 ## Setup
+* Add all worker nodes to nodes/hosts.txt
+* Add the first worker node to nodes/1node.txt
 
 Simply provide the name of the shared stroage (where the code will be cloned and data will be cachced), and run the `setup_deepchat.sh` script.
 
