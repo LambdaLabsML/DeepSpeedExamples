@@ -3,7 +3,7 @@ NODES=${1:-"hosts"}
 CLUSTER_SIZE=${2:-1}
 MODEL=${3:-"opt-13b_bs16_zero0"}
 NSLOTS=${4:-8}
-TIMEOUT=${4:-1200}
+TIMEOUT=${5:-1200}
 
 # Declare an associative array for expected throughput values
 declare -A THROUGHPUTS

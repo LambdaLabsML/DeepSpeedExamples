@@ -33,12 +33,13 @@ chmod +x setup_deepchat.sh && \
 
 # Run benchmark
 ```
-# Benchmark opt-350m_bs24_zero0 on a single node 
+# Benchmark opt-350m_bs24_zero0 on a single node of 8 GPUs
 # node1: name of the hostfile that only has node-001 in it
 # 1    : sub-cluster size
 # opt-350m_bs24_zero0: name of the benchmark script (see opt-350m_bs24_zero0.sh for details)
+# 8    : number of GPU per node (default 8)
 cd ${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
-./run_benchmark.sh node1 1 opt-350m_bs24_zero0
+./run_benchmark.sh node1 1 opt-350m_bs24_zero0 8
 
 # Sub-divide ./nodes/hosts.txt into smaller clusters of size 2, and benchmark opt-350m_bs24_zero0 on these clusters in parallel.
 # hosts: name of the hostfile
@@ -57,10 +58,11 @@ cd ${PROJECT_PATH}/DeepSpeedExamples/applications/DeepSpeed-Chat/training && \
 The throughputs will be saved to the csv files inside `./results`. Full console output will be saved in the log files in the `./output` folder.
 
 # Results
-Here are the reference throughputs (`samples/sec`) of a 64x nodes (512x NVIDIA H100s) 1-Click Cluster.
+Here are the reference throughputs (`samples/sec`) of a 512x NVIDIA H100s (64x nodes) 1-Click Cluster.
 
 | NUM_GPUs | opt-350m_bs24_zero0 | opt-13b_bs16_zero0 |
 |----------|---------------------|--------------------|
+| 1        |      119        |       9        |
 | 8        |      943        |       73       |
 | 16       |     1874        |      146       |
 | 32       |     3729        |      290       |
