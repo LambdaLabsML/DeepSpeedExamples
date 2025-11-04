@@ -43,7 +43,7 @@ def get_train_ds_config(offload,
         },
         "gradient_clipping": 1.0,
         "prescale_gradients": False,
-        "wall_clock_breakdown": False,
+        "wall_clock_breakdown": True,
         "hybrid_engine": {
             "enabled": enable_hybrid_engine,
             "max_out_tokens": max_out_tokens,
@@ -80,5 +80,5 @@ def get_eval_ds_config(offload, stage=0):
         },
         "gradient_clipping": 1.0,
         "prescale_gradients": False,
-        "wall_clock_breakdown": False
+        "wall_clock_breakdown": True
     }

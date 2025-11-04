@@ -10,7 +10,12 @@ from transformers import (
     AutoModel,
 )
 from huggingface_hub import snapshot_download
-from transformers.deepspeed import HfDeepSpeedConfig
+try:
+    # Newer Transformers
+    from transformers.integrations.deepspeed import HfDeepSpeedConfig
+except ImportError:
+    # Older Transformers (<= ~4.33)
+    from transformers.deepspeed import HfDeepSpeedConfig
 
 from .reward_model import RewardModel
 

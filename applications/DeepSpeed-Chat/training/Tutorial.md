@@ -1,6 +1,42 @@
 # Benchmark DeepSpeed-Chat Training on Lambda Machines
+## Docker based setup:
 
-## Usage
+#### Step 1: Configure Environment
+
+Create a .env file with your paths:
+
+```
+cat > .env << EOF
+# HOST PATHS
+HOST_CACHE_PATH=/srv/nfs/staging/.cache
+HOST_REPO_PATH=/srv/nfs/staging/DeepSpeedExamples
+
+# CONTAINER PATHS (inside Docker)
+PROJECT_PATH=/workspace
+EOF
+```
+
+Adjust HOST\_CACHE\_PATH and HOST\_REPO\_PATH to match your storage locations.
+
+#### Step 2: Build and Run Container
+
+```
+make build   # Build Docker image
+make run     # Start container
+make shell   # Enter container shell
+```
+
+Inside the container, you'll be at /workspace/DeepSpeedExamples/applications/DeepSpeed-Chat/training.
+
+#### Step 3: Run below commands to run training
+
+```
+./run_batch.sh run_opt-350m_bs24_zero0 hostfiles/1node_1xN/ output/raj_1xN_opt-350m_bs24 3000
+./run_batch.sh run_opt-13b_bs16_zero0 hostfiles/1node_1xN/ output/raj_1xN_opt-13b_bs16_zero0/ 600
+```
+
+
+## Usage (Non-docker based setup)
 
 #### Step 1: Step up the envrionment
 
@@ -10,13 +46,13 @@
 pip install deepspeed==0.10.0 && \
 sudo apt-get update && sudo apt-get install -y python3-pybind11 && \
 wget https://raw.githubusercontent.com/LambdaLabsML/DeepSpeedExamples/master/applications/DeepSpeed-Chat/requirements_freeze.txt && \
-pip install --upgrade -r requirements_freeze.txt && \
-rm requirements_freeze.txt
+xargs -a requirements_freeze.txt -I{} sh -c 'pip install --upgrade "{}" || echo "SKIPPED: {}"'
 ```
 
 Note: you can blast this installtion across a cluster with the `install_dependencies.sh` script.
 ```
-./install_dependencies.sh <path-to-list-of-nodes.txt>
+#./install_dependencies.sh <path-to-list-of-nodes.txt>
+#./install_dependencies.sh ./hostfile/1node_1xN 
 ```
 
 ```
