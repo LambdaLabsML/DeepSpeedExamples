@@ -129,3 +129,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# deepspeed logs
+*.log
+*.log
+**/*.log

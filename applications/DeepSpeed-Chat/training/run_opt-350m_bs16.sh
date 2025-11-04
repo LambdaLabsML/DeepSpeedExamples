@@ -15,11 +15,7 @@ echo >> $NAME_LOG
 first_line=$(head -n 1 "$HOSTFILE_NAME")
 master_addr=$(echo "$first_line" | awk '{print $1}')
 
-deepspeed_path=$(which deepspeed)
-if [ -z "$deepspeed_path" ]; then
-    # deepspeed was not found in the system path, so hardcode the path
-    deepspeed_path="/home/ubuntu/.local/bin/deepspeed"
-fi
+deepspeed_path="deepspeed"
 
 source ./setup_env.sh $MODEL_NAME $STEP_NAME && \
 PROJECT_PATH=${PROJECT_PATH} $deepspeed_path --hostfile=$HOSTFILE_NAME --master_addr $master_addr $SCRIPT_PATH/main.py \

@@ -1,0 +1,12 @@
+.git
+.cache
+*.pyc
+__pycache__
+*.egg-info
+venv/
+.venv/
+.env
+*.log
+outputs/
+checkpoints/
+.DS_Store
