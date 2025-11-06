@@ -13,7 +13,7 @@ This tutorial covers setting up the DeepSpeed-Chat environment, caching [models]
 
 ## Setup
 
-Simply provide the name of the shared stroage (where the code will be cloned and data will be cachced), and run the `setup_deepchat.sh` script.
+Simply provide the name of the shared storage (where the code will be cloned and data will be cachced), and run the `setup_deepchat.sh` script.
 
 ```
 # Tell me where is your shared storage

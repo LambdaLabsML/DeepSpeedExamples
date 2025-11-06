@@ -1,6 +1,28 @@
 # Benchmark DeepSpeed-Chat Training on Lambda Machines
 ## Docker based setup:
 
+#### Step 0: Install nvidia-container-toolkit
+
+Check that `nvidia-container-toolkit` is installed, e.g.
+```
+$ nvidia-container-toolkit --version
+NVIDIA Container Runtime Hook version 1.17.8
+```
+
+If it is not installed, install and restart docker:
+```
+$ sudo apt-get update
+$ sudo apt-get install -y nvidia-container-toolkit
+$ sudo systemctl restart docker
+```
+
+Check that `nvidia` has been registered with the Docker daemon runtime by checking
+that it appears in the docker Runtimes list
+```
+$ docker info | grep -i runtimes
+Runtimes: io.containerd.runc.v2 nvidia runc
+```
+
 #### Step 1: Configure Environment
 
 Create a .env file with your paths:
@@ -16,7 +38,9 @@ PROJECT_PATH=/workspace
 EOF
 ```
 
-Adjust HOST\_CACHE\_PATH and HOST\_REPO\_PATH to match your storage locations.
+Adjust HOST\_CACHE\_PATH and HOST\_REPO\_PATH to match your storage locations.  In particular, HOST\_REPO\_PATH
+should point to the root of your cloned `DeepSpeedExamples` repo.  HOST\_CACHE\_PATH is the directory in which
+training datasets will be stored.
 
 #### Step 2: Build and Run Container
 
@@ -28,12 +52,37 @@ make shell   # Enter container shell
 
 Inside the container, you'll be at /workspace/DeepSpeedExamples/applications/DeepSpeed-Chat/training.
 
-#### Step 3: Run below commands to run training
+> [!TIP]
+> Ensure that your user is a member of the docker group, e.g.
+> ```
+> $ groups
+> ubuntu users admin docker
+> ```
+> If `docker` is not present, run
+> ```
+> $ sudo usermod -aG docker $USER
+> ```
+> and log out and back in.
+
+
+#### Step 3: Run training
+
+Prepare a directory of hostfiles to run batch training on. For example, if running on a single node with a single GPU, your directory
+will contain a single file:
+```
+$ mkdir hostfiles/1node_1xN
+$ echo "localhost slots=1" > hostfiles/1node_1xN/hostfile_1xN_batch1
+```
+
+Run the `run_batch.sh` script on the desired scripts.  For example, to train the opt-350 and opt-13b models, run
 
 ```
-./run_batch.sh run_opt-350m_bs24_zero0 hostfiles/1node_1xN/ output/raj_1xN_opt-350m_bs24 3000
-./run_batch.sh run_opt-13b_bs16_zero0 hostfiles/1node_1xN/ output/raj_1xN_opt-13b_bs16_zero0/ 600
+./run_batch.sh run_opt-350m_bs24_zero0 hostfiles/1node_1xN/ output/${USER}_1xN_opt-350m_bs24 3000
+./run_batch.sh run_opt-13b_bs16_zero0 hostfiles/1node_1xN/ output/${USER}_1xN_opt-13b_bs16_zero0/ 600
 ```
+
+> [!CAUTION]
+> Training larger models like opt-13b on smaller clusters (like single A10 VMs) may be impossible or require significant reconfiguration.
 
 
 ## Usage (Non-docker based setup)
