@@ -1,7 +1,10 @@
-.PHONY: build run stop clean shell logs
+.PHONY: env build run stop clean shell logs
+
+env:
+	sudo sysctl -w vm.max_map_count=1500000
 
 build:
-	docker compose build
+	./docker_scripts/make_build.sh
 
 run:
 	docker compose up -d
