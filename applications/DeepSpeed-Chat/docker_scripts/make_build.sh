@@ -9,4 +9,3 @@ fi
 
 # Build the docker container
 docker compose build
-
