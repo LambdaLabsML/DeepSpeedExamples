@@ -1,7 +1,0 @@
-export PROJECT_PATH=/workspace/
-export OMPI_MCA_btl_tcp_if_include=bond0
-export UCX_TLS=self,shm,tcp
-export NCCL_IB_PCI_RELAXED_ORDERING=1
-export NCCL_SOCKET_IFNAME=bond0
-export NCCL_DEBUG=WARN
-

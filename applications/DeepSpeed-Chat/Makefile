@@ -1,7 +1,7 @@
 .PHONY: env build run stop clean shell logs
 
 env:
-	sudo sysctl -w vm.max_map_count=1500000
+	./docker_scripts/make_env.sh
 
 build:
 	./docker_scripts/make_build.sh
