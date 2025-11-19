@@ -35,6 +35,10 @@ HOST_REPO_PATH=/srv/nfs/staging/DeepSpeedExamples
 
 # CONTAINER PATHS (inside Docker)
 PROJECT_PATH=/workspace
+
+# PORTS
+DOCKER_SSH_PORT=5100        # optional; defaults to 5100
+DOCKER_MASTER_PORT=29500    # optional; defaults to 29500
 EOF
 ```
 
@@ -71,6 +75,9 @@ make env
 
 #### Step 2: Build and Run Container
 
+> [!WARNING]
+> These steps must be completed for all nodes participating in training.  It is recommended that you place the root DeepSpeedExamples repository in a shared filesystem, else environment variables, hostfiles, and outputs may not be correctly synced across devices.
+
 ```
 make build   # Build Docker image
 make run     # Start container
@@ -101,11 +108,17 @@ $ mkdir hostfiles/1node_1xN
 $ echo "localhost slots=1" > hostfiles/1node_1xN/hostfile_1xN_batch1
 ```
 
-Run the `run_batch.sh` script on the desired scripts.  For example, to train the opt-350 and opt-13b models, run
+SSH into one of the nodes running the docker container and cd into the `training` folder:
 
 ```
-./run_batch.sh run_opt-350m_bs24_zero0 hostfiles/1node_1xN/ output/${USER}_1xN_opt-350m_bs24 3000
-./run_batch.sh run_opt-13b_bs16_zero0 hostfiles/1node_1xN/ output/${USER}_1xN_opt-13b_bs16_zero0/ 600
+cd <path to root repository>/DeepSpeedExamples/applications/DeepSpeed-Chat/training
+```
+
+Run the `run_docker_batch.sh` script on the desired scripts.  For example, to train the opt-350 and opt-13b models, run
+
+```
+./run_docker_batch.sh run_opt-350m_bs24_zero0 hostfiles/1node_1xN/ output/${USER}_1xN_opt-350m_bs24 3000
+./run_docker_batch.sh run_opt-13b_bs16_zero0 hostfiles/1node_1xN/ output/${USER}_1xN_opt-13b_bs16_zero0/ 600
 ```
 
 > [!CAUTION]

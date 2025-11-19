@@ -7,6 +7,16 @@ services:
     container_name: deepspeed-training
     cap_add:
       - IPC_LOCK
+
+    # Running in network-host mode ensures that the node network is visible to
+    # processes within the container.
+    # If running without host mode, DeepSpeed's master port must be exposed to
+    # the container.  I.e.
+    # ports:
+    #   - "${SSH_PORT:-22}:${SSH_PORT:-22}"
+    #   - "${DOCKER_MASTER_PORT:-29500}:${DOCKER_MASTER_PORT:-29500}"
+    network_mode: "host"
+    
     privileged: true
     runtime: nvidia
 
@@ -24,7 +34,7 @@ services:
         soft: -1
         hard: -1
     
-    command: /bin/bash -c "/usr/sbin/sshd && tail -f /dev/null"
+    command: /workspace/DeepSpeedExamples/applications/DeepSpeed-Chat/docker_scripts/entrypoint.sh
     
     environment:
       - PROJECT_PATH=${PROJECT_PATH:-/workspace}
@@ -33,6 +43,9 @@ services:
       - HF_DATASETS_CACHE=${PROJECT_PATH:-/workspace}/.cache/huggingface/datasets
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      # Expose ports to the container environment
+      - SSH_PORT=${DOCKER_SSH_PORT:-5100}
+      - MASTER_PORT=${DOCKER_MASTER_PORT:-29500}
     
     volumes:
       # Mount DeepSpeedExamples repo to /workspace/DeepSpeedExamples
@@ -40,6 +53,11 @@ services:
       
       # Mount cache to /workspace/.cache
       - ${HOST_CACHE_PATH}:${PROJECT_PATH}/.cache:rw
+
+      # Mount ssh keys to a temporary volume
+      # Volume is temporary because we need to change the permissions on .ssh files to root
+      # within the container
+      - ~/.ssh:/tmp/host_ssh:ro
     
     stdin_open: true
     tty: true

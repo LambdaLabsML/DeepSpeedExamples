@@ -36,7 +36,7 @@ master_addr=$(echo "$first_line" | awk '{print $1}')
 deepspeed_path="deepspeed"
 
 source ./setup_env.sh $MODEL_NAME $STEP_NAME && \
-PROJECT_PATH=${PROJECT_PATH} $deepspeed_path --hostfile=$HOSTFILE_NAME --master_addr $master_addr $SCRIPT_PATH/main.py \
+PROJECT_PATH=${PROJECT_PATH} $deepspeed_path --hostfile=$HOSTFILE_NAME --ssh_port ${SSH_PORT:-22} --master_port ${MASTER_PORT:-29500} --master_addr $master_addr $SCRIPT_PATH/main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf \
    --data_split 2,4,4 \
    --data_output_path $DATA_OUTPUT_PATH \
