@@ -42,6 +42,22 @@ Adjust HOST\_CACHE\_PATH and HOST\_REPO\_PATH to match your storage locations.  
 should point to the root of your cloned `DeepSpeedExamples` repo.  HOST\_CACHE\_PATH is the directory in which
 training datasets will be stored.
 
+Default system limits are configured for large workloads.  You can configure the following system limits by
+specifying them in your .env file:
+
+```
+DOCKER_NOFILE_SOFT=1000000
+DOCKER_NOFILE_HARD=1000000
+DOCKER_NOPROC_SOFT=2000000
+DOCKER_NOPROC_HARD=2000000
+```
+
+To configure your environment for large workloads, it is recommended to run 
+
+```
+make env
+```
+
 #### Step 2: Build and Run Container
 
 ```

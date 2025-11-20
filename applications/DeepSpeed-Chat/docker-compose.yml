@@ -5,9 +5,26 @@ services:
       dockerfile: Dockerfile
     image: deepspeed-training:latest
     container_name: deepspeed-training
-    
+    cap_add:
+      - IPC_LOCK
     privileged: true
     runtime: nvidia
+
+    ulimits:
+      # Defaults from 
+      # https://lambdalabs.atlassian.net/wiki/spaces/HPC/pages/582844431/DeepSpeed+Cluster+ML+Test+Guide#Adjust-file-and-memory-limits-if-necessary-(%3E32-nodes)
+      # The default nofile limits may be too agressive for some machines (like A10 VMs on dev hosts)
+      nofile:
+        soft: ${DOCKER_NOFILE_SOFT:-1000000}
+        hard: ${DOCKER_NOFILE_HARD:-1000000}
+      nproc:
+        soft: ${DOCKER_NOPROC_SOFT:-2000000}
+        hard: ${DOCKER_NOPROC_HARD:-2000000}
+      # Unlimited memlock is required both for running large workflows and for integration
+      # with infiniband, so we always set to infinity
+      memlock:
+        soft: -1
+        hard: -1
     
     command: /bin/bash -c "/usr/sbin/sshd && tail -f /dev/null"
     
@@ -29,6 +46,6 @@ services:
     stdin_open: true
     tty: true
     ipc: host
-    shm_size: '32gb'
+    shm_size: '1500gb'
     
     working_dir: /workspace/DeepSpeedExamples/applications/DeepSpeed-Chat/training

@@ -1,7 +1,10 @@
-.PHONY: build run stop clean shell logs
+.PHONY: env build run stop clean shell logs
+
+env:
+	./docker_scripts/make_env.sh
 
 build:
-	docker compose build
+	./docker_scripts/make_build.sh
 
 run:
 	docker compose up -d
