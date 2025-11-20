@@ -17,6 +17,10 @@ RUN apt-get update && apt-get install -y \
     openssh-client \
     nvtop \
     pdsh \
+    rdma-core \
+    ibverbs-providers \
+    libibverbs-dev \
+    libmlx5-1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Set python3.10 as default
