@@ -19,7 +19,6 @@ jq '. + {"data-root": "/docker"}' /etc/docker/daemon.json | tee /etc/docker/daem
 mv /etc/docker/daemon_tmp.json /etc/docker/daemon.json
 sudo systemctl restart docker
  
-# Set vm.max_map_count as specified in 
-# https://lambdalabs.atlassian.net/wiki/spaces/HPC/pages/582844431/DeepSpeed+Cluster+ML+Test+Guide#Adjust-file-and-memory-limits-if-necessary-(%3E32-nodes)
+# Set vm.max_map_count for larger workloads
 sudo sysctl -w vm.max_map_count=1500000
 
