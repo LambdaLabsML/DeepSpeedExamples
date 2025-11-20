@@ -11,8 +11,6 @@ services:
     runtime: nvidia
 
     ulimits:
-      # Defaults from 
-      # https://lambdalabs.atlassian.net/wiki/spaces/HPC/pages/582844431/DeepSpeed+Cluster+ML+Test+Guide#Adjust-file-and-memory-limits-if-necessary-(%3E32-nodes)
       # The default nofile limits may be too agressive for some machines (like A10 VMs on dev hosts)
       nofile:
         soft: ${DOCKER_NOFILE_SOFT:-1000000}
