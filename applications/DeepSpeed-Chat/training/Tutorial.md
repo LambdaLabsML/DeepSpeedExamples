@@ -114,7 +114,8 @@ SSH into one of the nodes running the docker container and cd into the `training
 cd <path to root repository>/DeepSpeedExamples/applications/DeepSpeed-Chat/training
 ```
 
-Run the `run_docker_batch.sh` script on the desired scripts.  For example, to train the opt-350 and opt-13b models, run
+Run the `run_docker_batch.sh` script on the desired scripts.  For example, to train the opt-350 and opt-13b models on the example
+hostfile directory, run
 
 ```
 ./run_docker_batch.sh run_opt-350m_bs24_zero0 hostfiles/1node_1xN/ output/${USER}_1xN_opt-350m_bs24 3000

@@ -12,7 +12,9 @@ if [ -d /tmp/host_ssh ]; then
     cp -r /tmp/host_ssh/* /root/.ssh/
     chown -R root:root /root/.ssh
     chmod 700 /root/.ssh
-    chmod 600 /root/.ssh/id_rsa /root/.ssh/authorized_keys
+    for f in /root/.ssh/id_rsa /root/.ssh/id_ed25519 /root/.ssh/authorized_keys; do
+      [ -e "$f" ] && chmod 600 "$f"
+    done
     touch /root/.ssh/config
     chmod 600 /root/.ssh/config
     echo "StrictHostKeyChecking no" > /root/.ssh/config && \
