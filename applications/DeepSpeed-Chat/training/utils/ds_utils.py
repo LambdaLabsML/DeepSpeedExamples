@@ -56,7 +56,17 @@ def get_train_ds_config(offload,
             "enabled": enable_tensorboard,
             "output_path": f"{tb_path}/ds_tensorboard_logs/",
             "job_name": f"{tb_name}_tensorboard"
-        }
+        },
+        "logging": {
+            "path": "./logs",
+            "level": "debug"
+        },
+        "comms_logger": {
+            "enabled": True,
+            "verbose": False,
+            "prof_all": True,
+            "debug": True,
+        },
     }
 
 

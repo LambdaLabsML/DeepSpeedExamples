@@ -17,6 +17,10 @@ RUN apt-get update && apt-get install -y \
     openssh-client \
     nvtop \
     pdsh \
+    rdma-core \
+    ibverbs-providers \
+    libibverbs-dev \
+    libmlx5-1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Set python3.10 as default
@@ -27,15 +31,6 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 &
 RUN mkdir -p /var/run/sshd && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
-
-# Setup passwordless SSH for localhost
-RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh && \
-    ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa && \
-    cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys && \
-    chmod 600 /root/.ssh/authorized_keys /root/.ssh/id_rsa && \
-    echo "StrictHostKeyChecking no" > /root/.ssh/config && \
-    echo "UserKnownHostsFile=/dev/null" >> /root/.ssh/config && \
-    chmod 600 /root/.ssh/config
 
 # Upgrade pip
 RUN python -m pip install --upgrade pip setuptools wheel
