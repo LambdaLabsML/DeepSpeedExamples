@@ -1,0 +1,51 @@
+FROM nvidia/cuda:13.0.2-cudnn-devel-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies including SSH and nvtop
+RUN apt-get update && apt-get install -y \
+    python3.10 \
+    python3.10-dev \
+    python3-pip \
+    python3-pybind11 \
+    git \
+    curl \
+    wget \
+    build-essential \
+    openssh-server \
+    openssh-client \
+    nvtop \
+    pdsh \
+    rdma-core \
+    ibverbs-providers \
+    libibverbs-dev \
+    libmlx5-1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set python3.10 as default
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+
+# Configure SSH
+RUN mkdir -p /var/run/sshd && \
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+
+# Upgrade pip
+RUN python -m pip install --upgrade pip setuptools wheel
+
+WORKDIR /workspace
+
+# Copy and install non-torch dependencies
+COPY training/requirements_freeze.txt ./
+RUN pip install -r requirements_freeze.txt
+
+# Install PyTorch with CUDA 13.0 support
+RUN pip install torch==2.9.1+cu130 torchvision==0.24.1 torchaudio==2.9.1 --index-url https://download.pytorch.org/whl/cu130
+
+# Copy project code
+COPY . .
+
+CMD ["/bin/bash"]
+
